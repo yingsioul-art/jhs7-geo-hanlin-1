@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>臺灣的水，是哪一場雨給的 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f;--hl:#fff3d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:740px;margin:0 auto;padding:28px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px;margin-bottom:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:14px 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .35em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.step{margin:40px 0 0}
+.s-n{display:inline-block;font-size:12px;letter-spacing:.16em;color:#fff;
+ background:var(--accent);border-radius:99px;padding:3px 13px;font-weight:700}
+h2{font-size:20px;margin:11px 0 10px;line-height:1.6}
+p{margin:.7em 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+th{background:#f1efe9;font-weight:700}
+td.nm{text-align:left;white-space:nowrap}
+tr.dn td.v2{background:#fdf0ed;font-weight:700}
+tr.up td.v2{background:#ecf6f0;font-weight:700}
+td.v3{background:#f7f4ec}
+.mark tr.dn td.v2::after{content:" ↓";color:var(--no)}
+.mark tr.up td.v2::after{content:" ↑";color:var(--ok)}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;transition:.13s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:9px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
+ transition:filter .5s,opacity .5s}
+.lock.open{opacity:1;pointer-events:auto;filter:none}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14.5px}
+.bar .lb{width:186px;flex-shrink:0}
+.bar .tr{flex:1;background:#eceae4;border-radius:99px;height:19px;overflow:hidden}
+.bar .fl{height:100%;background:#b9b3a8;border-radius:99px;width:0;transition:width .9s ease}
+.bar.ans .fl{background:var(--ok)}
+.bar.mis .fl{background:var(--no)}
+.bar .pc{width:56px;text-align:right;font-variant-numeric:tabular-nums}
+.bar.ans .pc{color:var(--ok);font-weight:700}
+.bar.mis .pc{color:var(--no);font-weight:700}
+.ask{background:#f2f7f5;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+ padding:14px 17px;margin:15px 0}
+.ask b{color:var(--accent2)}
+.rev{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:none}
+.rev.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2)}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.name{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;padding:19px 21px;margin:16px 0}
+.name h3{margin:.1em 0 .5em;font-size:17px;color:#8a5717}
+.cal{display:flex;gap:5px;margin:14px 0 6px;font-size:12px;text-align:center}
+.cal div{flex:1;padding:7px 2px;border-radius:7px;background:#eceae4;color:var(--ink2)}
+.cal div.w{background:#cfe6db;color:var(--accent2);font-weight:700}
+.cal div.t{background:#f6d9a8;color:#8a5717;font-weight:700}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.err{display:flex;gap:11px;margin:10px 0;font-size:14.5px}
+.err .t{flex-shrink:0;width:74px;font-weight:700;color:var(--no)}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:16px 13px 70px}h1{font-size:21px}
+ .bar .lb{width:120px;font-size:13px}table{font-size:13px}th,td{padding:5px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← 回七上地理自學站</a>
+
+<header>
+  <div class="kick">單元 ④　·　臺灣的氣溫與雨　·　課本第 5 章</div>
+  <h1>臺灣的水，是哪一場雨給的</h1>
+  <div class="sub">這一題，全國有 <b>39%</b> 的人選了同一個錯的——比選對的還多。</div>
+</header>
+
+<!-- ① -->
+<section class="step">
+  <span class="s-n">STEP 1</span>
+  <h2>先猜。看完表，你覺得為什麼？</h2>
+  <p>2021 年 5 月底，臺灣好幾座水庫幾乎見底，那年被稱為「百年大旱」。<br>
+  下面是三個日期、五座水庫的蓄水量百分比。</p>
+
+  <div class="box">
+    <table id="tb">
+      <tr><th rowspan="2">水庫</th><th rowspan="2">所在</th><th colspan="3">蓄水量百分比（%）</th></tr>
+      <tr><th>2020/5/31</th><th>2020/11/30</th><th>2021/5/31</th></tr>
+      <tr class="up"><td class="nm">翡翠</td><td>新北市</td><td>80.9</td><td class="v2">94.6</td><td class="v3">62.1</td></tr>
+      <tr class="dn"><td class="nm">石門</td><td>桃園市</td><td>67.4</td><td class="v2">49.7</td><td class="v3">12.5</td></tr>
+      <tr class="dn"><td class="nm">鯉魚潭</td><td>苗栗縣</td><td>53.7</td><td class="v2">39.4</td><td class="v3">5.8</td></tr>
+      <tr class="dn"><td class="nm">德基</td><td>臺中市</td><td>42.7</td><td class="v2">38.2</td><td class="v3">2.7</td></tr>
+      <tr class="dn"><td class="nm">曾文</td><td>嘉義縣<br>臺南市</td><td>27.7</td><td class="v2">23.1</td><td class="v3">4.1</td></tr>
+    </table>
+    <p style="font-size:14px;color:var(--ink2);margin:2px 0 0">
+      2021 年 5 月 31 日的蓄水量狀況，<b>可能與下列何者關係最為密切？</b></p>
+    <div class="opts" id="q1" data-ans="D">
+      <button class="opt" data-k="A"><span class="k">A</span>2021 年梅雨鋒面提早報到</button>
+      <button class="opt" data-k="B"><span class="k">B</span>2021 年夏末對流雨較不旺盛</button>
+      <button class="opt" data-k="C"><span class="k">C</span>2020 年冬季迎風面的地形雨偏少</button>
+      <button class="opt" data-k="D"><span class="k">D</span>2020 年缺乏颱風帶來的豐沛雨量</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin-top:12px">
+      114 年國中教育會考社會科第 41 題。<b>選了才會往下</b>——先有自己的答案，後面才有意義。</p>
+  </div>
+</section>
+
+<!-- ② -->
+<section class="step lock" id="z2">
+  <span class="s-n">STEP 2</span>
+  <h2>全國跟你一起選的，有多少人</h2>
+  <div class="box">
+    <div class="bars" id="bars">
+      <div class="bar" data-w="13.74"><div class="lb">(A) 梅雨提早報到</div><div class="tr"><div class="fl"></div></div><div class="pc">13.7%</div></div>
+      <div class="bar mis" data-w="39.05"><div class="lb">(B) 夏末對流雨不旺</div><div class="tr"><div class="fl"></div></div><div class="pc">39.1%</div></div>
+      <div class="bar" data-w="15.28"><div class="lb">(C) 冬季地形雨偏少</div><div class="tr"><div class="fl"></div></div><div class="pc">15.3%</div></div>
+      <div class="bar ans" data-w="31.71"><div class="lb">(D) 缺乏颱風　←正解</div><div class="tr"><div class="fl"></div></div><div class="pc">31.7%</div></div>
+    </div>
+    <p><b>選 B 的人比選對的還多。</b>這不是少數人粗心——這是一個<b>全國性的想法</b>。</p>
+    <p style="font-size:14px;color:var(--ink2)">
+      資料來源：114 年國中教育會考社會科官方試題分析。這題的全體通過率 0.3171，
+      在「待加強」那一群裡，選 B 的高達 <b>40.5%</b>、選對的只有 15.3%。</p>
+  </div>
+</section>
+
+<!-- ③ -->
+<section class="step lock" id="z3">
+  <span class="s-n">STEP 3</span>
+  <h2>不急著給答案。先回答三個問題</h2>
+
+  <div class="ask">
+    <p><b>問題一：</b>題目問的是 <b>2021 年 5 月 31 日</b>的水庫狀況。<br>
+    那麼——<b>那一天，2021 年的「夏末」到了嗎？</b></p>
+    <button class="tiny" data-rev="r1">我想好了，看看</button>
+    <div class="rev" id="r1">
+      <p>沒有。5 月 31 日的時候，2021 年的夏天<b>還沒開始</b>。</p>
+      <p>所以選項 (B) 說的「2021 年夏末對流雨較不旺盛」，是一件<b>還沒發生的事</b>。
+      還沒發生的事，不可能是已經發生的結果的原因。</p>
+      <p>🔴 <b>39% 的人選 B，錯的不是地理知識，是時間方向。</b>
+      他們看到「對流雨」「不旺盛」覺得合理，就沒有回頭檢查年份與月份。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題二：</b>看表格<b>中間那一欄</b>——從 2020/5/31 到 2020/11/30，
+    中南部那四座水庫（石門、鯉魚潭、德基、曾文）的水是變多還是變少？<br>
+    而那半年，在臺灣是<b>雨季還是乾季</b>？</p>
+    <button class="tiny" data-rev="r2">我想好了，看看</button>
+    <div class="rev" id="r2">
+      <p>四座<b>全部變少</b>（67.4→49.7、53.7→39.4、42.7→38.2、27.7→23.1）。</p>
+      <p>但 5 月到 11 月正是臺灣的<b>雨季</b>——課本說臺灣中南部的降水
+      <b>有將近九成集中在 5～10 月</b>。</p>
+      <p>⚡ <b>雨季過完，水反而變少了。</b>這代表那一年的雨季<b>根本沒下夠</b>。<br>
+      問題不是出在 2021 年，是出在 <b>2020 年的雨季</b>。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題三：</b>同樣那半年，最北邊的<b>翡翠水庫</b>卻從 80.9 升到 <b>94.6</b>。<br>
+    為什麼北部有水、中南部沒有？</p>
+    <button class="tiny" data-rev="r3">我想好了，看看</button>
+    <div class="rev" id="r3">
+      <p>因為它們靠的<b>不是同一場雨</b>。</p>
+      <p>北部與東北部在秋冬有<b>東北季風帶來的地形雨</b>，一整年都有水進來；
+      中南部冬天是乾季，全年的水幾乎<b>只能靠夏秋那幾場大雨</b>。</p>
+      <p>所以選項 (C) 講的「冬季迎風面地形雨」——講的是<b>北部的機制</b>，
+      但缺水缺最兇的是中南部。<b>把北部的道理套到中南部，地方錯了。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ -->
+<section class="step lock" id="z4">
+  <span class="s-n">STEP 4</span>
+  <h2>到這裡，才需要名字</h2>
+
+  <div class="name">
+    <h3>臺灣一年的水，是四場不同的雨給的</h3>
+    <div class="cal">
+      <div>1月</div><div>2月</div><div>3月</div><div>4月</div>
+      <div class="w">5月</div><div class="w">6月</div>
+      <div class="t">7月</div><div class="t">8月</div><div class="t">9月</div><div class="t">10月</div>
+      <div>11月</div><div>12月</div>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin:0 0 12px">
+      <span style="color:var(--accent2)">■ 梅雨（鋒面雨）</span>
+      <span style="color:#8a5717">■ 颱風雨</span>　中南部的水，幾乎都在這兩段進來</p>
+
+    <p><b>鋒面雨</b>——冷暖氣團相遇，暖空氣沿鋒面爬升。特徵是<b>雨時長、雨區大</b>。
+    每年 5、6 月的梅雨就是。<span class="pg">課本 p.63</span></p>
+    <p><b>颱風雨</b>——夏、秋兩季。課本特別點出一件事：
+    <b>颱風會造成災害，但它同時是臺灣水資源的主要來源。</b><span class="pg">課本 p.73</span></p>
+    <p><b>對流雨</b>——夏日午後的雷陣雨，<b>雨勢強、雨時短、雨區小</b>。
+    下得又急又猛，但<b>留不住</b>，對水庫幫助有限。<span class="pg">課本 p.63</span></p>
+    <p><b>地形雨</b>——潮溼空氣被山擋住往上爬，迎風坡多雨、背風坡少雨。
+    臺灣冬季的地形雨集中在<b>北部與東北部</b>。<span class="pg">課本 p.63</span></p>
+  </div>
+
+  <div class="box">
+    <p><b>所以答案是 (D)：2020 年缺乏颱風帶來的豐沛雨量。</b></p>
+    <p>2020 年是<b>1964 年以來第一個沒有颱風登陸臺灣的年份</b>。中南部一整年的水本來就靠夏秋的颱風，
+    那年颱風沒來，雨季過完水庫反而更空——撐到隔年 5 月，就見底了。</p>
+    <p>回頭看那三個錯的選項，錯法各不相同：</p>
+    <div class="err"><div class="t">(A) 13.7%</div><div><b>因果方向相反。</b>梅雨提早報到會<em>補水</em>，不會讓水庫變空。</div></div>
+    <div class="err"><div class="t">(B) 39.1%</div><div><b>時間方向錯了。</b>拿還沒發生的事當原因。</div></div>
+    <div class="err"><div class="t">(C) 15.3%</div><div><b>地方錯了。</b>冬季地形雨是北部的機制，缺水的是中南部。</div></div>
+    <p style="margin-top:14px">📌 三種錯法可以收成一句檢查表——
+    <b>看到「因為…所以…」，先問三件事：時間對不對、方向對不對、地方對不對。</b></p>
+  </div>
+</section>
+
+<!-- ⑤ -->
+<section class="step lock" id="z5">
+  <span class="s-n">STEP 5</span>
+  <h2>同一個觀念，會考換過的樣子</h2>
+
+  <div class="box">
+    <p><b>112 年第 28 題</b>　全國 56.0% 答對；「待加強」那群有 <b>36.9%</b> 選 (C)，比選對的還多。</p>
+    <p style="font-size:15px">臺灣本島四個氣象測站，何者的<b>年降水量可能最多</b>？<br>
+    <span style="color:var(--ink2);font-size:14px">
+    甲 23.98°N／121.61°E／16.0m　乙 25.13°N／121.74°E／26.7m<br>
+    丙 22.99°N／120.20°E／40.8m　丁 23.95°N／120.59°E／34.0m</span></p>
+    <div class="opts" id="q2" data-ans="B">
+      <button class="opt" data-k="A"><span class="k">A</span>甲</button>
+      <button class="opt" data-k="B"><span class="k">B</span>乙</button>
+      <button class="opt" data-k="C"><span class="k">C</span>丙</button>
+      <button class="opt" data-k="D"><span class="k">D</span>丁</button>
+    </div>
+    <div class="rev" id="r4">
+      <p><b>答案是乙。</b>先把座標換成位置：乙站 25.13°N／121.74°E 在<b>臺灣東北角</b>，
+      正對<b>東北季風的迎風面</b>——所以它一年到頭都有雨。</p>
+      <p>這題要你連做兩件事：<b>先用第 1 章把座標變成地點，再用第 5 章判斷降水。</b>
+      這就是為什麼第 1 章不是「開學第一章」，是<b>整本書的工具箱</b>。</p>
+      <p>選 (C) 丙的人，多半想的是「南部雨量大」——但那是<b>雨季集中</b>，不是<b>全年最多</b>。
+      課本的數字很清楚：北部年降水量 2932mm，比南部的 2536mm 還多。<span class="pg">課本 p.70</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>111 年第 29 題</b>　全國只有 38.3% 答對，是那一年七上範圍最難的一題。<br>
+    「待加強」那群更極端：<b>42.5% 選了 (A)</b>，選對的只有 13.0%——整群幾乎一起倒在同一個地方。</p>
+    <p style="font-size:15px">WMO 定義熱浪為：<b>連續 5 日的每日最高氣溫，皆高於歷年最暖月的最高氣溫平均值 5℃ 以上</b>。<br>
+    下面是臺北測站 1981–2010 年的氣溫資料（節錄）：</p>
+    <table>
+      <tr><th>月分</th><th>6</th><th>7</th><th>8</th><th>年平均</th></tr>
+      <tr><td class="nm">氣溫（℃）</td><td>27.7</td><td class="v2">29.6</td><td>29.2</td><td>23.0</td></tr>
+      <tr><td class="nm">最高氣溫（℃）</td><td>32.0</td><td class="v2"><b>34.3</b></td><td>33.8</td><td class="v3">26.6</td></tr>
+      <tr><td class="nm">最低氣溫（℃）</td><td>24.6</td><td class="v2">26.3</td><td>26.1</td><td>20.4</td></tr>
+    </table>
+    <p style="font-size:15px">臺北在何種情形達到熱浪標準？</p>
+    <div class="opts" id="q3" data-ans="D">
+      <button class="opt" data-k="A"><span class="k">A</span>連續 5 天出現 31.6℃ 以上高溫</button>
+      <button class="opt" data-k="B"><span class="k">B</span>連續 5 天出現 34.3℃ 以上高溫</button>
+      <button class="opt" data-k="C"><span class="k">C</span>連續 5 天出現 34.6℃ 以上高溫</button>
+      <button class="opt" data-k="D"><span class="k">D</span>連續 5 天出現 39.3℃ 以上高溫</button>
+    </div>
+    <div class="rev" id="r5">
+      <p><b>答案是 (D)：34.3 ＋ 5 ＝ 39.3℃。</b></p>
+      <p>定義裡每個字都在指路：「歷年<b>最暖月</b>的<b>最高氣溫</b>平均值 <b>＋5℃</b>」。
+      所以要做三個動作——<b>找對月（7 月）、拿對列（最高氣溫）、記得加 5</b>。</p>
+      <p>把四個選項攤開來看，<b>每一個都恰好少做一個動作</b>：</p>
+      <div class="err"><div class="t">(A) 34.4%</div><div>
+        <b>26.6 ＋ 5</b>。列拿對了，但拿的是<b>年平均</b>那一格，不是最暖月。<b>月份錯了。</b></div></div>
+      <div class="err"><div class="t">(B) 17.0%</div><div>
+        <b>34.3</b>，就是表上那個數。月份、列都對，<b>忘了加 5。</b></div></div>
+      <div class="err"><div class="t">(C) 10.2%</div><div>
+        <b>29.6 ＋ 5</b>。月份對、加了 5，但拿的是<b>「氣溫」那一列</b>，不是「最高氣溫」。<b>列錯了。</b></div></div>
+      <div class="err"><div class="t">(D) 38.3%</div><div>
+        <b>34.3 ＋ 5</b>——三個動作都做對。</div></div>
+      <p style="margin-top:14px">🔴 <b>這題考的根本不是熱浪，是你會不會讀那張表。</b><br>
+      同一張表有「氣溫／最高氣溫／最低氣溫」三列、又有「各月／年平均」兩種欄，
+      <b>拿錯任何一格，答案就完全不同</b>——而四個選項剛好把每一種拿錯法都準備好了。</p>
+      <p>課本 p.66 那五個定義（日均溫、月均溫、年均溫、年降水量、年溫差）就是在教這件事：
+      <b>每個名詞都精確指定「拿哪些數字、怎麼算」</b>。看起來像在背定義，其實是在練讀表。<span class="pg">課本 p.66</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 收束 -->
+<section class="step lock" id="z6">
+  <span class="s-n">帶走</span>
+  <h2>這一單元只有兩句話</h2>
+  <div class="name">
+    <p style="font-size:17px;margin:.4em 0"><b>一、中南部一年的水，幾乎都靠夏秋那幾場颱風。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    梅雨和颱風會成災，但它們同時是臺灣水資源的主要來源——同一件事，兩種面孔。</span></p>
+    <p style="font-size:17px;margin:.9em 0 .4em"><b>二、看到「因為…所以…」，先檢查時間、方向、地方。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    39% 的人不是不懂降水類型，是沒有回頭看一眼年份。</span></p>
+  </div>
+  <p>📖 對應課本：<b>5-1 天氣</b>（p.62–65，四種降水類型在 p.63）、
+  <b>5-2 氣候</b>（p.66，五個統計定義）、<b>5-3 臺灣的氣候特徵</b>（p.68–71，降水分布不均在 p.70）、
+  <b>5-4 臺灣的氣象災害</b>（p.72–73）。</p>
+  <p style="margin-top:16px">
+    <a class="back" href="book.html">→ 回課本地圖，把第 5 章那七個重點過一遍</a></p>
+</section>
+
+<div style="text-align:center;margin-top:36px">
+  <button class="tiny" id="rst">清除作答，重新來過</button></div>
+
+<footer>
+  會考試題文字與統計取自國中教育會考官方試題分析（111、112、114 年）<br>
+  題目為重新排版，解說文字為自行撰寫　·　僅供個人學習、非商業使用
+</footer>
+
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-rain-v1", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function $(i){return document.getElementById(i)}
+
+function drawBars(){
+  document.querySelectorAll("#bars .bar").forEach(function(b){
+    setTimeout(function(){b.querySelector(".fl").style.width=b.dataset.w+"%"},120);
+  });
+}
+function openZone(id){var z=$(id); if(z) z.classList.add("open");}
+
+function lockOpts(box,pick){
+  var ans=box.dataset.ans;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+}
+function bind(id,after){
+  var box=$(id); if(!box) return;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1";
+      st[id]=b.dataset.k; save();
+      lockOpts(box,b.dataset.k);
+      after();
+    });
+  });
+  if(st[id]){ box.dataset.locked="1"; lockOpts(box,st[id]); after(true); }
+}
+
+bind("q1",function(restore){
+  openZone("z2"); openZone("z3"); openZone("z4"); openZone("z5");
+  if(restore){document.querySelectorAll("#bars .fl").forEach(function(f,i){
+    f.style.width=document.querySelectorAll("#bars .bar")[i].dataset.w+"%";});}
+  else drawBars();
+});
+bind("q2",function(){ $("r4").classList.add("on"); openZone("z6"); });
+bind("q3",function(){ $("r5").classList.add("on"); openZone("z6"); });
+
+document.querySelectorAll("[data-rev]").forEach(function(btn){
+  var id=btn.dataset.rev;
+  btn.addEventListener("click",function(){
+    $(id).classList.add("on"); btn.style.display="none";
+    st["rev_"+id]=1; save();
+  });
+  if(st["rev_"+id]){ $(id).classList.add("on"); btn.style.display="none"; }
+});
+
+$("rst").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  location.reload();
+});
+})();
+</script>
+</body>
+</html>
