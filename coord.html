@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>四個字母，砍掉四分之三個地球 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:740px;margin:0 auto;padding:28px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px;margin-bottom:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:14px 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .35em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.step{margin:40px 0 0}
+.s-n{display:inline-block;font-size:12px;letter-spacing:.16em;color:#fff;
+ background:var(--accent);border-radius:99px;padding:3px 13px;font-weight:700}
+h2{font-size:20px;margin:11px 0 10px;line-height:1.6}
+p{margin:.7em 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+th{background:#f1efe9;font-weight:700}
+td.nm{text-align:left;white-space:nowrap;font-weight:700}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;transition:.13s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:9px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
+ transition:filter .5s,opacity .5s}
+.lock.open{opacity:1;pointer-events:auto;filter:none}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14.5px}
+.bar .lb{width:158px;flex-shrink:0}
+.bar .tr{flex:1;background:#eceae4;border-radius:99px;height:19px;overflow:hidden}
+.bar .fl{height:100%;background:#b9b3a8;border-radius:99px;width:0;transition:width .9s ease}
+.bar.ans .fl{background:var(--ok)}
+.bar.mis .fl{background:var(--no)}
+.bar .pc{width:56px;text-align:right;font-variant-numeric:tabular-nums}
+.bar.ans .pc{color:var(--ok);font-weight:700}
+.bar.mis .pc{color:var(--no);font-weight:700}
+.ask{background:#f2f7f5;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+ padding:14px 17px;margin:15px 0}
+.ask b{color:var(--accent2)}
+.rev{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:none}
+.rev.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2)}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.name{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;padding:19px 21px;margin:16px 0}
+.name h3{margin:.1em 0 .5em;font-size:17px;color:#8a5717}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.err{display:flex;gap:11px;margin:10px 0;font-size:14.5px}
+.err .t{flex-shrink:0;width:80px;font-weight:700;color:var(--no)}
+.cut{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.cut div{flex:1;min-width:150px;background:#fbfaf7;border:1px solid var(--line);
+ border-radius:11px;padding:12px 14px;font-size:14.5px}
+.cut b{color:var(--accent2)}
+.tool{background:#eef5f2;border:1px solid #bcd8cd;border-radius:12px;padding:15px 18px;margin:16px 0}
+.tool a{color:var(--accent2);font-weight:700}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:16px 13px 70px}h1{font-size:21px}
+ .bar .lb{width:118px;font-size:13px}table{font-size:13px}th,td{padding:5px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← 回七上地理自學站</a>
+
+<header>
+  <div class="kick">單元 ③　·　座標定位與氣候　·　課本第 1、2、5 章</div>
+  <h1>四個字母，砍掉四分之三個地球</h1>
+  <div class="sub">N、S、E、W 不是裝飾——每一個都在幫你刪掉一半。</div>
+</header>
+
+<!-- ① -->
+<section class="step">
+  <span class="s-n">STEP 1</span>
+  <h2>先猜。哪一個岬角在歐亞大陸的西邊海岸？</h2>
+  <p>下面是全球四個著名岬角的座標。<b>哪一個位於歐亞大陸西部海岸？</b></p>
+
+  <div class="box">
+    <table>
+      <tr><th>　</th><th>緯度</th><th>經度</th></tr>
+      <tr><td class="nm">甲</td><td>34.357°S</td><td>18.474°E</td></tr>
+      <tr><td class="nm">乙</td><td>34.374°S</td><td>115.136°E</td></tr>
+      <tr><td class="nm">丙</td><td>38.781°N</td><td>9.500°W</td></tr>
+      <tr><td class="nm">丁</td><td>47.524°N</td><td>52.620°W</td></tr>
+    </table>
+    <div class="opts" id="q1" data-ans="C">
+      <button class="opt" data-k="A"><span class="k">A</span>甲</button>
+      <button class="opt" data-k="B"><span class="k">B</span>乙</button>
+      <button class="opt" data-k="C"><span class="k">C</span>丙</button>
+      <button class="opt" data-k="D"><span class="k">D</span>丁</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin-top:12px">
+      111 年國中教育會考社會科第 18 題。<b>選了才會往下。</b></p>
+  </div>
+</section>
+
+<!-- ② -->
+<section class="step lock" id="z2">
+  <span class="s-n">STEP 2</span>
+  <h2>全國跟你一起選的，有多少人</h2>
+  <div class="box">
+    <div class="bars" id="bars">
+      <div class="bar" data-w="15.48"><div class="lb">(A) 甲</div><div class="tr"><div class="fl"></div></div><div class="pc">15.5%</div></div>
+      <div class="bar" data-w="16.20"><div class="lb">(B) 乙</div><div class="tr"><div class="fl"></div></div><div class="pc">16.2%</div></div>
+      <div class="bar ans" data-w="42.40"><div class="lb">(C) 丙　←正解</div><div class="tr"><div class="fl"></div></div><div class="pc">42.4%</div></div>
+      <div class="bar mis" data-w="25.79"><div class="lb">(D) 丁</div><div class="tr"><div class="fl"></div></div><div class="pc">25.8%</div></div>
+    </div>
+    <p>這題全國只有 <b>42.4%</b> 答對——是五年來七上範圍<b>第二難</b>的一題。</p>
+    <p>但它的錯法跟其他題不一樣：<b>三個錯的選項各有人選，沒有哪一個特別多。</b>
+    這代表大家不是被同一個陷阱騙走，而是<b>根本沒有一套固定的方法可以用</b>——
+    只好憑印象猜。</p>
+    <p style="font-size:14px;color:var(--ink2)">
+      111 年官方試題分析：通過率 0.4240。「待加強」那群只有 22.1% 答對，
+      誤答分散在 (D) 27.9% 與 (B) 27.7%，幾乎一樣高。</p>
+  </div>
+</section>
+
+<!-- ③ -->
+<section class="step lock" id="z3">
+  <span class="s-n">STEP 3</span>
+  <h2>不急著給答案。先把四個選項砍一輪</h2>
+
+  <div class="ask">
+    <p><b>問題一：</b>題目要找的是<b>歐亞大陸</b>上的地點。<br>
+    歐亞大陸<b>整個都在北半球</b>——那麼，光看<b>緯度那個字母</b>，可以先刪掉誰？</p>
+    <button class="tiny" data-rev="r1">我想好了，看看</button>
+    <div class="rev" id="r1">
+      <p><b>甲和乙都可以刪。</b>它們是 <b>34.357°S</b> 和 <b>34.374°S</b>——<b>S＝南緯</b>，在南半球。</p>
+      <p>歐亞大陸沒有任何一塊在南半球，所以這兩個一定不是。</p>
+      <p>⚡ <b>只看了一個字母，四個選項就少了一半。</b>而且完全不需要知道那兩個岬角在哪裡。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題二：</b>剩下丙（<b>9.500°W</b>）和丁（<b>52.620°W</b>），都是<b>西經</b>。<br>
+    西經 9.5° 和西經 52.6°，<b>哪一個離歐洲比較近？</b></p>
+    <button class="tiny" data-rev="r2">我想好了，看看</button>
+    <div class="rev" id="r2">
+      <p><b>9.5°W 比較近。</b>經度是<b>從本初經線（0°）往兩邊算</b>的——
+      數字越小，離 0° 越近。</p>
+      <p>而本初經線通過<b>英國格林威治</b>，也就是歐洲。所以 9.5°W 就在歐洲西邊外海一點點；
+      52.6°W 已經跨過大西洋，到<b>北美洲</b>去了。</p>
+      <p>答案是 <b>(C) 丙</b>——葡萄牙的西岸，正是歐亞大陸的最西端一帶。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題三：</b>回頭看整個過程——<br>
+    你需要「認得」那四個岬角的名字嗎？</p>
+    <button class="tiny" data-rev="r3">我想好了，看看</button>
+    <div class="rev" id="r3">
+      <p><b>完全不需要。</b>整題只用了三件事：</p>
+      <p>① <b>S 代表南半球</b> → 刪掉甲、乙<br>
+      ② <b>經度從 0° 往兩邊算，0° 在歐洲</b> → 9.5°W 靠歐洲、52.6°W 已到北美<br>
+      ③ 歐亞大陸在北半球</p>
+      <p>🔴 <b>那 25.8% 選丁的人，多半是看到「W」就想「西邊」，覺得西經越大越西邊、越靠近歐洲西岸。</b>
+      但西經越大是<b>越往西走、離歐洲越遠</b>——走過頭就到美洲了。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ -->
+<section class="step lock" id="z4">
+  <span class="s-n">STEP 4</span>
+  <h2>到這裡，才需要方法</h2>
+
+  <div class="name">
+    <h3>一組座標有四個字母，每一個都砍掉一半地球</h3>
+    <div class="cut">
+      <div><b>N / S</b><br>北緯或南緯<br>
+      <span style="color:var(--ink2)">砍掉南半球或北半球</span></div>
+      <div><b>E / W</b><br>東經或西經<br>
+      <span style="color:var(--ink2)">砍掉東半球或西半球</span></div>
+    </div>
+    <p>兩刀砍完，地球只剩<b>四分之一</b>。再看<b>數字大小</b>——
+    緯度越大越靠近極地，經度越大離本初經線越遠——就能定位到很小的範圍。</p>
+    <p style="margin-top:12px"><b>順序很重要：先砍字母，再看數字。</b>
+    先看數字的人，會被「52 比 9 大」帶著走。</p>
+  </div>
+
+  <div class="box">
+    <p>兩條基準線要記牢，因為所有數字都從它們算起：</p>
+    <p><b>赤道（0° 緯線）</b>——往北是 N、往南是 S，各算到 90°。<span class="pg">課本 p.12</span></p>
+    <p><b>本初經線（0° 經線，通過英國格林威治）</b>——往東是 E、往西是 W，各算到 180°。
+    東經 180° 與西經 180° 是同一條線，就是國際換日線附近。<span class="pg">課本 p.12</span></p>
+  </div>
+
+  <div class="tool">
+    <p>🌍 <b>這件事在球上看最清楚。</b>經線是從極點放射出去的、緯線是一圈一圈的——
+    紙上的方格圖會讓你以為它們是互相垂直的直線。</p>
+    <p><a href="globe.html">→ 打開經緯與時區地球儀</a>
+    轉一轉、把格線切成 15°，看看經度是怎麼把地球切成一瓣一瓣的。</p>
+  </div>
+</section>
+
+<!-- ⑤ -->
+<section class="step lock" id="z5">
+  <span class="s-n">STEP 5</span>
+  <h2>同一套方法，會考換過的樣子</h2>
+
+  <div class="box">
+    <p><b>112 年第 16 題</b>　全國 53.9% 答對；「待加強」那群只有 27.1%，
+    其中 <b>33.2% 選了 (B)</b>——比選對的還多。</p>
+    <p style="font-size:15px">某世界遺產涵蓋森林、谷地、潟湖及珊瑚礁，中心是
+    <b>玻里尼西亞</b>普遍可見的<b>毛利集會中心</b>。該遺產最可能位於下列何處？</p>
+    <div class="opts" id="q2" data-ans="C">
+      <button class="opt" data-k="A"><span class="k">A</span>(11.88°N，2.49°E)</button>
+      <button class="opt" data-k="B"><span class="k">B</span>(49.93°N，115.43°E)</button>
+      <button class="opt" data-k="C"><span class="k">C</span>(16.84°S，151.37°W)</button>
+      <button class="opt" data-k="D"><span class="k">D</span>(42.85°S，71.87°W)</button>
+    </div>
+    <div class="rev" id="r4">
+      <p><b>答案是 (C)。</b>用同一套砍法：</p>
+      <p>玻里尼西亞在<b>南太平洋</b>——所以要<b>南緯（S）</b>，A、B 兩個 N 先刪掉。<br>
+      太平洋中部在<b>西經</b>一帶——C 是 151°W，D 是 71°W。<br>
+      而且題目說有<b>珊瑚礁</b>：珊瑚礁長在<b>熱帶淺海</b>，緯度要低。
+      C 是 16.8°S（熱帶內），D 是 42.9°S（溫帶，太冷）。</p>
+      <p>🔴 選 (B) 的三成，多半是被「森林、谷地」帶著走，<b>沒去看南北緯那個字母</b>。
+      49.93°N、115.43°E 是<b>西伯利亞南部</b>——那裡不會有潟湖和珊瑚礁。</p>
+      <p>📌 這題示範了第二層：<b>座標不只能定位，還能反推氣候。</b>
+      「有珊瑚礁」就等於「低緯度、溫暖」。<span class="pg">課本 p.15、p.51</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>113 年第 29 題</b>　全國 49.1% 答對；「待加強」那群 <b>31.8% 選 (C)</b>。</p>
+    <p style="font-size:15px">臺灣荔枝主要種植在<b>中南部</b>。政府與澳洲合作推動南半球生產計畫，
+    要在澳洲找<b>氣候條件與臺灣荔枝種植地相似</b>的地點試種。<br>
+    圖中四處：<b>甲</b> 東北岸、南回歸線附近　<b>乙</b> 塔斯馬尼亞島（最南）
+    <b>丙</b> 內陸　<b>丁</b> 西南角</p>
+    <div class="opts" id="q3" data-ans="A">
+      <button class="opt" data-k="A"><span class="k">A</span>甲</button>
+      <button class="opt" data-k="B"><span class="k">B</span>乙</button>
+      <button class="opt" data-k="C"><span class="k">C</span>丙</button>
+      <button class="opt" data-k="D"><span class="k">D</span>丁</button>
+    </div>
+    <div class="rev" id="r5">
+      <p><b>答案是 (A) 甲。</b>臺灣中南部在<b>北回歸線附近、靠海</b>——
+      要在南半球找對應，就要找<b>南回歸線附近、靠海</b>的地方。</p>
+      <p><b>緯度決定氣候帶，而南北半球是對稱的。</b>北回歸線 23.5°N 的對應，
+      就是南回歸線 23.5°S。</p>
+      <p>其他三個為什麼不行：<b>乙</b>塔斯馬尼亞太南（高緯、溫帶）、
+      <b>丙</b>在內陸（乾燥）、<b>丁</b>西南角是地中海型氣候（夏乾）。</p>
+      <p>🔴 選 (C) 內陸的三成，是<b>只比了緯度、忘了比距海遠近</b>。
+      課本說影響氣候的因素有三個：<b>緯度、地形、季風</b>——緯度只是第一個。<span class="pg">課本 p.68</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>114 年第 28 題</b>　全國 62.9% 答對——相對好做，但它把這一單元收得很漂亮。</p>
+    <p style="font-size:15px">圖上是新加坡，標了經線 <b>103.83°E</b>、緯線 <b>1.33°N</b>，
+    以及最高點僅 <b>163 公尺</b>。該國積極發展某種綠色能源，最可能是哪一種？</p>
+    <div class="opts" id="q4" data-ans="B">
+      <button class="opt" data-k="A"><span class="k">A</span>水力；因雨量豐沛且山高水深</button>
+      <button class="opt" data-k="B"><span class="k">B</span>太陽能；因位處太陽直射範圍</button>
+      <button class="opt" data-k="C"><span class="k">C</span>風力；因位於盛行西風帶</button>
+      <button class="opt" data-k="D"><span class="k">D</span>海洋能；因北大西洋暖流流經</button>
+    </div>
+    <div class="rev" id="r6">
+      <p><b>答案是 (B)。</b><b>1.33°N ——幾乎就在赤道上。</b></p>
+      <p>太陽直射的範圍是<b>南北回歸線之間</b>（23.5°S ～ 23.5°N），
+      新加坡在正中央，全年太陽都接近直射，輻射強度大。<span class="pg">課本 p.15</span></p>
+      <p>其他三個各被一個數字擋掉：</p>
+      <div class="err"><div class="t">(A) 水力</div><div>最高點只有 <b>163 公尺</b>——<b>沒有落差就沒有水力</b>。</div></div>
+      <div class="err"><div class="t">(C) 風力</div><div>盛行西風帶在<b>中緯度</b>（約 30～60°），1.33°N 差太遠。</div></div>
+      <div class="err"><div class="t">(D) 海洋能</div><div>北大西洋暖流在<b>大西洋</b>，103.83°<b>E</b> 在東半球、亞洲。</div></div>
+      <p style="margin-top:12px">📌 <b>這題等於把整個單元考了一遍</b>：緯度→氣候帶、經度→在哪個半球、
+      高度→有沒有落差。<b>圖上每一個數字都在回答一個選項。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- 收束 -->
+<section class="step lock" id="z6">
+  <span class="s-n">帶走</span>
+  <h2>看到座標，永遠先做同兩件事</h2>
+  <div class="name">
+    <p style="font-size:17px;margin:.35em 0"><b>一、先讀字母，再讀數字。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    N/S 砍掉一半，E/W 再砍一半。字母能刪掉的選項，通常比數字還多。</span></p>
+    <p style="font-size:17px;margin:.9em 0 .35em"><b>二、緯度不只是位置，還是氣候。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    低緯＝熱帶、太陽直射；中緯＝溫帶、盛行西風；高緯＝寒帶。<br>
+    而且南北半球對稱——北回歸線的對面，就是南回歸線。</span></p>
+  </div>
+  <p>📖 對應課本：<b>1-2 經緯線網格</b>（p.12–13）、<b>1-3 位置與生活的關聯</b>（p.14–15，緯度與氣候）、
+  <b>2-2 臺灣的位置</b>（p.26）、<b>5-3 臺灣的氣候特徵</b>（p.68）。</p>
+  <p style="margin-top:14px">
+    <a class="back" href="globe.html">→ 到地球儀上轉一轉，看經緯線真正的樣子</a><br>
+    <a class="back" href="book.html">→ 回課本地圖，把第 1 章那八個重點過一遍</a></p>
+</section>
+
+<div style="text-align:center;margin-top:36px">
+  <button class="tiny" id="rst">清除作答，重新來過</button></div>
+
+<footer>
+  會考試題文字與統計取自國中教育會考官方試題分析（111～114 年）<br>
+  題目為重新排版，解說文字為自行撰寫　·　僅供個人學習、非商業使用
+</footer>
+
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-coord-v1", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function drawBars(){
+  document.querySelectorAll("#bars .bar").forEach(function(b){
+    setTimeout(function(){b.querySelector(".fl").style.width=b.dataset.w+"%"},120);});
+}
+function openZone(id){var z=$(id); if(z) z.classList.add("open");}
+function lockOpts(box,pick){
+  var ans=box.dataset.ans;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+}
+function bind(id,after){
+  var box=$(id); if(!box) return;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1"; st[id]=b.dataset.k; save();
+      lockOpts(box,b.dataset.k); after();
+    });
+  });
+  if(st[id]){ box.dataset.locked="1"; lockOpts(box,st[id]); after(true); }
+}
+bind("q1",function(restore){
+  openZone("z2"); openZone("z3"); openZone("z4"); openZone("z5");
+  if(restore){document.querySelectorAll("#bars .bar").forEach(function(b){
+    b.querySelector(".fl").style.width=b.dataset.w+"%";});}
+  else drawBars();
+});
+bind("q2",function(){ $("r4").classList.add("on"); openZone("z6"); });
+bind("q3",function(){ $("r5").classList.add("on"); openZone("z6"); });
+bind("q4",function(){ $("r6").classList.add("on"); openZone("z6"); });
+document.querySelectorAll("[data-rev]").forEach(function(btn){
+  var id=btn.dataset.rev;
+  btn.addEventListener("click",function(){
+    $(id).classList.add("on"); btn.style.display="none"; st["rev_"+id]=1; save();});
+  if(st["rev_"+id]){ $(id).classList.add("on"); btn.style.display="none"; }
+});
+$("rst").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  location.reload();
+});
+})();
+</script>
+</body>
+</html>
