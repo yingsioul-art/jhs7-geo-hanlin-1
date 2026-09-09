@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>「上面」不一定是北 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:740px;margin:0 auto;padding:28px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px;margin-bottom:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:14px 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .35em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.step{margin:40px 0 0}
+.s-n{display:inline-block;font-size:12px;letter-spacing:.16em;color:#fff;
+ background:var(--accent);border-radius:99px;padding:3px 13px;font-weight:700}
+h2{font-size:20px;margin:11px 0 10px;line-height:1.6}
+p{margin:.7em 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;transition:.13s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:9px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
+ transition:filter .5s,opacity .5s}
+.lock.open{opacity:1;pointer-events:auto;filter:none}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14.5px}
+.bar .lb{width:150px;flex-shrink:0}
+.bar .tr{flex:1;background:#eceae4;border-radius:99px;height:19px;overflow:hidden}
+.bar .fl{height:100%;background:#b9b3a8;border-radius:99px;width:0;transition:width .9s ease}
+.bar.ans .fl{background:var(--ok)}
+.bar.mis .fl{background:var(--no)}
+.bar .pc{width:56px;text-align:right;font-variant-numeric:tabular-nums}
+.bar.ans .pc{color:var(--ok);font-weight:700}
+.bar.mis .pc{color:var(--no);font-weight:700}
+.ask{background:#f2f7f5;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+ padding:14px 17px;margin:15px 0}
+.ask b{color:var(--accent2)}
+.rev{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:none}
+.rev.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2)}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.name{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;padding:19px 21px;margin:16px 0}
+.name h3{margin:.1em 0 .5em;font-size:17px;color:#8a5717}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.err{display:flex;gap:11px;margin:10px 0;font-size:14.5px}
+.err .t{flex-shrink:0;width:74px;font-weight:700;color:var(--no)}
+.two{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:6px 0}
+.two figure{margin:0;flex:1;min-width:250px;text-align:center}
+.two figcaption{font-size:13.5px;color:var(--ink2);margin-top:4px}
+svg{max-width:100%;height:auto}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:16px 13px 70px}h1{font-size:21px}.bar .lb{width:112px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← 回七上地理自學站</a>
+
+<header>
+  <div class="kick">單元 ①　·　讀圖工具箱　·　課本第 1 章</div>
+  <h1>「上面」不一定是北</h1>
+  <div class="sub">有一個習慣，平常很好用，但在某些地圖上會把你整個帶反。</div>
+</header>
+
+<!-- ① -->
+<section class="step">
+  <span class="s-n">STEP 1</span>
+  <h2>先猜。這座冰山往哪邊漂？</h2>
+  <p>2017 年，一座面積約 4,200 平方公里的冰山脫離陸地，在南大西洋上漂流。<br>
+  下面這張圖是<b>以南極為中心畫出來的</b>——所有經線都從南極放射出去，緯線是一圈一圈的同心圓。
+  圖上標了冰山在三個時間的位置。</p>
+
+  <div class="box">
+    <div style="text-align:center">
+    <svg viewBox="0 0 420 330" width="420" role="img" aria-label="南極方位投影示意圖">
+      <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 z" fill="#b3402f"/></marker></defs>
+      <!-- 緯線同心圓 -->
+      <circle cx="330" cy="60" r="70" fill="none" stroke="#ddd7cc" stroke-width="1"/>
+      <circle cx="330" cy="60" r="130" fill="none" stroke="#ddd7cc" stroke-width="1"/>
+      <circle cx="330" cy="60" r="195" fill="none" stroke="#ddd7cc" stroke-width="1"/>
+      <circle cx="330" cy="60" r="255" fill="none" stroke="#ddd7cc" stroke-width="1"/>
+      <!-- 經線放射 -->
+      <g stroke="#ddd7cc" stroke-width="1">
+        <line x1="330" y1="60" x2="90" y2="60"/><line x1="330" y1="60" x2="110" y2="150"/>
+        <line x1="330" y1="60" x2="150" y2="230"/><line x1="330" y1="60" x2="225" y2="290"/>
+        <line x1="330" y1="60" x2="330" y2="320"/><line x1="330" y1="60" x2="120" y2="20"/>
+      </g>
+      <!-- 極點 -->
+      <circle cx="330" cy="60" r="5" fill="#0e4c3f"/>
+      <text x="337" y="46" font-size="13" fill="#0e4c3f" font-weight="700">南極</text>
+      <text x="298" y="82" font-size="11" fill="#5b5651">經線都交會在這裡</text>
+      <!-- 冰山三點：2017 最靠近南極，2020 最遠 → 越來越北 -->
+      <g fill="#22201f">
+        <polygon points="250,133 254,142 264,143 256,149 259,159 250,153 241,159 244,149 236,143 246,142"/>
+        <polygon points="198,176 202,185 212,186 204,192 207,202 198,196 189,202 192,192 184,186 194,185"/>
+        <polygon points="136,196 140,205 150,206 142,212 145,222 136,216 127,222 130,212 122,206 132,205"/>
+      </g>
+      <text x="122" y="140" font-size="12" fill="#5b5651">2017年7月</text>
+      <text x="70" y="183" font-size="12" fill="#5b5651">2019年11月</text>
+      <text x="8" y="203" font-size="12" fill="#5b5651">2020年7月</text>
+      <!-- 移動箭頭：由內往外＝往北 -->
+      <path d="M241,148 L152,196" stroke="#b3402f" stroke-width="2.2" fill="none"
+            marker-end="url(#ar)" stroke-dasharray="5 4"/>
+      <text x="150" y="238" font-size="11.5" fill="#b3402f" font-weight="700">離南極越來越遠</text>
+      <!-- 緯度標 -->
+      <text x="238" y="55" font-size="11" fill="#8a8378">60°S</text>
+      <text x="170" y="55" font-size="11" fill="#8a8378">40°S</text>
+    </svg>
+    </div>
+    <p style="font-size:14px;color:var(--ink2);margin:2px 0 0">
+      依據圖中資訊判斷，<b>該冰山漂流的方向應為下列何者？</b></p>
+    <div class="opts" id="q1" data-ans="B">
+      <button class="opt" data-k="A"><span class="k">A</span>東北 向 西南</button>
+      <button class="opt" data-k="B"><span class="k">B</span>西南 向 東北</button>
+      <button class="opt" data-k="C"><span class="k">C</span>東南 向 西北</button>
+      <button class="opt" data-k="D"><span class="k">D</span>西北 向 東南</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin-top:12px">
+      114 年國中教育會考社會科第 53 題（示意圖為重繪）。<b>選了才會往下。</b></p>
+  </div>
+</section>
+
+<!-- ② -->
+<section class="step lock" id="z2">
+  <span class="s-n">STEP 2</span>
+  <h2>全國跟你一起選的，有多少人</h2>
+  <div class="box">
+    <div class="bars" id="bars">
+      <div class="bar mis" data-w="28.98"><div class="lb">(A) 東北→西南</div><div class="tr"><div class="fl"></div></div><div class="pc">29.0%</div></div>
+      <div class="bar ans" data-w="45.12"><div class="lb">(B) 西南→東北　←正解</div><div class="tr"><div class="fl"></div></div><div class="pc">45.1%</div></div>
+      <div class="bar" data-w="13.28"><div class="lb">(C) 東南→西北</div><div class="tr"><div class="fl"></div></div><div class="pc">13.3%</div></div>
+      <div class="bar" data-w="11.64"><div class="lb">(D) 西北→東南</div><div class="tr"><div class="fl"></div></div><div class="pc">11.6%</div></div>
+    </div>
+    <p>🔴 注意 (A) 和 (B) 的關係——<b>它們是完全相反的方向。</b></p>
+    <p>將近三成的人，答案剛好跟正解<b>反了 180 度</b>。這不是「不知道」，
+    是<b>知道怎麼判方向，但在這張圖上判反了</b>。</p>
+    <p style="font-size:14px;color:var(--ink2)">
+      114 年官方試題分析：全體通過率 0.4512；「待加強」那群更集中，
+      <b>29.7% 選 (A)</b>、選對的只有 21.3%。</p>
+  </div>
+</section>
+
+<!-- ③ -->
+<section class="step lock" id="z3">
+  <span class="s-n">STEP 3</span>
+  <h2>不急著給答案。先回答三個問題</h2>
+
+  <div class="ask">
+    <p><b>問題一：</b>這張圖上，所有經線交會在同一個點。<br>
+    <b>那個點是什麼地方？</b></p>
+    <button class="tiny" data-rev="r1">我想好了，看看</button>
+    <div class="rev" id="r1">
+      <p>是<b>南極</b>。</p>
+      <p>經線的定義就是「從北極連到南極」，所以<b>經線一定在極點交會</b>。
+      一張圖如果所有直線都交在一點，那一點就是極點。</p>
+      <p>而緯線是一圈一圈的圓——在這張圖上，就是那些<b>同心圓</b>。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題二：</b>既然中心是南極——<br>
+    在這張圖上，<b>「北」是哪一邊？</b></p>
+    <button class="tiny" data-rev="r2">我想好了，看看</button>
+    <div class="rev" id="r2">
+      <p><b>「北」是「離中心越來越遠」的方向。</b></p>
+      <p>南極是地球最南的一點，從它出發，<b>不管往哪個方向走都是往北</b>。
+      所以在這張圖上，北不是「上面」——北是<b>向外</b>。</p>
+      <p>🔴 這就是那 29% 的人踩到的地方。<b>「上北下南」不是地圖的規則，是一個習慣。</b>
+      它在大部分地圖上剛好成立，所以我們以為那是定律——
+      直到遇到一張中心不是赤道的圖。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題三：</b>看那三顆星——從 2017 到 2020，冰山離中心（南極）是<b>越來越遠</b>還是<b>越來越近</b>？<br>
+    另外，它有沒有跨過不同的經線？</p>
+    <button class="tiny" data-rev="r3">我想好了，看看</button>
+    <div class="rev" id="r3">
+      <p><b>越來越遠</b>——所以它在<b>往北</b>移動。</p>
+      <p>同時它也橫著跨過了幾條經線，代表<b>東西方向也有移動</b>。
+      兩個方向合起來，就是斜著往<b>東北</b>走。</p>
+      <p>所以答案是 <b>(B) 西南向東北</b>：它從比較靠近南極、比較西邊的位置，
+      漂到比較北、比較東的位置。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ -->
+<section class="step lock" id="z4">
+  <span class="s-n">STEP 4</span>
+  <h2>到這裡，才需要規則</h2>
+
+  <div class="name">
+    <h3>在任何地圖上找方向，只有兩條規則</h3>
+    <p><b>① 沿著經線走 ＝ 南北移動。</b>經線指向極點，往極點是往南（或往北），離開極點是反過來。</p>
+    <p><b>② 沿著緯線走 ＝ 東西移動。</b>緯線是一圈一圈的圓，繞著走不會改變緯度。</p>
+    <p style="margin-top:12px">這兩條在<b>每一種</b>地圖上都成立。而「上北下南」只在<b>常見的那一種</b>成立。</p>
+  </div>
+
+  <div class="two">
+    <figure>
+      <svg viewBox="0 0 200 160" width="200" role="img" aria-label="一般地圖的經緯線">
+        <rect x="12" y="12" width="176" height="128" fill="#fff" stroke="#ddd7cc"/>
+        <g stroke="#ddd7cc"><line x1="55" y1="12" x2="55" y2="140"/><line x1="100" y1="12" x2="100" y2="140"/>
+        <line x1="145" y1="12" x2="145" y2="140"/><line x1="12" y1="50" x2="188" y2="50"/>
+        <line x1="12" y1="76" x2="188" y2="76"/><line x1="12" y1="102" x2="188" y2="102"/></g>
+        <path d="M100,120 L100,32" stroke="#1f6f5c" stroke-width="2.4" fill="none"
+              marker-end="url(#ar2)"/>
+        <defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 z" fill="#1f6f5c"/></marker></defs>
+        <text x="106" y="30" font-size="13" fill="#1f6f5c" font-weight="700">北</text>
+      </svg>
+      <figcaption>一般地圖：經線是<b>直的、平行的</b><br>所以北剛好都朝上</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 200 160" width="200" role="img" aria-label="極地投影圖的經緯線">
+        <rect x="12" y="12" width="176" height="128" fill="#fff" stroke="#ddd7cc"/>
+        <circle cx="100" cy="76" r="26" fill="none" stroke="#ddd7cc"/>
+        <circle cx="100" cy="76" r="48" fill="none" stroke="#ddd7cc"/>
+        <g stroke="#ddd7cc"><line x1="100" y1="76" x2="100" y2="16"/><line x1="100" y1="76" x2="158" y2="45"/>
+        <line x1="100" y1="76" x2="158" y2="110"/><line x1="100" y1="76" x2="100" y2="136"/>
+        <line x1="100" y1="76" x2="42" y2="110"/><line x1="100" y1="76" x2="42" y2="45"/></g>
+        <circle cx="100" cy="76" r="4" fill="#0e4c3f"/>
+        <g stroke="#1f6f5c" stroke-width="2.2" fill="none" marker-end="url(#ar2)">
+          <path d="M100,66 L100,26"/><path d="M110,76 L152,76"/>
+          <path d="M100,86 L100,126"/><path d="M90,76 L48,76"/>
+        </g>
+        <text x="104" y="22" font-size="12" fill="#1f6f5c" font-weight="700">北</text>
+        <text x="156" y="80" font-size="12" fill="#1f6f5c" font-weight="700">北</text>
+        <text x="104" y="136" font-size="12" fill="#1f6f5c" font-weight="700">北</text>
+        <text x="30" y="80" font-size="12" fill="#1f6f5c" font-weight="700">北</text>
+      </svg>
+      <figcaption>南極投影圖：經線<b>放射狀</b><br><b>每一個向外的方向都是北</b></figcaption>
+    </figure>
+  </div>
+
+  <div class="box">
+    <p>📖 課本 p.16 講地圖四要素時，把<b>方向標</b>列為其中一個。
+    很多人覺得那一項最不重要——因為「地圖不都是上北下南嗎」。</p>
+    <p><b>方向標存在的意義，正是為了那些不能靠習慣的圖。</b>
+    一張圖如果沒有方向標，你才需要自己從經緯線推；
+    有方向標的時候，<b>先看它，不要先看哪一邊是上面</b>。<span class="pg">課本 p.16</span></p>
+  </div>
+</section>
+
+<!-- ⑤ -->
+<section class="step lock" id="z5">
+  <span class="s-n">STEP 5</span>
+  <h2>同一個工具箱，會考換過的樣子</h2>
+
+  <div class="box">
+    <p><b>112 年第 27 題</b>　全國 46.3% 答對；「待加強」那群只有 <b>15.9%</b> 答對——
+    是七上範圍五年來最難的幾題之一。</p>
+    <p style="font-size:15px">西班牙海外島嶼的某座火山於 2021 年 9 月噴發，
+    圖為噴發後<b>熔岩流</b>及<b>火山灰落塵</b>分布。圖上有座標框（17.89°W、28.63°N、28.58°N）
+    與<b>線段比例尺 0～0.5 公里</b>。根據圖中資訊判斷，下列推論何者較為合理？</p>
+    <div class="opts" id="q2" data-ans="D">
+      <button class="opt" data-k="A"><span class="k">A</span>當時的主要風向為西風</button>
+      <button class="opt" data-k="B"><span class="k">B</span>該區域的地勢西高東低</button>
+      <button class="opt" data-k="C"><span class="k">C</span>火山熔岩流向西流往太平洋</button>
+      <button class="opt" data-k="D"><span class="k">D</span>火山噴發地點距海約 6 公里</button>
+    </div>
+    <div class="rev" id="r4">
+      <p><b>答案是 (D)。</b>這題四個選項，各要動用工具箱裡的一樣東西：</p>
+      <div class="err"><div class="t">(D) ✓</div><div>
+        <b>比例尺量距。</b>拿線段比例尺去量噴發點到海岸的圖上距離，換算成實際距離。
+        <b>比例尺不是拿來看的，是拿來量的。</b></div></div>
+      <div class="err"><div class="t">(C) 16.1%</div><div>
+        <b>位置錯。</b>西班牙的海外島嶼在<b>大西洋</b>（加那利群島），不是太平洋。
+        座標 17.89°W 已經告訴你在<b>西經</b>、非洲西方外海。</div></div>
+      <div class="err"><div class="t">(A) 23.7%</div><div>
+        <b>方向判反。</b>落塵被風吹往哪邊，風就是<b>從相反方向</b>吹來的。
+        跟這一單元開頭那 29% 犯的是同一種錯——<b>方向要想「從哪裡來」還是「往哪裡去」</b>。</div></div>
+      <div class="err"><div class="t">(B) 13.8%</div><div>
+        <b>要用熔岩流的方向反推地勢。</b>熔岩由高處往低處流，流向哪邊，哪邊就低。</div></div>
+      <p style="margin-top:12px">這題完全沒有考「西班牙」——<b>考的是比例尺、座標、方向，
+      三樣都在課本第 1 章。</b><span class="pg">課本 p.16–17</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>111 年第 47 題</b>　全國 77.3% 答對——相對簡單，但它示範了第三樣工具。</p>
+    <p style="font-size:15px">給一張 1921 年日治時期地形圖，圖例含
+    <b>樹林、旱地、竹林、田地、茶園、墓地</b>六類土地利用符號。
+    根據圖判斷，當時這個家鄉最可能以哪種產業活動為主？</p>
+    <div class="opts" id="q3" data-ans="C">
+      <button class="opt" data-k="A"><span class="k">A</span>水稻耕作</button>
+      <button class="opt" data-k="B"><span class="k">B</span>樟腦提煉</button>
+      <button class="opt" data-k="C"><span class="k">C</span>茶葉種植</button>
+      <button class="opt" data-k="D"><span class="k">D</span>海鹽晒製</button>
+    </div>
+    <div class="rev" id="r5">
+      <p><b>答案是 (C)。</b>做法只有一步：<b>對照圖例，看哪一種符號在圖上鋪得最廣。</b></p>
+      <p>圖例是地圖的<b>字典</b>——沒有它，圖上那些線條和網點什麼都不是。
+      這題不需要任何歷史知識，<b>只要肯回頭看圖例那一格</b>。</p>
+      <p>📌 注意 (D) 海鹽晒製：圖例六類裡<b>根本沒有鹽田</b>。
+      看到選項先回圖例找有沒有對應的符號，<b>找不到就可以直接刪掉</b>。<span class="pg">課本 p.16</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 收束 -->
+<section class="step lock" id="z6">
+  <span class="s-n">帶走</span>
+  <h2>工具箱裡其實只有三樣東西</h2>
+  <div class="name">
+    <p style="font-size:16.5px;margin:.35em 0"><b>方向</b>　—　先找經線與緯線，不要先看哪一邊是上面。<br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    沿經線＝南北，沿緯線＝東西。「上北下南」只是習慣，不是規則。</span></p>
+    <p style="font-size:16.5px;margin:.9em 0 .35em"><b>比例尺</b>　—　它是拿來<b>量</b>的，不是拿來看的。<br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    題目問「距離多遠」，答案就在那根線段上。</span></p>
+    <p style="font-size:16.5px;margin:.9em 0 .35em"><b>圖例</b>　—　地圖的字典。選項裡出現圖例上沒有的東西，直接刪。<br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    看不懂圖之前，先把圖例讀完。</span></p>
+  </div>
+  <p>這三樣加上<b>圖名</b>，就是課本 p.16 的<b>地圖四要素</b>。
+  五年會考裡，七上範圍命中的 38 題中有 <b>19 題</b>用到第 1 章的東西——
+  它不是「第一個要學的章」，是<b>後面每一章都要拿出來用的工具箱</b>。</p>
+  <p style="margin-top:16px">
+    <a class="back" href="book.html">→ 回課本地圖，把第 1 章那八個重點過一遍</a></p>
+</section>
+
+<div style="text-align:center;margin-top:36px">
+  <button class="tiny" id="rst">清除作答，重新來過</button></div>
+
+<footer>
+  會考試題文字與統計取自國中教育會考官方試題分析（111、112、114 年）<br>
+  題目為重新排版、示意圖為自行重繪，解說文字為自行撰寫　·　僅供個人學習、非商業使用
+</footer>
+
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-map-v1", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function drawBars(){
+  document.querySelectorAll("#bars .bar").forEach(function(b){
+    setTimeout(function(){b.querySelector(".fl").style.width=b.dataset.w+"%"},120);});
+}
+function openZone(id){var z=$(id); if(z) z.classList.add("open");}
+function lockOpts(box,pick){
+  var ans=box.dataset.ans;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+}
+function bind(id,after){
+  var box=$(id); if(!box) return;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1"; st[id]=b.dataset.k; save();
+      lockOpts(box,b.dataset.k); after();
+    });
+  });
+  if(st[id]){ box.dataset.locked="1"; lockOpts(box,st[id]); after(true); }
+}
+bind("q1",function(restore){
+  openZone("z2"); openZone("z3"); openZone("z4"); openZone("z5");
+  if(restore){document.querySelectorAll("#bars .bar").forEach(function(b){
+    b.querySelector(".fl").style.width=b.dataset.w+"%";});}
+  else drawBars();
+});
+bind("q2",function(){ $("r4").classList.add("on"); openZone("z6"); });
+bind("q3",function(){ $("r5").classList.add("on"); openZone("z6"); });
+document.querySelectorAll("[data-rev]").forEach(function(btn){
+  var id=btn.dataset.rev;
+  btn.addEventListener("click",function(){
+    $(id).classList.add("on"); btn.style.display="none"; st["rev_"+id]=1; save();});
+  if(st["rev_"+id]){ $(id).classList.add("on"); btn.style.display="none"; }
+});
+$("rst").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  location.reload();
+});
+})();
+</script>
+</body>
+</html>
