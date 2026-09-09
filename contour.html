@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>等高線會告訴你水往哪裡走 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:740px;margin:0 auto;padding:28px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px;margin-bottom:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:14px 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .35em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.step{margin:40px 0 0}
+.s-n{display:inline-block;font-size:12px;letter-spacing:.16em;color:#fff;
+ background:var(--accent);border-radius:99px;padding:3px 13px;font-weight:700}
+h2{font-size:20px;margin:11px 0 10px;line-height:1.6}
+p{margin:.7em 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;transition:.13s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:9px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
+ transition:filter .5s,opacity .5s}
+.lock.open{opacity:1;pointer-events:auto;filter:none}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14.5px}
+.bar .lb{width:118px;flex-shrink:0}
+.bar .tr{flex:1;background:#eceae4;border-radius:99px;height:19px;overflow:hidden}
+.bar .fl{height:100%;background:#b9b3a8;border-radius:99px;width:0;transition:width .9s ease}
+.bar.ans .fl{background:var(--ok)}
+.bar.mis .fl{background:var(--no)}
+.bar .pc{width:56px;text-align:right;font-variant-numeric:tabular-nums}
+.bar.ans .pc{color:var(--ok);font-weight:700}
+.bar.mis .pc{color:var(--no);font-weight:700}
+.ask{background:#f2f7f5;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+ padding:14px 17px;margin:15px 0}
+.ask b{color:var(--accent2)}
+.rev{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:none}
+.rev.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2)}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.name{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;padding:19px 21px;margin:16px 0}
+.name h3{margin:.1em 0 .5em;font-size:17px;color:#8a5717}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.err{display:flex;gap:11px;margin:10px 0;font-size:14.5px}
+.err .t{flex-shrink:0;width:64px;font-weight:700;color:var(--no)}
+.two{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.two figure{margin:0;flex:1;min-width:246px;text-align:center}
+.two figcaption{font-size:13.5px;color:var(--ink2);margin-top:4px;line-height:1.7}
+svg{max-width:100%;height:auto}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:16px 13px 70px}h1{font-size:21px}.bar .lb{width:92px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← 回七上地理自學站</a>
+
+<header>
+  <div class="kick">單元 ②　·　等高線看地形　·　課本第 3 章 3-2</div>
+  <h1>等高線會告訴你水往哪裡走</h1>
+  <div class="sub">五年會考，<b>每一年都考等高線</b>——而且每一次問的其實是同一件事。</div>
+</header>
+
+<!-- ① -->
+<section class="step">
+  <span class="s-n">STEP 1</span>
+  <h2>先猜。哪一點可以去？</h2>
+  <p>小荃想造訪一處祕境。入口告示牌寫著：<br>
+  <b>「上游水壩不定時洩洪，請勿進入溪谷以確保生命安全」</b><br>
+  下面是那一帶的等高線地形圖。<b>甲、乙、丙、丁哪一點最可能是她要找的祕境？</b></p>
+
+  <div class="box">
+    <div style="text-align:center">
+    <svg viewBox="0 0 420 300" width="420" role="img" aria-label="等高線地形圖示意">
+      <rect x="10" y="10" width="400" height="280" fill="#fdfcf8" stroke="#ddd7cc"/>
+      <!-- 等高線：x=150 處往上凹（山谷）、x=292 處往下凸（山脊） -->
+      <g fill="none" stroke="#c9a86a" stroke-width="1.4">
+        <path d="M14,256 L106,256 L150,208 L194,256 L250,256 L292,298 L334,256 L406,256"/>
+        <path d="M14,216 L106,216 L150,168 L194,216 L250,216 L292,258 L334,216 L406,216"/>
+        <path d="M14,176 L106,176 L150,128 L194,176 L250,176 L292,218 L334,176 L406,176"/>
+        <path d="M14,136 L106,136 L150,88 L194,136 L250,136 L292,178 L334,136 L406,136"/>
+        <path d="M14,96 L106,96 L150,48 L194,96 L250,96 L292,138 L334,96 L406,96"/>
+        <path d="M14,56 L106,56 L150,8 L194,56 L250,56 L292,98 L334,56 L406,56"/>
+      </g>
+      <text x="18" y="252" font-size="11.5" fill="#8a5717" font-weight="700">500m</text>
+      <text x="18" y="52" font-size="11.5" fill="#8a5717" font-weight="700">1000m</text>
+      <text x="248" y="30" font-size="11.5" fill="#8a8378">↑ 越往上地勢越高</text>
+      <!-- 河流（沿山谷軸 x=150） -->
+      <path d="M150,14 L150,282" fill="none" stroke="#4d94b8" stroke-width="2.8"/>
+      <!-- 水壩 -->
+      <line x1="130" y1="112" x2="170" y2="112" stroke="#3d3a35" stroke-width="4.5"/>
+      <text x="176" y="116" font-size="11.5" fill="#3d3a35">水壩</text>
+      <!-- 四個點 -->
+      <g font-size="13" font-weight="700">
+        <circle cx="292" cy="182" r="5.5" fill="#1f6f5c"/><text x="301" y="180" fill="#0e4c3f">甲</text>
+        <circle cx="150" cy="146" r="5.5" fill="#22201f"/><text x="159" y="144" fill="#22201f">乙</text>
+        <circle cx="150" cy="192" r="5.5" fill="#22201f"/><text x="159" y="190" fill="#22201f">丙</text>
+        <circle cx="150" cy="238" r="5.5" fill="#22201f"/><text x="159" y="236" fill="#22201f">丁</text>
+      </g>
+      <!-- 圖例 -->
+      <g font-size="11" fill="#5b5651">
+        <line x1="24" y1="278" x2="52" y2="278" stroke="#4d94b8" stroke-width="2.6"/>
+        <text x="57" y="282">河流</text>
+        <line x1="96" y1="278" x2="118" y2="278" stroke="#3d3a35" stroke-width="4"/>
+        <text x="123" y="282">水壩</text>
+        <line x1="176" y1="278" x2="216" y2="278" stroke="#c9a86a" stroke-width="1.3"/>
+        <text x="221" y="282">等高線</text>
+      </g>
+    </svg>
+    </div>
+    <div class="opts" id="q1" data-ans="A">
+      <button class="opt" data-k="A"><span class="k">A</span>甲</button>
+      <button class="opt" data-k="B"><span class="k">B</span>乙</button>
+      <button class="opt" data-k="C"><span class="k">C</span>丙</button>
+      <button class="opt" data-k="D"><span class="k">D</span>丁</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin-top:12px">
+      114 年國中教育會考社會科第 17 題（示意圖為重繪）。<b>選了才會往下。</b></p>
+  </div>
+</section>
+
+<!-- ② -->
+<section class="step lock" id="z2">
+  <span class="s-n">STEP 2</span>
+  <h2>全國跟你一起選的，有多少人</h2>
+  <div class="box">
+    <div class="bars" id="bars">
+      <div class="bar ans" data-w="59.56"><div class="lb">(A) 甲　←正解</div><div class="tr"><div class="fl"></div></div><div class="pc">59.6%</div></div>
+      <div class="bar" data-w="9.95"><div class="lb">(B) 乙</div><div class="tr"><div class="fl"></div></div><div class="pc">10.0%</div></div>
+      <div class="bar mis" data-w="16.47"><div class="lb">(C) 丙</div><div class="tr"><div class="fl"></div></div><div class="pc">16.5%</div></div>
+      <div class="bar" data-w="13.94"><div class="lb">(D) 丁</div><div class="tr"><div class="fl"></div></div><div class="pc">13.9%</div></div>
+    </div>
+    <p>全國 59.6% 答對，看起來不算難。<b>但「待加強」那一群只有 22.8% 答對</b>，
+    而且 <b>29.6% 集中選了 (C)</b>。</p>
+    <p>差距這麼大，代表這題卡住的不是知識，是<b>會不會讀那張圖</b>——
+    看得懂的人覺得一目了然，看不懂的人只能猜。</p>
+    <p style="font-size:14px;color:var(--ink2)">114 年官方試題分析：全體通過率 0.5956、鑑別度 0.49。</p>
+  </div>
+</section>
+
+<!-- ③ -->
+<section class="step lock" id="z3">
+  <span class="s-n">STEP 3</span>
+  <h2>不急著給答案。先看懂線的彎法</h2>
+
+  <div class="ask">
+    <p><b>問題一：</b>圖上等高線在兩個地方彎得特別明顯——
+    一處<b>往上凹</b>（尖端朝高處），一處<b>往下凸</b>（尖端朝低處）。<br>
+    <b>河流是畫在哪一種上面？</b></p>
+    <button class="tiny" data-rev="r1">我想好了，看看</button>
+    <div class="rev" id="r1">
+      <p>河流畫在<b>往上凹</b>的那一條線上。</p>
+      <p>因為水往低處流——<b>兩側比較高、中間比較低的地方，才留得住水</b>，那就是山谷。
+      而等高線在山谷處會被「往高處拉」，形成尖端朝上的 V 或 U 字。</p>
+      <p>反過來，尖端朝低處凸出的地方，是兩側低、中間高——那是<b>山脊</b>，水會從兩邊流走。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題二：</b>告示牌說「請勿進入<b>溪谷</b>」。<br>
+    對照圖上，<b>乙、丙、丁三點在哪裡？</b></p>
+    <button class="tiny" data-rev="r2">我想好了，看看</button>
+    <div class="rev" id="r2">
+      <p><b>三個都在溪谷裡</b>——它們都坐落在等高線往上凹的那條軸線上，也就是河流經過的地方。</p>
+      <p>而且水壩在上面，一洩洪，整條溪谷的水位都會暴漲。<b>三個都不能去。</b></p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題三：</b>那甲呢？它在哪裡？</p>
+    <button class="tiny" data-rev="r3">我想好了，看看</button>
+    <div class="rev" id="r3">
+      <p>甲在<b>等高線往下凸的那一側</b>——那是<b>山脊</b>，不是溪谷。</p>
+      <p>山脊上的水會往兩邊流走，不會積在腳下。水壩洩洪淹的是溪谷，淹不到山脊。</p>
+      <p>所以答案是 <b>(A) 甲</b>。</p>
+      <p>🔴 <b>整題不需要任何地理知識，只需要看懂「線往哪邊彎」。</b>
+      那 29.6% 選丙的人，多半只看到「丙離水壩比較遠」就覺得安全——
+      <b>但沿著溪谷再遠都還是溪谷。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ -->
+<section class="step lock" id="z4">
+  <span class="s-n">STEP 4</span>
+  <h2>到這裡，才需要名字</h2>
+
+  <div class="two">
+    <figure>
+      <svg viewBox="0 0 200 150" role="img" aria-label="山谷的等高線">
+        <rect x="8" y="8" width="184" height="134" fill="#fdfcf8" stroke="#ddd7cc"/>
+        <g fill="none" stroke="#c9a86a" stroke-width="1.3">
+          <path d="M12,124 L74,124 Q100,100 126,124 L188,124"/>
+          <path d="M12,98 L74,98 Q100,74 126,98 L188,98"/>
+          <path d="M12,72 L74,72 Q100,48 126,72 L188,72"/>
+          <path d="M12,46 L74,46 Q100,22 126,46 L188,46"/>
+        </g>
+        <path d="M100,26 L100,138" stroke="#4d94b8" stroke-width="2.6" fill="none"/>
+        <text x="106" y="20" font-size="11" fill="#8a8378">高</text>
+        <text x="14" y="138" font-size="11" fill="#8a8378">低</text>
+      </svg>
+      <figcaption><b style="color:var(--accent2)">山谷</b><br>
+      尖端<b>朝高處</b>　→　水在這裡流</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 200 150" role="img" aria-label="山脊的等高線">
+        <rect x="8" y="8" width="184" height="134" fill="#fdfcf8" stroke="#ddd7cc"/>
+        <g fill="none" stroke="#c9a86a" stroke-width="1.3">
+          <path d="M12,110 L74,110 Q100,134 126,110 L188,110"/>
+          <path d="M12,84 L74,84 Q100,108 126,84 L188,84"/>
+          <path d="M12,58 L74,58 Q100,82 126,58 L188,58"/>
+          <path d="M12,32 L74,32 Q100,56 126,32 L188,32"/>
+        </g>
+        <path d="M100,30 L100,140" stroke="#b3402f" stroke-width="1.6"
+              stroke-dasharray="5 4" fill="none"/>
+        <text x="106" y="24" font-size="11" fill="#8a8378">高</text>
+        <text x="14" y="138" font-size="11" fill="#8a8378">低</text>
+      </svg>
+      <figcaption><b style="color:var(--no)">山脊</b><br>
+      尖端<b>朝低處</b>　→　水往兩邊流走</figcaption>
+    </figure>
+  </div>
+
+  <div class="name">
+    <h3>等高線只有兩件事要看</h3>
+    <p><b>① 疏密看陡緩。</b>線擠在一起＝坡陡；線拉得開＝坡緩。
+    因為每兩條線之間的高度差是固定的，水平距離越短，當然越陡。</p>
+    <p><b>② 彎向看水路。</b>尖端朝高處＝山谷（有水）；尖端朝低處＝山脊（分水）。</p>
+    <p style="margin-top:12px">課本 3-2 還教了另外兩種地形圖：<b>分層設色圖</b>（用顏色表示高度範圍，
+    適合一眼看整體）與<b>地形剖面圖</b>（沿一條線切開看側面）。
+    三種各有用途，但<b>只有等高線圖能告訴你水往哪裡走</b>。<span class="pg">課本 p.38–40</span></p>
+  </div>
+</section>
+
+<!-- ⑤ -->
+<section class="step lock" id="z5">
+  <span class="s-n">STEP 5</span>
+  <h2>同一張圖，五年來換過的問法</h2>
+
+  <div class="box">
+    <p><b>113 年第 3 題</b>　全國 80.5% 答對——但「待加強」那群只有 37.4%。</p>
+    <p style="font-size:15px">臺灣有些聚落用<b>相對位置</b>命名。在<b>地勢較高處</b>屯兵設營稱「上營盤」，
+    其<b>西北方山腳處</b>則稱「營盤腳」（下營盤）。<br>
+    題目給一張營盤腳附近的等高線地形圖（100～200m，附<b>指北針</b>與比例尺），
+    問上營盤在圖中何處。</p>
+    <p style="font-size:14.5px;color:var(--ink2)">
+    （原圖未重繪，所以這裡不問你點在哪——問一件更重要的事：）</p>
+    <p style="font-size:15px"><b>要在圖上找出上營盤，你必須同時用到哪兩樣東西？</b></p>
+    <div class="opts" id="q2" data-ans="C">
+      <button class="opt" data-k="A"><span class="k">A</span>比例尺 ＋ 圖例</button>
+      <button class="opt" data-k="B"><span class="k">B</span>等高線 ＋ 比例尺</button>
+      <button class="opt" data-k="C"><span class="k">C</span>等高線 ＋ 指北針</button>
+      <button class="opt" data-k="D"><span class="k">D</span>指北針 ＋ 圖例</button>
+    </div>
+    <div class="rev" id="r4">
+      <p><b>答案是 (C)：等高線 ＋ 指北針。</b></p>
+      <p>① <b>等高線讀高低</b>——「上營盤」在地勢<b>較高處</b>，先圈出等高線數值大的那一區。<br>
+      ② <b>指北針讀方位</b>——營盤腳在上營盤的<b>西北</b>；反過來說，
+      上營盤在營盤腳的<b>東南</b>。</p>
+      <p>🔴 只做第一步的人，會在「高的地方」裡挑錯一個——<b>因為高的地方通常不只一處。</b>
+      是方位把答案縮到唯一。</p>
+      <p>📌 這正是單元 ① 講過的：<b>方向標不是裝飾。</b>
+      這題全國 80.5% 答對，但「待加強」那群只有 37.4%——差距就在有沒有做第二步。
+      <span class="pg">課本 p.16、p.38</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>115 年第 29 題</b>　（115 年無官方試題分析，無選答百分比）</p>
+    <p style="font-size:15px">臺灣地名中的「坑」指<b>溪谷</b>。<br>
+    <b>閩南</b>族群的「<b>坑頭</b>」，指聚落位在溪流的<b>上游</b>；<br>
+    <b>客家</b>族群依開墾順序命名，拓墾<b>由下游往上游</b>進行，<b>最後</b>開墾的聚落稱「<b>坑尾</b>」。<br>
+    四張等高線示意圖中，哪一張符合兩族群的命名原則？</p>
+    <div class="opts" id="q3" data-ans="A">
+      <button class="opt" data-k="A"><span class="k">A</span>兩個聚落都在河谷的<b>上游端</b></button>
+      <button class="opt" data-k="B"><span class="k">B</span>坑頭在上游、坑尾在下游</button>
+      <button class="opt" data-k="C"><span class="k">C</span>坑頭在下游、坑尾在上游</button>
+      <button class="opt" data-k="D"><span class="k">D</span>兩個聚落都在河谷的<b>下游端</b></button>
+    </div>
+    <div class="rev" id="r5">
+      <p><b>答案是 (A)——兩個都在上游。</b>這題的設計很妙：</p>
+      <p><b>閩南「坑頭」</b>：直接定義為上游。<br>
+      <b>客家「坑尾」</b>：拓墾<b>由下游往上游</b>，<b>最後</b>開墾的叫坑尾——
+      最後開到的地方，就是<b>最上游</b>。</p>
+      <p>🔴 <b>「頭」和「尾」聽起來相反，兩個聚落卻落在同一端。</b>
+      因為兩個族群命名的依據根本不同：一個看<b>水流</b>，一個看<b>開墾順序</b>。</p>
+      <p>而要在圖上找出「哪一端是上游」，靠的就是<b>等高線數值</b>——
+      數字大的那一端地勢高，那就是上游。<span class="pg">課本 p.38</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>112 年第 47 題</b>　全國 83.0% 答對——五年來七上範圍<b>最好做的一題</b>。<br>
+    給一張 1400～3600m、每 200m 一條等高線的圖，附比例尺 0～500m，問地形判讀。</p>
+    <p>放這題不是要你做，是要你看一件事：<b>同樣是等高線題，通過率可以從 83% 到 22.8%。</b></p>
+    <p>差別在<b>問法</b>——直接問「哪裡比較陡」很好做；<br>
+    包裝成「洩洪別進溪谷」「聚落怎麼命名」就卡住一大票人。</p>
+    <p>📌 <b>但圖上的線一模一樣。</b>只要每次都回到那兩個動作——
+    <b>看疏密、看彎向</b>——問法怎麼變都一樣做。</p>
+  </div>
+</section>
+
+<!-- 收束 -->
+<section class="step lock" id="z6">
+  <span class="s-n">帶走</span>
+  <h2>五年五題，其實只有兩個動作</h2>
+  <div class="name">
+    <p style="font-size:17px;margin:.35em 0"><b>一、線的疏密 → 坡的陡緩。</b></p>
+    <p style="font-size:17px;margin:.9em 0 .35em"><b>二、線的彎向 → 水的去向。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    尖端朝高處是山谷，水在那裡；尖端朝低處是山脊，水從那裡分開。</span></p>
+    <p style="margin-top:14px;font-size:15px">
+    114 年問「哪裡不會被洪水淹」、113 年問「哪裡地勢較高」、115 年問「哪一端是上游」——
+    <b>三種問法，同兩個動作。</b></p>
+  </div>
+  <p>📖 對應課本：<b>3-2 常見的地形表示方法</b>（p.38–41，等高線圖／分層設色圖／地形剖面圖）、
+  <b>1-4 如何閱讀地圖</b>（p.16–17，方向標與比例尺）。</p>
+  <p style="margin-top:14px">
+    <a class="back" href="map.html">→ 單元①：方向標為什麼重要</a><br>
+    <a class="back" href="book.html">→ 回課本地圖，把第 3 章那五個重點過一遍</a></p>
+</section>
+
+<div style="text-align:center;margin-top:36px">
+  <button class="tiny" id="rst">清除作答，重新來過</button></div>
+
+<footer>
+  會考試題文字與統計取自國中教育會考官方試題分析（112～114 年）與試題本（115 年）<br>
+  題目為重新排版、等高線圖為自行重繪，解說文字為自行撰寫　·　僅供個人學習、非商業使用
+</footer>
+
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-contour-v1", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function drawBars(){
+  document.querySelectorAll("#bars .bar").forEach(function(b){
+    setTimeout(function(){b.querySelector(".fl").style.width=b.dataset.w+"%"},120);});
+}
+function openZone(id){var z=$(id); if(z) z.classList.add("open");}
+function lockOpts(box,pick){
+  var ans=box.dataset.ans;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+}
+function bind(id,after){
+  var box=$(id); if(!box) return;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1"; st[id]=b.dataset.k; save();
+      lockOpts(box,b.dataset.k); after();
+    });
+  });
+  if(st[id]){ box.dataset.locked="1"; lockOpts(box,st[id]); after(true); }
+}
+bind("q1",function(restore){
+  openZone("z2"); openZone("z3"); openZone("z4"); openZone("z5");
+  if(restore){document.querySelectorAll("#bars .bar").forEach(function(b){
+    b.querySelector(".fl").style.width=b.dataset.w+"%";});}
+  else drawBars();
+});
+bind("q2",function(){ $("r4").classList.add("on"); openZone("z6"); });
+bind("q3",function(){ $("r5").classList.add("on"); openZone("z6"); });
+document.querySelectorAll("[data-rev]").forEach(function(btn){
+  var id=btn.dataset.rev;
+  btn.addEventListener("click",function(){
+    $(id).classList.add("on"); btn.style.display="none"; st["rev_"+id]=1; save();});
+  if(st["rev_"+id]){ $(id).classList.add("on"); btn.style.display="none"; }
+});
+$("rst").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  location.reload();
+});
+})();
+</script>
+</body>
+</html>
