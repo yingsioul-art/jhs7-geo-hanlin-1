@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一座島冒出來，然後不見了 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:740px;margin:0 auto;padding:28px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px;margin-bottom:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:14px 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .35em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.step{margin:40px 0 0}
+.s-n{display:inline-block;font-size:12px;letter-spacing:.16em;color:#fff;
+ background:var(--accent);border-radius:99px;padding:3px 13px;font-weight:700}
+h2{font-size:20px;margin:11px 0 10px;line-height:1.6}
+p{margin:.7em 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;transition:.13s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:9px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
+ transition:filter .5s,opacity .5s}
+.lock.open{opacity:1;pointer-events:auto;filter:none}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14.5px}
+.bar .lb{width:196px;flex-shrink:0}
+.bar .tr{flex:1;background:#eceae4;border-radius:99px;height:19px;overflow:hidden}
+.bar .fl{height:100%;background:#b9b3a8;border-radius:99px;width:0;transition:width .9s ease}
+.bar.ans .fl{background:var(--ok)}
+.bar.mis .fl{background:var(--no)}
+.bar .pc{width:56px;text-align:right;font-variant-numeric:tabular-nums}
+.bar.ans .pc{color:var(--ok);font-weight:700}
+.bar.mis .pc{color:var(--no);font-weight:700}
+.ask{background:#f2f7f5;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+ padding:14px 17px;margin:15px 0}
+.ask b{color:var(--accent2)}
+.rev{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:none}
+.rev.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2)}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.name{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;padding:19px 21px;margin:16px 0}
+.name h3{margin:.1em 0 .5em;font-size:17px;color:#8a5717}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.err{display:flex;gap:11px;margin:10px 0;font-size:14.5px}
+.err .t{flex-shrink:0;width:74px;font-weight:700;color:var(--no)}
+.two{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+.two>div{flex:1;min-width:238px;background:#fff;border:1px solid var(--line);
+ border-radius:12px;padding:14px 16px}
+.two h4{margin:.1em 0 .45em;font-size:16px}
+.in h4{color:#8a3d17}
+.out h4{color:var(--accent2)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0 2px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center;line-height:1.7}
+th{background:#f2efe8;font-weight:700}
+td.nm{text-align:left;font-weight:700;background:#fbfaf7}
+td.l{text-align:left}
+svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.cap{text-align:center;font-size:13.5px;color:var(--ink2);margin-top:4px;line-height:1.8}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:16px 13px 70px}h1{font-size:21px}
+ .bar .lb{width:118px;font-size:12.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← 回七上地理自學站</a>
+
+<header>
+  <div class="kick">單元 ⑤　·　地形怎麼來的　·　課本第 3 章 3-1</div>
+  <h1>一座島冒出來，然後不見了</h1>
+  <div class="sub">這一題全國有 <b>29% 的人錯得一模一樣</b>——而且錯的不是地理，是<b>看錯題目在問什麼</b>。</div>
+</header>
+
+<!-- ① -->
+<section class="step">
+  <span class="s-n">STEP 1</span>
+  <h2>先猜。這座島是怎麼來的？</h2>
+  <p>1970 年 11 月，<b>恆河出海口</b>附近出現一座島：<br>
+  長 3.5 公里、寬 3 公里，<b>最高的地方只有 2 公尺</b>。<br>
+  因為它剛好卡在印度與孟加拉的領海交界，兩國吵了起來——<b>但還沒吵完，這座島就消失了。</b></p>
+
+  <div class="box">
+    <p style="margin-top:0">根據當地的自然環境判斷，<b>該島嶼形成的原因</b>最可能是下列何者？</p>
+    <div class="opts" id="q1" data-ans="D">
+      <button class="opt" data-k="A"><span class="k">A</span>位處板塊接觸帶，海底火山噴發</button>
+      <button class="opt" data-k="B"><span class="k">B</span>恆河集水區的水土保持持續改善</button>
+      <button class="opt" data-k="C"><span class="k">C</span>恆河河口附近的海平面持續上升</button>
+      <button class="opt" data-k="D"><span class="k">D</span>豪雨侵襲，河流帶來大量堆積物</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink2);margin-top:12px">
+      113 年國中教育會考社會科第 42 題。<b>選了才會往下</b>——先有自己的答案，後面才有意義。</p>
+  </div>
+</section>
+
+<!-- ② -->
+<section class="step lock" id="z2">
+  <span class="s-n">STEP 2</span>
+  <h2>全國跟你一起選的，有多少人</h2>
+  <div class="box">
+    <div class="bars" id="bars">
+      <div class="bar" data-w="14.37"><div class="lb">(A) 海底火山噴發</div><div class="tr"><div class="fl"></div></div><div class="pc">14.4%</div></div>
+      <div class="bar" data-w="5.08"><div class="lb">(B) 水土保持改善</div><div class="tr"><div class="fl"></div></div><div class="pc">5.1%</div></div>
+      <div class="bar mis" data-w="29.03"><div class="lb">(C) 海平面上升</div><div class="tr"><div class="fl"></div></div><div class="pc">29.0%</div></div>
+      <div class="bar ans" data-w="51.28"><div class="lb">(D) 河流帶來堆積物　←正解</div><div class="tr"><div class="fl"></div></div><div class="pc">51.3%</div></div>
+    </div>
+    <p>將近三成的人選了 (C)。而在<b>「待加強」那一群</b>裡，這個數字是 <b>39.5%</b>——
+    比同一群裡選對的 17.6% 多了一倍以上。</p>
+    <p style="font-size:14px;color:var(--ink2)">
+      資料來源：113 年國中教育會考社會科官方試題分析。全體通過率 0.5128、鑑別度 0.48；
+      待加強群通過率僅 0.1764，是那一年七上範圍題裡最低的兩題之一。</p>
+  </div>
+</section>
+
+<!-- ③ -->
+<section class="step lock" id="z3">
+  <span class="s-n">STEP 3</span>
+  <h2>不急著給答案。先回答三個問題</h2>
+
+  <div class="ask">
+    <p><b>問題一：</b>這座島<b>最高只有 2 公尺</b>——連一層樓都不到，而且幾個月就沒了。<br>
+    你覺得它比較像是<b>被推高的</b>，還是<b>被堆出來的</b>？</p>
+    <button class="tiny" data-rev="r1">我想好了，看看</button>
+    <div class="rev" id="r1">
+      <p>被堆出來的。</p>
+      <p>如果是海底火山冒出來的島，它是<b>岩石</b>——會有相當的高度，而且不會幾個月就不見。
+      2 公尺高的一片沙，一個颱風季的大浪就能抹掉。</p>
+      <p>🔑 <b>高度與壽命，是分辨這兩種力量最快的線索。</b>
+      推出來的東西又高又耐；堆出來的東西又低又短命。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題二：</b>島出現的位置是<b>恆河的出海口</b>。<br>
+    一條大河走到出海口的時候，身上帶著什麼？到了海邊又<b>為什麼會把它放下</b>？</p>
+    <button class="tiny" data-rev="r2">我想好了，看看</button>
+    <div class="rev" id="r2">
+      <p>帶著<b>泥沙</b>——那是一路從上游<b>侵蝕</b>下來、再被水<b>搬運</b>走的。</p>
+      <p>到了出海口，河道變寬、水流變慢，<b>水一慢就抬不動泥沙，只好放下</b>。這就是<b>堆積</b>。</p>
+      <p>⚡ 所以河口是全世界最會「長出新陸地」的地方。題幹裡的<b>「豪雨侵襲」</b>更是直接把水量寫給你了：
+      雨愈大，沖下來的泥沙愈多，堆出一座島也就不奇怪。</p>
+    </div>
+  </div>
+
+  <div class="ask">
+    <p><b>問題三（關鍵在這裡）：</b>選 (C) 的人想的是「海平面上升，所以島<b>不見</b>了」。<br>
+    可是——<b>題目問的是哪一件事？</b>回去把那個問句再讀一次。</p>
+    <button class="tiny" data-rev="r3">我想好了，看看</button>
+    <div class="rev" id="r3">
+      <p>題目問的是：<b>「該島嶼<u>形成</u>的原因最可能是下列何者」</b>。</p>
+      <p>問的是它<b>怎麼來的</b>，不是它<b>怎麼沒的</b>。</p>
+      <p>🔴 <b>29% 的人回答的是另一個問題。</b>他們被題幹最後一句「這座島就消失了」牽走，
+      於是去找一個能解釋「消失」的原因——海平面上升，聽起來確實會讓島不見。</p>
+      <p>而且就算真的拿來解釋「形成」，(C) 一樣是錯的：<b>海平面上升是把陸地淹掉，不會造出新的島</b>，
+      方向剛好相反。</p>
+      <p>順帶看 (B)：水土保持<b>改善</b>，代表沖下來的泥沙<b>變少</b>——那更堆不出島。
+      只有 5.1% 的人選它，這一關大部分人是過的。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ -->
+<section class="step lock" id="z4">
+  <span class="s-n">STEP 4</span>
+  <h2>到這裡，才需要名字</h2>
+
+  <div class="name">
+    <h3>地形，是兩種力量拉鋸出來的結果<span class="pg">課本 p.37</span></h3>
+
+    <div class="two">
+      <div class="in">
+        <h4>內營力　來自地球<u>內部</u></h4>
+        <p style="margin:.3em 0">課本舉的例子只有兩個：<br>
+        <b>地殼板塊的運動</b>、<b>火山活動</b>。</p>
+        <p style="margin:.3em 0;font-size:14.5px;color:var(--ink2)">
+        它在做的事：<b>把地表做出高低</b>——推出山、擠出島、冒出火山。</p>
+      </div>
+      <div class="out">
+        <h4>外營力　作用於<u>地表</u></h4>
+        <p style="margin:.3em 0">主要媒介是 <b>風</b> 和 <b>水</b>，<br>
+        在地表上進行 <b>侵蝕 → 搬運 → 堆積</b>。</p>
+        <p style="margin:.3em 0;font-size:14.5px;color:var(--ink2)">
+        它在做的事：<b>把高的地方削掉、搬走，堆到低的地方</b>。</p>
+      </div>
+    </div>
+
+    <svg viewBox="0 0 470 252" width="470" role="img"
+         aria-label="示意圖：左側板塊擠壓把山推高（內營力），右側雨水侵蝕、河流搬運、河口堆積成沙洲（外營力）">
+      <rect x="1" y="1" width="468" height="250" fill="#fffdf8" stroke="#e8d5b0"/>
+      <rect x="300" y="178" width="169" height="73" fill="#dbe9f0"/>
+      <path d="M1,251 L1,150 L60,96 L104,64 L150,104 L200,132 L260,158 L320,178 L469,192 L469,251 Z"
+            fill="#eee7d8" stroke="#c9a86a" stroke-width="1.4"/>
+      <g stroke="#b5762a" stroke-width="3" fill="none">
+        <path d="M18,224 L62,224"/><path d="M54,217 L62,224 L54,231"/>
+        <path d="M148,224 L104,224"/><path d="M112,217 L104,224 L112,231"/>
+        <path d="M104,52 L104,30"/><path d="M97,38 L104,30 L111,38"/>
+      </g>
+      <text x="16" y="245" font-size="12.5" fill="#8a5717" font-weight="700">板塊互相擠壓</text>
+      <text x="116" y="32" font-size="12.5" fill="#8a5717" font-weight="700">內營力：推高</text>
+      <g stroke="#1f6f5c" stroke-width="1.8" fill="none">
+        <path d="M124,82 L136,94"/><path d="M131,92 L136,94 L135,89"/>
+        <path d="M160,114 L172,126"/><path d="M167,124 L172,126 L171,121"/>
+        <path d="M198,140 L210,152"/><path d="M205,150 L210,152 L209,147"/>
+      </g>
+      <text x="138" y="80" font-size="12.5" fill="#0e4c3f" font-weight="700">① 侵蝕</text>
+      <path d="M104,68 Q170,122 240,154 T318,180" fill="none" stroke="#4d94b8" stroke-width="3.4"/>
+      <text x="222" y="144" font-size="12.5" fill="#2f6f8f" font-weight="700">② 搬運</text>
+      <ellipse cx="352" cy="184" rx="34" ry="8" fill="#e0d3ae" stroke="#c9a86a" stroke-width="1.2"/>
+      <ellipse cx="400" cy="194" rx="19" ry="5.5" fill="#e0d3ae" stroke="#c9a86a" stroke-width="1.2"/>
+      <text x="326" y="214" font-size="12.5" fill="#0e4c3f" font-weight="700">③ 堆積 → 沙洲</text>
+      <text x="440" y="174" font-size="12" fill="#2f6f8f">海</text>
+      <line x1="150" y1="14" x2="150" y2="251" stroke="#e8d5b0" stroke-width="1.2" stroke-dasharray="5 5"/>
+      <text x="34" y="20" font-size="13" fill="#8a3d17" font-weight="700">內營力做的</text>
+      <text x="300" y="20" font-size="13" fill="#0e4c3f" font-weight="700">外營力做的</text>
+    </svg>
+    <div class="cap">一句話：<b>內營力把地面撐起來，外營力再把它拆掉、搬走、堆到別的地方。</b><br>
+    地表現在長這個樣子，是兩邊<b>交互作用</b>的結果。</div>
+
+    <p style="margin-top:16px">課本在同一頁擺了兩張照片，就是要你把這兩個名字認出來：<br>
+    <b>陽明山小油坑</b>（圖1-3-3）＝內營力做的；
+    <b>荖濃溪與三合溪交會口的沖積扇</b>（圖1-3-4）＝外營力做的。<span class="pg">課本 p.37</span></p>
+
+    <p style="font-size:14.5px;background:#fff;border:1px dashed #e8d5b0;border-radius:10px;padding:12px 15px">
+      ⚠️ <b>只記課本寫的三個動作：侵蝕、搬運、堆積。</b>
+      參考書常會多寫一個「風化」，但<b>這一冊沒教</b>——段考考的是這一冊。</p>
+  </div>
+
+  <div class="box">
+    <p><b>所以答案是 (D)：豪雨侵襲，河流帶來大量堆積物。</b></p>
+    <p>恆河從喜馬拉雅山一路下來，本來就帶著大量泥沙；豪雨讓水量暴增、沖刷更兇，
+    泥沙到了出海口水一慢就沉下來，堆成一片沙洲。<b>又低又鬆，所以它來得快，去得也快。</b></p>
+    <p>這四個選項其實是一組很漂亮的對照——出題的人把兩種營力各放了一個進去：</p>
+    <div class="err"><div class="t">(A) 14.4%</div><div>
+      <b>選錯營力。</b>板塊接觸帶、海底火山＝<b>內營力</b>。但內營力造出來的島是岩石，
+      不會只有 2 公尺高、幾個月就消失。</div></div>
+    <div class="err"><div class="t">(B) 5.1%</div><div>
+      <b>方向相反。</b>水土保持改善＝泥沙變少，更堆不出島。</div></div>
+    <div class="err"><div class="t">(C) 29.0%</div><div>
+      <b>答錯問題。</b>回答的是「島為什麼消失」，題目問的是「島為什麼形成」；
+      而且海平面上升是淹沒陸地，不是造陸。</div></div>
+    <div class="err"><div class="t">(D) 51.3%</div><div>
+      <b>外營力的完整鏈條</b>：上游侵蝕 → 河流搬運 → 河口堆積。</div></div>
+    <p style="margin-top:14px">📌 這題其實還偷偷用到第 4 章：<b>沙洲</b>就是課本說的
+    「陸地上被水或風帶入海水中的泥沙，因波浪和海流的作用而堆積成的堤狀地形」，
+    是<b>沙岸</b>的招牌地形之一。<span class="pg">課本 p.50</span></p>
+  </div>
+</section>
+
+<!-- ⑤ -->
+<section class="step lock" id="z5">
+  <span class="s-n">STEP 5</span>
+  <h2>同一個觀念，會考換過的樣子</h2>
+
+  <div class="box">
+    <p><b>111 年第 2 題</b>　全國 79.4% 答對——這題不難，但它示範了<b>內營力題長什麼樣</b>。</p>
+    <p style="font-size:15px">臺灣一處具有特殊<b>泥岩惡地</b>景觀的地點，於 2020 年 7 月通過為地質公園。
+    該地<b>位處板塊交界附近</b>及<b>海岸山脈最南端</b>，泥岩夾雜外來岩塊的地層為其主要特色。
+    上述地質公園最可能位於圖中何處？</p>
+    <p style="font-size:14px;color:var(--ink2);margin-top:-2px">
+      （原題附臺灣圖：甲＝東北角、乙＝東南部、丙＝南端、丁＝西南部）</p>
+    <div class="opts" id="q2" data-ans="B">
+      <button class="opt" data-k="A"><span class="k">A</span>甲（東北角）</button>
+      <button class="opt" data-k="B"><span class="k">B</span>乙（東南部）</button>
+      <button class="opt" data-k="C"><span class="k">C</span>丙（南端）</button>
+      <button class="opt" data-k="D"><span class="k">D</span>丁（西南部）</button>
+    </div>
+    <div class="rev" id="r4">
+      <p><b>答案是乙。</b>關鍵只有一句：<b>海岸山脈最南端</b>。</p>
+      <p>海岸山脈在<b>臺灣東部</b>，北起花蓮、南到臺東；它是<b>菲律賓海板塊</b>被推過來、
+      跟<b>歐亞板塊</b>擠在一起的產物，所以「板塊交界」跟「海岸山脈」本來就是同一件事的兩個說法。
+      <span class="pg">課本 p.42</span></p>
+      <p>🔑 <b>內營力的題目幾乎都長這樣：給你一個地名或一個現象，要你回答「板塊在哪裡」。</b>
+      臺灣會多火山、多地震、山那麼高，全部是同一個原因——
+      <b>歐亞板塊和菲律賓海板塊在這裡互相擠壓</b>。<span class="pg">課本 p.42</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p><b>111 年第 4 題</b>　全國 74.5% 答對。這題反過來，示範<b>外營力題長什麼樣</b>。</p>
+    <p style="font-size:15px">截至 2019 年底，臺灣 40 座主要水庫中<b>淤積率超過 30% 的共有 15 座</b>
+    （霧社水庫 74.8%、烏山頭水庫 49.2%），嚴重影響蓄水功能。
+    下列何項策略<b>最能有效改善</b>上述現象？</p>
+    <div class="opts" id="q3" data-ans="A">
+      <button class="opt" data-k="A"><span class="k">A</span>強化集水區崩塌裸露地的植被復育</button>
+      <button class="opt" data-k="B"><span class="k">B</span>擴大在河川下游種植防風林的面積</button>
+      <button class="opt" data-k="C"><span class="k">C</span>減少都市不透水鋪面，增加雨水入滲</button>
+      <button class="opt" data-k="D"><span class="k">D</span>增加地面水源供應，以取代地下水源</button>
+    </div>
+    <div class="rev" id="r5">
+      <p><b>答案是 (A)。</b>把那條鏈子攤開來看就很清楚：</p>
+      <p style="font-size:16px;text-align:center;background:#f2f7f5;border-radius:10px;padding:12px">
+        集水區<b>裸露地</b>　→　雨水<b>沖蝕</b>　→　泥沙被<b>搬運</b>到下游　→　在水庫裡<b>堆積</b></p>
+      <p>要讓水庫少淤，就要<b>從鏈子的最前面下手</b>——把裸露地種回植被，泥沙根本就不會被沖下來。
+      其他三個選項全在鏈子外面：防風林擋的是風不是水、透水鋪面處理的是都市積水、
+      地下水與地面水的取捨跟泥沙無關。</p>
+      <p>⚡ 而臺灣的淤積特別嚴重，也是<b>兩種營力一起造成的</b>：
+      內營力把山推得又高又陡（山地丘陵約占全島 <b>70%</b>），坡陡就流急，
+      外營力搬得動的泥沙自然就多。<span class="pg">課本 p.43</span></p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p style="margin-top:0"><b>另外兩題，順手看過就好</b>——它們也是在問同一件事。</p>
+    <table>
+      <tr><th style="width:78px">年度題號</th><th>問的是</th><th style="width:64px">答案</th></tr>
+      <tr>
+        <td class="nm">114-1</td>
+        <td class="l">臺灣<b>常地震又常颱風</b>，被列為投資環境最脆弱的國家之一。
+          哪一國最可能也因這兩種災害列名？（日本／伊朗／北韓／澳洲）</td>
+        <td><b>日本</b></td>
+      </tr>
+      <tr>
+        <td class="nm">112-27</td>
+        <td class="l">西班牙外海某火山噴發後的<b>熔岩流分布圖</b>，判斷哪個推論合理。
+          （熔岩往低處流 → 反推地勢高低；再用比例尺量噴發點到海的距離）</td>
+        <td><b>約 6 公里</b></td>
+      </tr>
+    </table>
+    <p style="font-size:14.5px;margin-top:12px">
+      114-1 的答案是日本，因為<b>它跟臺灣一樣坐在板塊交界的環太平洋地震帶上</b>，
+      又同樣位在西北太平洋的颱風路徑上；伊朗有地震沒颱風，澳洲兩樣都不在。<br>
+      112-27 更值得注意：<b>它披著火山的外衣，實際考的是第 1 章的比例尺量距</b>——
+      這也是為什麼站上一再說，第 1 章是<b>整本書的工具箱</b>。</p>
+  </div>
+</section>
+
+<!-- 收束 -->
+<section class="step lock" id="z6">
+  <span class="s-n">帶走</span>
+  <h2>這一單元只有兩句話</h2>
+  <div class="name">
+    <p style="font-size:17px;margin:.4em 0"><b>一、看到「怎麼形成的」，先分兩邊：地球從裡面推出來的，還是風和水從外面搬來的。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    內營力＝板塊運動、火山活動；外營力＝風與水做的侵蝕、搬運、堆積。
+    又高又耐的多半是前者，又低又短命的多半是後者。</span></p>
+    <p style="font-size:17px;margin:.9em 0 .4em"><b>二、先確定題目問的是「怎麼來的」，還是「怎麼沒的」。</b><br>
+    <span style="font-size:14.5px;color:var(--ink2)">
+    29% 的人不是不懂堆積，是回答了題目沒問的那一件事。作答前把問句<u>再讀一次</u>，這一分就拿回來了。</span></p>
+  </div>
+  <p>📖 對應課本：<b>3-1 地形如何被形塑</b>（p.36–37，五大地形與內外營力）、
+  <b>3-3 臺灣地形的特徵與分布</b>（p.42–43，兩大板塊擠壓、山地丘陵占七成）、
+  <b>4-1 海岸的類型與特色</b>（p.50，沙洲與潟湖）。</p>
+  <p style="margin-top:16px">
+    <a class="back" href="book.html">→ 回課本地圖，把第 3 章那幾個重點過一遍</a></p>
+</section>
+
+<div style="text-align:center;margin-top:36px">
+  <button class="tiny" id="rst">清除作答，重新來過</button></div>
+
+<footer>
+  會考試題文字與統計取自國中教育會考官方試題分析（111、112、113、114 年）<br>
+  題目為重新排版、示意圖為自行繪製，解說文字為自行撰寫　·　僅供個人學習、非商業使用
+</footer>
+
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-landform-v1", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function $(i){return document.getElementById(i)}
+
+function drawBars(){
+  document.querySelectorAll("#bars .bar").forEach(function(b){
+    setTimeout(function(){b.querySelector(".fl").style.width=b.dataset.w+"%"},120);
+  });
+}
+function openZone(id){var z=$(id); if(z) z.classList.add("open");}
+
+function lockOpts(box,pick){
+  var ans=box.dataset.ans;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+}
+function bind(id,after){
+  var box=$(id); if(!box) return;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1";
+      st[id]=b.dataset.k; save();
+      lockOpts(box,b.dataset.k);
+      after();
+    });
+  });
+  if(st[id]){ box.dataset.locked="1"; lockOpts(box,st[id]); after(true); }
+}
+
+bind("q1",function(restore){
+  openZone("z2"); openZone("z3"); openZone("z4"); openZone("z5");
+  if(restore){document.querySelectorAll("#bars .bar").forEach(function(b){
+    b.querySelector(".fl").style.width=b.dataset.w+"%";});}
+  else drawBars();
+});
+bind("q2",function(){ $("r4").classList.add("on"); openZone("z6"); });
+bind("q3",function(){ $("r5").classList.add("on"); openZone("z6"); });
+
+document.querySelectorAll("[data-rev]").forEach(function(btn){
+  var id=btn.dataset.rev;
+  btn.addEventListener("click",function(){
+    $(id).classList.add("on"); btn.style.display="none";
+    st["rev_"+id]=1; save();
+  });
+  if(st["rev_"+id]){ $(id).classList.add("on"); btn.style.display="none"; }
+});
+
+$("rst").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  location.reload();
+});
+})();
+</script>
+</body>
+</html>
