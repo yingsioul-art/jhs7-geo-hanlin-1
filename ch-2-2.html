@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2-2 臺灣的位置及其影響 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:26px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:12px 0 4px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .3em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.bar{position:sticky;top:0;z-index:9;background:rgba(247,246,242,.94);
+ backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+ margin:18px -20px 0;padding:9px 20px;display:flex;align-items:center;gap:12px;font-size:14px}
+.bar .tr{flex:1;height:8px;background:#eceae4;border-radius:99px;overflow:hidden}
+.bar .fl{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .4s}
+.bar b{color:var(--accent2);font-variant-numeric:tabular-nums}
+.ch{margin:32px 0 0}
+.ch>h2{font-size:20px;margin:0 0 6px;padding-bottom:7px;border-bottom:2px solid var(--warm)}
+.chn{font-size:14.5px;color:var(--ink2);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:11px}
+a.card{display:block;text-decoration:none;color:inherit;background:#fff;
+ border:1px solid var(--line);border-radius:13px;padding:14px 16px;transition:.14s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px);
+ box-shadow:0 5px 16px rgba(31,111,92,.09)}
+a.card .cn{font-size:16.5px;font-weight:700;line-height:1.5}
+a.card .cp{font-size:12.5px;color:#fff;background:var(--accent);border-radius:99px;
+ padding:2px 10px;display:inline-block;margin-top:7px}
+a.card .cm{font-size:13px;color:var(--ink2);margin-top:9px;display:flex;
+ align-items:center;gap:8px;flex-wrap:wrap}
+a.card .pr{flex:1;min-width:72px;height:6px;background:#eceae4;border-radius:99px;overflow:hidden}
+a.card .pr i{display:block;height:100%;width:0;background:var(--ok);border-radius:99px}
+a.card .dn{color:var(--ok);font-weight:700}
+.sec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 19px;margin:16px 0}
+.q{border-top:1px dashed var(--line);padding:15px 0 4px}
+.sec>.q:first-of-type{border-top:0}
+.qs{font-size:15.5px;line-height:1.8}
+.lead{font-size:13.5px;color:#8a5717;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:8px;padding:4px 11px;margin:8px 0 0 33px;display:inline-block}
+.qn{display:inline-block;min-width:25px;height:25px;line-height:25px;text-align:center;
+ font-size:12.5px;font-weight:700;color:#fff;background:var(--ink2);border-radius:99px;margin-right:8px}
+.opts{display:flex;flex-direction:column;gap:7px;margin:10px 0 0}
+.opt{text-align:left;font:inherit;font-size:14.5px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;transition:.12s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:8px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.22)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.fb{font-size:14px;margin-top:8px;display:none}
+.fb.on{display:block}
+.fb.y{color:var(--ok)}.fb.n{color:var(--no)}
+.from{font-size:12.5px;color:#8a8378;margin-top:6px}
+.qt{border-collapse:collapse;margin:11px 0 0 33px;font-size:14px;background:#fff}
+.qt th,.qt td{border:1px solid var(--line);padding:6px 10px;line-height:1.7;text-align:center}
+.qt th{background:#f2efe8;font-weight:700}
+.qt td.rk{background:#fbfaf7;font-weight:700;white-space:nowrap}
+.why{display:none;margin:10px 0 0 33px;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:11px;padding:13px 16px;font-size:14.5px;line-height:1.85}
+.why.on{display:block;animation:up .3s ease}
+.why p{margin:.45em 0}.why ul{margin:.45em 0;padding-left:1.35em}.why li{margin:.2em 0}
+@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fig{margin:11px 0 0 33px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.fig img{max-width:100%;max-height:340px;border:1px solid var(--line);
+ border-radius:8px;background:#fff;padding:4px}
+.fnote{flex-basis:100%;font-size:12.5px;color:var(--warm);line-height:1.75}
+.redraw{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:11px;padding:10px 12px;margin-top:10px}
+.redraw img{border-color:#e8d5b0}
+.none{font-size:14.5px;color:var(--ink2)}
+.figs{margin-top:14px;border-top:1px dashed var(--line);padding-top:11px}
+.figs summary{cursor:pointer;font-size:14px;color:var(--accent2)}
+.figs .hint{color:var(--ink2);font-size:13px}
+.figq{background:#fbfaf7;border:1px solid var(--line);border-radius:10px;
+ padding:11px 13px;margin:9px 0;font-size:14px;line-height:1.75}
+.figq .fo{color:var(--ink2);font-size:13.5px;margin-top:4px}
+.figq .fa{margin-top:5px;font-size:13px;color:#8a8378}
+.figq .fa b{color:var(--ok);font-size:14.5px}
+.figq .why{margin-left:0;font-size:14px}
+.figq .fig{margin-left:0}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2);text-decoration:none;display:inline-block}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap}
+.note{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;
+ padding:16px 19px;margin:26px 0 0;font-size:14.5px}
+.note h3{margin:.1em 0 .45em;font-size:16px;color:#8a5717}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:40px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:14px 13px 70px}h1{font-size:21px}.sec{padding:13px 14px}
+ .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="chapter.html">← 回章節目錄</a>
+
+<header>
+  <div class="kick">第 2 章 世界中的臺灣　·　課本 p.26-27</div>
+  <h1>2-2 臺灣的位置及其影響</h1>
+  <div class="sub">這一節可以練 <b>6</b> 題　·　答完會展開解析</div>
+</header>
+
+<div class="bar">
+  <span>本節進度</span><div class="tr"><div class="fl" id="pf"></div></div>
+  <span><b id="pd">0</b> / 6 題</span>
+  <button class="tiny" id="rst">清除本節</button>
+</div>
+
+<div class="sec"><div class="q" id="q-112-1-1-6" data-ans="C"><div class="qs"><span class="qn">1</span>黑面琵鷺年年造訪臺江國家公園，每年 9~10 月，超過全球數量 60%的黑面琵鷺會抵達曾文溪口暫時休息甚至是過冬。請問此鳥類秋冬季節會來到臺灣的主要因素為</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>山勢地形起伏落差大</button><button class="opt" data-k="B"><span class="k">B</span>冰河期曾與亞洲大陸相連</button><button class="opt" data-k="C"><span class="k">C</span>臺灣位於熱帶與溫帶氣候的過渡帶上</button><button class="opt" data-k="D"><span class="k">D</span>臺灣位於最大陸地與最大海洋的交會帶上</button></div><div class="fb"></div><div class="from">112 學年　第 1 次段考　第 6 題</div></div><div class="q" id="q-112-1-1-8" data-ans="B"><div class="qs"><span class="qn">2</span>有關臺灣位置的敘述，下列何者正確？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>臺灣有 66.5°N 經過</button><button class="opt" data-k="B"><span class="k">B</span>臺灣在中國的東南方</button><button class="opt" data-k="C"><span class="k">C</span>臺灣位於太平洋的東岸</button><button class="opt" data-k="D"><span class="k">D</span>臺灣位在 120°S，25°N 附近</button></div><div class="fb"></div><div class="from">112 學年　第 1 次段考　第 8 題</div></div><div class="q" id="q-112-1-1-10" data-ans="B"><div class="qs"><span class="qn">3</span>臺灣有許多特有種，如臺灣獼猴、臺灣黑熊和臺灣鮭魚等，皆是在臺灣才能看見的特有生物。請問造成這樣基因隔絕的原因，下列何者正確？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>海平面下降，動物無法遷移</button><button class="opt" data-k="B"><span class="k">B</span>島嶼因為海平面上升而隔絕</button><button class="opt" data-k="C"><span class="k">C</span>地勢高低落差大，動物移動困難</button><button class="opt" data-k="D"><span class="k">D</span>位於寒、暖洋流交會處，海洋生態資源豐富</button></div><div class="fb"></div><div class="from">112 學年　第 1 次段考　第 10 題</div></div><div class="q" id="q-113-1-1-4" data-ans="C"><div class="qs"><span class="qn">4</span>隨著全球航空市場成長，外籍航空飛越台灣領空航班也增加，台灣 2018 年收取航空的過境服務費總計就高達 22.3 億，相較 2017 年的 20.5 億元，成長近 8.58%，創下歷史新高。飛航服務總台總台長指出，由於台灣地理位置佳，加上飛航管制服務達到國際水準，都是讓各家航空選擇到台灣過境的原因。文中所述，台灣的地理位置具有下列哪一個優勢？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>臺灣海空交通航點遍及亞太地區</button><button class="opt" data-k="B"><span class="k">B</span>臺灣極需與鄰國維持友好的關係</button><button class="opt" data-k="C"><span class="k">C</span>臺灣居於亞太地區海空交通樞紐位置</button><button class="opt" data-k="D"><span class="k">D</span>臺灣透過貿易連結亞太地區主要都市</button></div><div class="fb"></div><div class="from">113 學年　第 1 次段考　第 4 題</div></div><div class="q" id="q-113-1-1-7" data-ans="D"><div class="qs"><span class="qn">5</span>臺灣的戰略地位相當重要，因此在國際政治勢力的角力上，扮演舉足輕重的角色。下列為某國際軍事論壇的相關討論，何者的敘述最為正確？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>臺灣位於太平洋東側，可作為遠洋海軍基地的補給站</button><button class="opt" data-k="B"><span class="k">B</span>臺灣海峽位於太平洋進入大西洋的必經之地</button><button class="opt" data-k="C"><span class="k">C</span>亞洲大陸西側溫帶地區的港口進入太平洋須通過臺灣</button><button class="opt" data-k="D"><span class="k">D</span>臺灣可連結日本群島和菲律賓群島，形成海上防線</button></div><div class="fb"></div><div class="from">113 學年　第 1 次段考　第 7 題</div></div><div class="q" id="q-113-1-1-11" data-ans="D"><div class="qs"><span class="qn">6</span>「知名紀錄片導演麥覺明耗時 17 年拍攝《山椒魚來了》用文字和影像記錄山椒魚生態。山椒魚是兩棲類動物，分布在寒帶，台灣則是全世界山椒魚在北半球分布的最南界，上億年前就存在，經過數千年隔離演化，才變成台灣特有種，稱得上是活化石，更被列為瀕臨絕種的保育類動物。導演希望透過大銀幕讓更多人理解，感動更多人愛護台灣山林美景與豐富物種。」請問：台灣有許多如紀錄片中的特有種生物，是因為何種自然環境特徵？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>北回歸線經過台灣</button><button class="opt" data-k="B"><span class="k">B</span>位於生物遷徙的中繼站</button><button class="opt" data-k="C"><span class="k">C</span>氣候溫暖濕潤</button><button class="opt" data-k="D"><span class="k">D</span>海陸交界的孤立島嶼</button></div><div class="fb"></div><div class="from">113 學年　第 1 次段考　第 11 題</div></div></div>
+
+<div class="nav2"><a class="tiny" href="ch-2-1.html">← 2-1 全球海陸分布</a><a class="tiny" href="ch-2-3.html">2-3 臺灣地區的範圍 →</a></div>
+
+<div style="text-align:center;margin-top:22px">
+  <a class="back" href="chapter.html">← 回章節目錄</a></div>
+
+<footer>段考試題取自新北市立丹鳳高級中學 112–114 學年度七年級上學期社會科段考試卷<br>題目為重新排版並依翰林版課本章節重新歸類　·　僅供個人學習、非商業使用</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-chapter-v2", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var TOTAL=6;
+function paint(box,pick){
+  var ans=box.dataset.ans, fb=box.querySelector(".fb");
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+  fb.className="fb on "+(pick===ans?"y":"n");
+  fb.textContent = pick===ans ? "答對了" : ("答案是 "+ans+"　·　你選的是 "+pick);
+  var why=box.querySelector(".why"); if(why) why.classList.add("on");
+}
+function prog(){
+  var n=0;
+  document.querySelectorAll(".q").forEach(function(b){ if(st[b.id]) n++; });
+  var pd=document.getElementById("pd"); if(pd) pd.textContent=n;
+  var pf=document.getElementById("pf"); if(pf) pf.style.width=(TOTAL?n/TOTAL*100:0)+"%";
+}
+document.querySelectorAll(".q").forEach(function(box){
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1";
+      st[box.id]=b.dataset.k; save(); paint(box,b.dataset.k); prog();
+    });
+  });
+  if(st[box.id]){ box.dataset.locked="1"; paint(box,st[box.id]); }
+});
+prog();
+var rst=document.getElementById("rst");
+if(rst) rst.addEventListener("click",function(){
+  document.querySelectorAll(".q").forEach(function(b){ delete st[b.id]; });
+  save(); location.reload();
+});
+})();
+</script>
+</body>
+</html>

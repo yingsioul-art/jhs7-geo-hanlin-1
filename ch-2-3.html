@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2-3 臺灣地區的範圍 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:26px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:12px 0 4px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .3em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.bar{position:sticky;top:0;z-index:9;background:rgba(247,246,242,.94);
+ backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+ margin:18px -20px 0;padding:9px 20px;display:flex;align-items:center;gap:12px;font-size:14px}
+.bar .tr{flex:1;height:8px;background:#eceae4;border-radius:99px;overflow:hidden}
+.bar .fl{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .4s}
+.bar b{color:var(--accent2);font-variant-numeric:tabular-nums}
+.ch{margin:32px 0 0}
+.ch>h2{font-size:20px;margin:0 0 6px;padding-bottom:7px;border-bottom:2px solid var(--warm)}
+.chn{font-size:14.5px;color:var(--ink2);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:11px}
+a.card{display:block;text-decoration:none;color:inherit;background:#fff;
+ border:1px solid var(--line);border-radius:13px;padding:14px 16px;transition:.14s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px);
+ box-shadow:0 5px 16px rgba(31,111,92,.09)}
+a.card .cn{font-size:16.5px;font-weight:700;line-height:1.5}
+a.card .cp{font-size:12.5px;color:#fff;background:var(--accent);border-radius:99px;
+ padding:2px 10px;display:inline-block;margin-top:7px}
+a.card .cm{font-size:13px;color:var(--ink2);margin-top:9px;display:flex;
+ align-items:center;gap:8px;flex-wrap:wrap}
+a.card .pr{flex:1;min-width:72px;height:6px;background:#eceae4;border-radius:99px;overflow:hidden}
+a.card .pr i{display:block;height:100%;width:0;background:var(--ok);border-radius:99px}
+a.card .dn{color:var(--ok);font-weight:700}
+.sec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 19px;margin:16px 0}
+.q{border-top:1px dashed var(--line);padding:15px 0 4px}
+.sec>.q:first-of-type{border-top:0}
+.qs{font-size:15.5px;line-height:1.8}
+.lead{font-size:13.5px;color:#8a5717;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:8px;padding:4px 11px;margin:8px 0 0 33px;display:inline-block}
+.qn{display:inline-block;min-width:25px;height:25px;line-height:25px;text-align:center;
+ font-size:12.5px;font-weight:700;color:#fff;background:var(--ink2);border-radius:99px;margin-right:8px}
+.opts{display:flex;flex-direction:column;gap:7px;margin:10px 0 0}
+.opt{text-align:left;font:inherit;font-size:14.5px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;transition:.12s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:8px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.22)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.fb{font-size:14px;margin-top:8px;display:none}
+.fb.on{display:block}
+.fb.y{color:var(--ok)}.fb.n{color:var(--no)}
+.from{font-size:12.5px;color:#8a8378;margin-top:6px}
+.qt{border-collapse:collapse;margin:11px 0 0 33px;font-size:14px;background:#fff}
+.qt th,.qt td{border:1px solid var(--line);padding:6px 10px;line-height:1.7;text-align:center}
+.qt th{background:#f2efe8;font-weight:700}
+.qt td.rk{background:#fbfaf7;font-weight:700;white-space:nowrap}
+.why{display:none;margin:10px 0 0 33px;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:11px;padding:13px 16px;font-size:14.5px;line-height:1.85}
+.why.on{display:block;animation:up .3s ease}
+.why p{margin:.45em 0}.why ul{margin:.45em 0;padding-left:1.35em}.why li{margin:.2em 0}
+@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fig{margin:11px 0 0 33px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.fig img{max-width:100%;max-height:340px;border:1px solid var(--line);
+ border-radius:8px;background:#fff;padding:4px}
+.fnote{flex-basis:100%;font-size:12.5px;color:var(--warm);line-height:1.75}
+.redraw{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:11px;padding:10px 12px;margin-top:10px}
+.redraw img{border-color:#e8d5b0}
+.none{font-size:14.5px;color:var(--ink2)}
+.figs{margin-top:14px;border-top:1px dashed var(--line);padding-top:11px}
+.figs summary{cursor:pointer;font-size:14px;color:var(--accent2)}
+.figs .hint{color:var(--ink2);font-size:13px}
+.figq{background:#fbfaf7;border:1px solid var(--line);border-radius:10px;
+ padding:11px 13px;margin:9px 0;font-size:14px;line-height:1.75}
+.figq .fo{color:var(--ink2);font-size:13.5px;margin-top:4px}
+.figq .fa{margin-top:5px;font-size:13px;color:#8a8378}
+.figq .fa b{color:var(--ok);font-size:14.5px}
+.figq .why{margin-left:0;font-size:14px}
+.figq .fig{margin-left:0}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2);text-decoration:none;display:inline-block}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap}
+.note{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;
+ padding:16px 19px;margin:26px 0 0;font-size:14.5px}
+.note h3{margin:.1em 0 .45em;font-size:16px;color:#8a5717}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:40px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:14px 13px 70px}h1{font-size:21px}.sec{padding:13px 14px}
+ .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="chapter.html">← 回章節目錄</a>
+
+<header>
+  <div class="kick">第 2 章 世界中的臺灣　·　課本 p.28-29</div>
+  <h1>2-3 臺灣地區的範圍</h1>
+  <div class="sub">這一節可以練 <b>2</b> 題　·　答完會展開解析</div>
+</header>
+
+<div class="bar">
+  <span>本節進度</span><div class="tr"><div class="fl" id="pf"></div></div>
+  <span><b id="pd">0</b> / 2 題</span>
+  <button class="tiny" id="rst">清除本節</button>
+</div>
+
+<div class="sec"><div class="q" id="q-112-1-1-9" data-ans="D"><div class="qs"><span class="qn">1</span>根據聯合國「海洋法公約」規定，各國擁有在其經濟海域內的資源使用權。臺灣四面環海，島嶼眾多，擁有廣大的經濟海域，但也因周遭鄰國眾多，常因經濟海域重疊而造成雙方在漁業上的紛爭。請問前文敘述中，最有可能是與下列何者產生的紛爭？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>韓國</button><button class="opt" data-k="B"><span class="k">B</span>泰國</button><button class="opt" data-k="C"><span class="k">C</span>印尼</button><button class="opt" data-k="D"><span class="k">D</span>中國</button></div><div class="fb"></div><div class="from">112 學年　第 1 次段考　第 9 題</div></div><div class="q" id="q-113-1-2-9" data-ans="A"><div class="qs"><span class="qn">2</span>台灣經濟海域的擁有權和使用權，最不容易和哪一國家產生主權糾紛？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>南韓</button><button class="opt" data-k="B"><span class="k">B</span>日本</button><button class="opt" data-k="C"><span class="k">C</span>中國</button><button class="opt" data-k="D"><span class="k">D</span>菲律賓</button></div><div class="fb"></div><div class="from">113 學年　第 2 次段考　第 9 題</div></div><details class="figs"><summary>另有 1 題只能看不能作答<span class="hint">（選項本身是圖，或原卷用的是表格）</span></summary><div class="figq"><div class="fs">下(圖四)為海域範圍示意圖，由領海基線向外延 (圖一) (圖二) (圖三) 七年 ___班座號：姓名：伸的海域，各國視為領土的延伸，擁有絕對的主權與軍事權。請問：當船隻航行到圖中何處時，會因為侵犯該國主權而遭到驅逐？</div><div class="fo">(A)甲　(B)乙　(C)丙　(D)丁</div><div class="fa">答案 <b>A</b>　·　112 學年　第 1 次段考　第 13 題</div></div></details></div>
+
+<div class="nav2"><a class="tiny" href="ch-2-2.html">← 2-2 臺灣的位置及其影響</a><a class="tiny" href="ch-3-1.html">3-1 地形如何被形塑 →</a></div>
+
+<div style="text-align:center;margin-top:22px">
+  <a class="back" href="chapter.html">← 回章節目錄</a></div>
+
+<footer>段考試題取自新北市立丹鳳高級中學 112–114 學年度七年級上學期社會科段考試卷<br>題目為重新排版並依翰林版課本章節重新歸類　·　僅供個人學習、非商業使用</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-chapter-v2", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var TOTAL=2;
+function paint(box,pick){
+  var ans=box.dataset.ans, fb=box.querySelector(".fb");
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+  fb.className="fb on "+(pick===ans?"y":"n");
+  fb.textContent = pick===ans ? "答對了" : ("答案是 "+ans+"　·　你選的是 "+pick);
+  var why=box.querySelector(".why"); if(why) why.classList.add("on");
+}
+function prog(){
+  var n=0;
+  document.querySelectorAll(".q").forEach(function(b){ if(st[b.id]) n++; });
+  var pd=document.getElementById("pd"); if(pd) pd.textContent=n;
+  var pf=document.getElementById("pf"); if(pf) pf.style.width=(TOTAL?n/TOTAL*100:0)+"%";
+}
+document.querySelectorAll(".q").forEach(function(box){
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1";
+      st[box.id]=b.dataset.k; save(); paint(box,b.dataset.k); prog();
+    });
+  });
+  if(st[box.id]){ box.dataset.locked="1"; paint(box,st[box.id]); }
+});
+prog();
+var rst=document.getElementById("rst");
+if(rst) rst.addEventListener("click",function(){
+  document.querySelectorAll(".q").forEach(function(b){ delete st[b.id]; });
+  save(); location.reload();
+});
+})();
+</script>
+</body>
+</html>

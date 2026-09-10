@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>水循環・河川・水資源 · 七上地理</title>
+<style>
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:26px 20px 90px}
+a.back{display:inline-block;color:var(--ink2);text-decoration:none;font-size:14px}
+a.back:hover{color:var(--accent)}
+header{text-align:center;padding:12px 0 4px}
+.kick{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+h1{font-size:25px;margin:.25em 0 .3em;line-height:1.5}
+.sub{color:var(--ink2);font-size:14.5px}
+.bar{position:sticky;top:0;z-index:9;background:rgba(247,246,242,.94);
+ backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+ margin:18px -20px 0;padding:9px 20px;display:flex;align-items:center;gap:12px;font-size:14px}
+.bar .tr{flex:1;height:8px;background:#eceae4;border-radius:99px;overflow:hidden}
+.bar .fl{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .4s}
+.bar b{color:var(--accent2);font-variant-numeric:tabular-nums}
+.ch{margin:32px 0 0}
+.ch>h2{font-size:20px;margin:0 0 6px;padding-bottom:7px;border-bottom:2px solid var(--warm)}
+.chn{font-size:14.5px;color:var(--ink2);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:11px}
+a.card{display:block;text-decoration:none;color:inherit;background:#fff;
+ border:1px solid var(--line);border-radius:13px;padding:14px 16px;transition:.14s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px);
+ box-shadow:0 5px 16px rgba(31,111,92,.09)}
+a.card .cn{font-size:16.5px;font-weight:700;line-height:1.5}
+a.card .cp{font-size:12.5px;color:#fff;background:var(--accent);border-radius:99px;
+ padding:2px 10px;display:inline-block;margin-top:7px}
+a.card .cm{font-size:13px;color:var(--ink2);margin-top:9px;display:flex;
+ align-items:center;gap:8px;flex-wrap:wrap}
+a.card .pr{flex:1;min-width:72px;height:6px;background:#eceae4;border-radius:99px;overflow:hidden}
+a.card .pr i{display:block;height:100%;width:0;background:var(--ok);border-radius:99px}
+a.card .dn{color:var(--ok);font-weight:700}
+.sec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 19px;margin:16px 0}
+.q{border-top:1px dashed var(--line);padding:15px 0 4px}
+.sec>.q:first-of-type{border-top:0}
+.qs{font-size:15.5px;line-height:1.8}
+.lead{font-size:13.5px;color:#8a5717;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:8px;padding:4px 11px;margin:8px 0 0 33px;display:inline-block}
+.qn{display:inline-block;min-width:25px;height:25px;line-height:25px;text-align:center;
+ font-size:12.5px;font-weight:700;color:#fff;background:var(--ink2);border-radius:99px;margin-right:8px}
+.opts{display:flex;flex-direction:column;gap:7px;margin:10px 0 0}
+.opt{text-align:left;font:inherit;font-size:14.5px;cursor:pointer;background:#fbfaf7;
+ border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;transition:.12s}
+.opt:hover:not(.done){border-color:var(--accent);background:#fff}
+.opt .k{font-weight:700;color:var(--ink2);margin-right:8px}
+.opt.done{cursor:default}
+.opt.right{border-color:var(--ok);background:#f0f8f3}
+.opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.22)}
+.opt.wrong{border-color:var(--no);background:#fdf2f0}
+.fb{font-size:14px;margin-top:8px;display:none}
+.fb.on{display:block}
+.fb.y{color:var(--ok)}.fb.n{color:var(--no)}
+.from{font-size:12.5px;color:#8a8378;margin-top:6px}
+.qt{border-collapse:collapse;margin:11px 0 0 33px;font-size:14px;background:#fff}
+.qt th,.qt td{border:1px solid var(--line);padding:6px 10px;line-height:1.7;text-align:center}
+.qt th{background:#f2efe8;font-weight:700}
+.qt td.rk{background:#fbfaf7;font-weight:700;white-space:nowrap}
+.why{display:none;margin:10px 0 0 33px;background:#fdf6ea;border:1px solid #e8d5b0;
+ border-radius:11px;padding:13px 16px;font-size:14.5px;line-height:1.85}
+.why.on{display:block;animation:up .3s ease}
+.why p{margin:.45em 0}.why ul{margin:.45em 0;padding-left:1.35em}.why li{margin:.2em 0}
+@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fig{margin:11px 0 0 33px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.fig img{max-width:100%;max-height:340px;border:1px solid var(--line);
+ border-radius:8px;background:#fff;padding:4px}
+.fnote{flex-basis:100%;font-size:12.5px;color:var(--warm);line-height:1.75}
+.redraw{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:11px;padding:10px 12px;margin-top:10px}
+.redraw img{border-color:#e8d5b0}
+.none{font-size:14.5px;color:var(--ink2)}
+.figs{margin-top:14px;border-top:1px dashed var(--line);padding-top:11px}
+.figs summary{cursor:pointer;font-size:14px;color:var(--accent2)}
+.figs .hint{color:var(--ink2);font-size:13px}
+.figq{background:#fbfaf7;border:1px solid var(--line);border-radius:10px;
+ padding:11px 13px;margin:9px 0;font-size:14px;line-height:1.75}
+.figq .fo{color:var(--ink2);font-size:13.5px;margin-top:4px}
+.figq .fa{margin-top:5px;font-size:13px;color:#8a8378}
+.figq .fa b{color:var(--ok);font-size:14.5px}
+.figq .why{margin-left:0;font-size:14px}
+.figq .fig{margin-left:0}
+.pg{display:inline-block;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;margin-left:6px}
+.tiny{font:inherit;font-size:13.5px;cursor:pointer;background:#fff;border:1px solid var(--line);
+ border-radius:8px;padding:6px 14px;color:var(--ink2);text-decoration:none;display:inline-block}
+.tiny:hover{border-color:var(--accent);color:var(--accent2)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap}
+.note{background:#fdf6ea;border:1px solid #e8d5b0;border-radius:13px;
+ padding:16px 19px;margin:26px 0 0;font-size:14.5px}
+.note h3{margin:.1em 0 .45em;font-size:16px;color:#8a5717}
+footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:40px;line-height:1.9}
+@media(max-width:520px){.wrap{padding:14px 13px 70px}h1{font-size:21px}.sec{padding:13px 14px}
+ .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="chapter.html">← 回章節目錄</a>
+
+<header>
+  <div class="kick">本冊沒轉錄到的　·　課本 課本 p.76 以後，未拍照</div>
+  <h1>水循環・河川・水資源</h1>
+  <div class="sub">這一節可以練 <b>20</b> 題　·　答完會展開解析</div>
+</header>
+
+<div class="bar">
+  <span>本節進度</span><div class="tr"><div class="fl" id="pf"></div></div>
+  <span><b id="pd">0</b> / 20 題</span>
+  <button class="tiny" id="rst">清除本節</button>
+</div>
+
+<div class="sec"><div class="q" id="q-112-1-3-11" data-ans="C"><div class="qs"><span class="qn">1</span>圖(三)為某河流的流域示意圖，下列敘述何者最正確？</div><div class="fig"><img src="fig/112-1-3_q11_1.png" alt="原卷附圖" loading="lazy"><img src="fig/112-1-3_q11_2.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>甲地適合修築水庫儲存水資源</button><button class="opt" data-k="B"><span class="k">B</span>乙地的集水範圍即為該河流的流域</button><button class="opt" data-k="C"><span class="k">C</span>若有工廠在丙地排放廢水，則甲地將遭受汙染</button><button class="opt" data-k="D"><span class="k">D</span>丁的位置水量最大。圖(三) 圖(四)</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 11 題</div></div><div class="q" id="q-112-1-3-12" data-ans="A"><div class="qs"><span class="qn">2</span>圖(四)中各代號代表水循環的歷程，下列哪個選項配對是錯誤的？</div><div class="fig"><img src="fig/112-1-3_q11_1.png" alt="原卷附圖" loading="lazy"><img src="fig/112-1-3_q11_2.png" alt="原卷附圖" loading="lazy"><div class="fnote">與第 11 題共用同一張圖</div></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>甲是蒸發</button><button class="opt" data-k="B"><span class="k">B</span>戊是逕流</button><button class="opt" data-k="C"><span class="k">C</span>乙是降水</button><button class="opt" data-k="D"><span class="k">D</span>己是入滲</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 12 題</div></div><div class="q" id="q-112-1-3-13" data-ans="A"><div class="qs"><span class="qn">3</span>下列哪一條河川最沒有「乾、雨季流量變化大」的特性？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>淡水河</button><button class="opt" data-k="B"><span class="k">B</span>濁水溪</button><button class="opt" data-k="C"><span class="k">C</span>高屏溪</button><button class="opt" data-k="D"><span class="k">D</span>秀姑巒溪</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 13 題</div></div><div class="q" id="q-112-1-3-14" data-ans="B"><div class="qs"><span class="qn">4</span>下列有關台灣河川特性的敘述，何者錯誤？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>河川坡陡流急</button><button class="opt" data-k="B"><span class="k">B</span>西部河川較東部短</button><button class="opt" data-k="C"><span class="k">C</span>南部多荒溪型河川</button><button class="opt" data-k="D"><span class="k">D</span>年輸沙量高</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 14 題</div></div><div class="q" id="q-112-1-3-15" data-ans="C"><div class="qs"><span class="qn">5</span>養殖漁業為臺灣西南部重要的經濟活動之一，下列何者為養殖漁業超抽地下水造成的問題？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>魚源枯竭</button><button class="opt" data-k="B"><span class="k">B</span>土壤流失</button><button class="opt" data-k="C"><span class="k">C</span>土壤鹽化</button><button class="opt" data-k="D"><span class="k">D</span>河川乾涸</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 15 題</div></div><div class="q" id="q-112-1-3-17" data-ans="B"><div class="qs"><span class="qn">6</span>臺灣較長的河川多注入臺灣海峽的原因為下列何者？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>西部降水較多</button><button class="opt" data-k="B"><span class="k">B</span>山脈分布偏東</button><button class="opt" data-k="C"><span class="k">C</span>東部平原較廣</button><button class="opt" data-k="D"><span class="k">D</span>東部迎風多雨。＊早期臺灣是一個移民社會，如何引水灌溉，成為早期先民開墾的主要難題：請問：</button></div><div class="fb"></div><div class="from">112 學年　第 3 次段考　第 17 題</div></div><div class="q" id="q-113-1-3-2" data-ans="B"><div class="qs"><span class="qn">7</span>附圖為水循環示意圖。請問下列哪一個同學對於此圖的敘述最為正確？</div><div class="fig"><img src="fig/113-1-3_q02_1.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>炫棋：水循環的驅動力為氣壓變化</button><button class="opt" data-k="B"><span class="k">B</span>宇芯：A 處箭頭所表示的是水循環過程中的凝結</button><button class="opt" data-k="C"><span class="k">C</span>雅菈：B 處箭頭為入滲</button><button class="opt" data-k="D"><span class="k">D</span>凌洧：圖中「C」處箭頭是代表逕流方向</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 2 題</div></div><div class="q" id="q-113-1-3-3" data-ans="C"><div class="qs"><span class="qn">8</span>臺灣受到地形因素影響，地面逕流流失速度相當快，因此需興建水庫。附圖中哪一水庫受到地理位置的影響，較少出現冬季缺水的現象？</div><div class="fig"><img src="fig/113-1-3_q03_1.png" alt="原卷附圖" loading="lazy"><img src="fig/113-1-3_q03_2.png" alt="原卷附圖" loading="lazy"><img src="fig/113-1-3_q03_3.png" alt="原卷附圖" loading="lazy"><img src="fig/113-1-3_q03_4.png" alt="原卷附圖" loading="lazy"><img src="fig/113-1-3_q03_5.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>曾文水庫</button><button class="opt" data-k="B"><span class="k">B</span>霧社水庫</button><button class="opt" data-k="C"><span class="k">C</span>翡翠水庫</button><button class="opt" data-k="D"><span class="k">D</span>牡丹水庫</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 3 題</div></div><div class="q" id="q-113-1-3-5" data-ans="B"><div class="qs"><span class="qn">9</span>附圖是某流域示意圖，甲～丁為流域內的四個水文測站的位置。關於此圖的敘述下列何者正確？</div><div class="fig"><img src="fig/113-1-3_q05_1.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>圖中「丙」測站所涵蓋的虛線範圍可用水系表示</button><button class="opt" data-k="B"><span class="k">B</span>圖中甲～丁四個測站，丁點位於分水嶺上</button><button class="opt" data-k="C"><span class="k">C</span>圖中河流主流大致往北方流動</button><button class="opt" data-k="D"><span class="k">D</span>若乙點發生崩塌，會使丙測站的水質出現混濁的現象</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 5 題</div></div><div class="q" id="q-113-1-3-7" data-ans="A"><div class="qs"><span class="qn">10</span>自然界的水透過水循環的歷程，以不同形態周而復始地交換著。下列哪種方法可以最有效率地增加地下水含量？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>以透水性佳的建材取代水泥鋪面</button><button class="opt" data-k="B"><span class="k">B</span>興建水庫</button><button class="opt" data-k="C"><span class="k">C</span>尋找新的溫泉地點</button><button class="opt" data-k="D"><span class="k">D</span>闢建攔河堰</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 7 題</div></div><div class="q" id="q-113-1-3-10" data-ans="D"><div class="qs"><span class="qn">11</span>颱風帶來的大量降水是水庫進帳的好時機，但颱風侵襲也常帶來災害，而大雨也常將山坡的土石沖刷下來，增加水庫的砂石淤積量。請問：我們應如何做，才能永續經營臺灣的水資源？ (甲)加強集水區水土保持 (乙)多興建攔沙壩是治本的方式 (丙)進行水庫清淤，增加蓄水量 (丁)經常進行水庫洩洪，延長水庫壽命</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>乙丙</button><button class="opt" data-k="B"><span class="k">B</span>丙丁</button><button class="opt" data-k="C"><span class="k">C</span>甲乙</button><button class="opt" data-k="D"><span class="k">D</span>甲丙</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 10 題</div></div><div class="q" id="q-113-1-3-12" data-ans="A"><div class="qs"><span class="qn">12</span>由圖中無法顯示下何種資訊？</div><div class="fig"><img src="fig/113-1-3_q12_1.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>北部河川水量豐穩，有航運之利</button><button class="opt" data-k="B"><span class="k">B</span>河川東西分流，可能阻隔南北往來 交通</button><button class="opt" data-k="C"><span class="k">C</span>西部河川較長應是受到山脈位置偏東的影響</button><button class="opt" data-k="D"><span class="k">D</span>臺灣河川大多細小流短</button></div><div class="fb"></div><div class="from">113 學年　第 3 次段考　第 12 題</div></div><div class="q" id="q-114-1-3-4" data-ans="B"><div class="qs"><span class="qn">13</span>關於水循環的過程，下列敘述何者是正確？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>A 在水循環中，溫度會不斷升高，使氣態水轉變為液態水或固態水</button><button class="opt" data-k="B"><span class="k">B</span>B 降至地面的水，在地面流動的現象</button><button class="opt" data-k="C"><span class="k">C</span>C 是吸收熱 量後，經蒸散作用轉為氣態，進入到大氣的現象</button><button class="opt" data-k="D"><span class="k">D</span>D 是水氣遇冷凝結的過程</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 4 題</div></div><div class="q" id="q-114-1-3-5" data-ans="D"><div class="qs"><span class="qn">14</span>『F』指的過程為何？的箭頭朝下，代表下列哪種過程？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>地表逕流</button><button class="opt" data-k="B"><span class="k">B</span>降水</button><button class="opt" data-k="C"><span class="k">C</span>地下水</button><button class="opt" data-k="D"><span class="k">D</span>入滲</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 5 題</div></div><div class="q" id="q-114-1-3-8" data-ans="B"><div class="qs"><span class="qn">15</span>請同學參考圖(五)，下列關於水文概念的說明中，哪項敘述是正確的？</div><div class="fig"><img src="fig/114-1-3_q08_1.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>流域是主流與若干支流所共同構成的河流系統</button><button class="opt" data-k="B"><span class="k">B</span>甲的地勢最低</button><button class="opt" data-k="C"><span class="k">C</span>丁涵蓋的集水區最廣</button><button class="opt" data-k="D"><span class="k">D</span>丙的海拔高度最高。圖(五)</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 8 題</div></div><div class="q" id="q-114-1-3-9" data-ans="A"><div class="qs"><span class="qn">16</span>台灣年降水量約 2,500mm，為世界平均降水量的 3 倍，但每人所得到可用水資源量卻低於全球平均值。下列有關台灣的水資源問題敘述，何者正確？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>台灣水資源不足與河川坡陡流急、降水時空分布不均有關</button><button class="opt" data-k="B"><span class="k">B</span>台灣水資源主要來自河水和地下水，但由於河水上游水量不穩，泥沙含量高，故以地下水使用為主</button><button class="opt" data-k="C"><span class="k">C</span>台灣水資源區域差異大，北部地區由於人口稠密，缺水問題較南部嚴重</button><button class="opt" data-k="D"><span class="k">D</span>地下水具有普遍性及水量穩定的特性，經常用於工業發展。 圖(六)為台灣淡水、台中、恆春與花蓮四區氣候圖，請同學分析判斷，回答第 10 題與第 11 題 (甲) (乙) (丙) (丁) 圖(六)</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 9 題</div></div><div class="q" id="q-114-1-3-14" data-ans="A"><div class="qs"><span class="qn">17</span>圖(八)中無法顯示下列何種台灣河川特色？</div><div class="fig"><img src="fig/114-1-3_q14_1.png" alt="原卷附圖" loading="lazy"><img src="fig/114-1-3_q14_2.png" alt="原卷附圖" loading="lazy"><img src="fig/114-1-3_q14_3.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>北部河川流量較穩定，南部河川流量變化大</button><button class="opt" data-k="B"><span class="k">B</span>河川大多短小</button><button class="opt" data-k="C"><span class="k">C</span>河川東西分流，影響早期南北往來交通</button><button class="opt" data-k="D"><span class="k">D</span>西部河川較長，是因山脈位置偏東。圖(八)</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 14 題</div></div><div class="q" id="q-114-1-3-15" data-ans="D"><div class="qs"><span class="qn">18</span>圖(九)為台灣與世界各國的水資源量比較，可以發現台灣平均每人可用水資源量並不多，造成此現象的原因包括哪些？ (甲)年降水量豐沛 (乙)人口密度高 (丙)河川流速快 (丁)地球暖化，氣候變遷</div><div class="fig"><img src="fig/114-1-3_q15_1.png" alt="原卷附圖" loading="lazy"></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>甲乙</button><button class="opt" data-k="B"><span class="k">B</span>甲丁</button><button class="opt" data-k="C"><span class="k">C</span>丙丁</button><button class="opt" data-k="D"><span class="k">D</span>乙丙。圖(九)</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 15 題</div></div><div class="q" id="q-114-1-3-16" data-ans="B"><div class="qs"><span class="qn">19</span>根據圖(九)中各國的平均每人可用水資源量，可看出哪一項特色？</div><div class="fig"><img src="fig/114-1-3_q15_1.png" alt="原卷附圖" loading="lazy"><div class="fnote">與第 15 題共用同一張圖</div></div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>台灣年降水量比其他各國相對較少</button><button class="opt" data-k="B"><span class="k">B</span>美國平均每人獲得的水資源較台灣豐富</button><button class="opt" data-k="C"><span class="k">C</span>台灣的人口總數較菲律賓多</button><button class="opt" data-k="D"><span class="k">D</span>台灣平均每人可用水資源量較日本多</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 16 題</div></div><div class="q" id="q-114-1-3-17" data-ans="D"><div class="qs"><span class="qn">20</span>水庫修建不容易，管理維修也要完善規劃。下列哪一項方法，能改善水庫淤積以及延長水庫壽命？</div><div class="opts"><button class="opt" data-k="A"><span class="k">A</span>廣泛建置攔砂壩</button><button class="opt" data-k="B"><span class="k">B</span>清除河流砂石，修建堤防</button><button class="opt" data-k="C"><span class="k">C</span>禁止流域的土地開發利用</button><button class="opt" data-k="D"><span class="k">D</span>做好流域集水區的水土保持。歷史18-34題，1題2分 ◎十九世紀中期，清帝國被迫開放臺灣通商，沿岸數地陸續成為國際貿易港口。外國商人紛紛抵達臺灣設立洋行進出口商品。福建人李春生，因貿易的機會來到臺灣。他發現淡水附近的丘陵地帶氣候涼爽，非常適合種植某作物。他向外國技師學習相關製程技術，並帶領當地種植者改進加工方式，使得這項產品的香味更穩定、品質更一致。數年後，經改良的這項臺灣產品深受美國市場喜愛，訂單源源不絕。淡水港因此成為重要的出口口岸，許多農民也投入種植，使得這項產品成為當時臺灣出口量最大的商品。李春生的成功，不僅代表一個人的努力，更反映臺灣在開港通商後開始走向世界。與外國的接觸，讓臺灣產業有了新的方向。請問：</button></div><div class="fb"></div><div class="from">114 學年　第 3 次段考　第 17 題</div></div><details class="figs"><summary>另有 2 題只能看不能作答<span class="hint">（選項本身是圖，或原卷用的是表格）</span></summary><div class="figq"><div class="fs">附圖為臺灣主流長度與流域面積皆為前三名的某條河川的全年流量變化圖根據資料判斷，應為水系分佈圖中的哪一條河川？</div><div class="fig"><img src="fig/113-1-3_q13_1.png" alt="原卷附圖" loading="lazy"></div><div class="fo">(A)甲　(B)乙　(C)丁　(D)己</div><div class="fa">答案 <b>A</b>　·　113 學年　第 3 次段考　第 13 題</div></div><div class="figq"><div class="fs">附圖中哪一條河川的名稱，與其流域地區岩層脆弱容易被沖刷入河川，因此河川輸砂量高有關？</div><div class="fig"><img src="fig/113-1-3_q13_1.png" alt="原卷附圖" loading="lazy"><div class="fnote">與第 13 題共用同一張圖</div></div><div class="fo">(A)甲　(B)乙　(C)丙　(D)丁。 ※下表是臺灣四地（恆春、臺南、宜蘭、阿里山）觀測站的氣候統計資料：</div><div class="fa">答案 <b>D</b>　·　113 學年　第 3 次段考　第 14 題</div></div></details></div>
+
+<div class="nav2"><a class="tiny" href="ch-5-4.html">← 5-4 臺灣的氣象災害</a><a class="tiny" href="ch-other.html">其他版本或其他冊的內容 →</a></div>
+
+<div style="text-align:center;margin-top:22px">
+  <a class="back" href="chapter.html">← 回章節目錄</a></div>
+
+<footer>段考試題取自新北市立丹鳳高級中學 112–114 學年度七年級上學期社會科段考試卷<br>題目為重新排版並依翰林版課本章節重新歸類　·　僅供個人學習、非商業使用</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var KEY="jhs7geo-chapter-v2", st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var TOTAL=20;
+function paint(box,pick){
+  var ans=box.dataset.ans, fb=box.querySelector(".fb");
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.classList.add("done");
+    if(b.dataset.k===ans) b.classList.add("right");
+    if(b.dataset.k===pick){ b.classList.add("pick"); if(pick!==ans) b.classList.add("wrong"); }
+  });
+  fb.className="fb on "+(pick===ans?"y":"n");
+  fb.textContent = pick===ans ? "答對了" : ("答案是 "+ans+"　·　你選的是 "+pick);
+  var why=box.querySelector(".why"); if(why) why.classList.add("on");
+}
+function prog(){
+  var n=0;
+  document.querySelectorAll(".q").forEach(function(b){ if(st[b.id]) n++; });
+  var pd=document.getElementById("pd"); if(pd) pd.textContent=n;
+  var pf=document.getElementById("pf"); if(pf) pf.style.width=(TOTAL?n/TOTAL*100:0)+"%";
+}
+document.querySelectorAll(".q").forEach(function(box){
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(box.dataset.locked) return;
+      box.dataset.locked="1";
+      st[box.id]=b.dataset.k; save(); paint(box,b.dataset.k); prog();
+    });
+  });
+  if(st[box.id]){ box.dataset.locked="1"; paint(box,st[box.id]); }
+});
+prog();
+var rst=document.getElementById("rst");
+if(rst) rst.addEventListener("click",function(){
+  document.querySelectorAll(".q").forEach(function(b){ delete st[b.id]; });
+  save(); location.reload();
+});
+})();
+</script>
+</body>
+</html>
