@@ -10,40 +10,48 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);
  font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
-.wrap{max-width:760px;margin:0 auto;padding:30px 20px 80px}
-header{text-align:center;padding:26px 0 6px}
+.wrap{max-width:820px;margin:0 auto;padding:30px 20px 80px}
+header{text-align:center;padding:22px 0 4px}
 h1{font-size:28px;margin:.2em 0 .3em}
 .sub{color:var(--ink2);font-size:15px}
-.why{background:#fff;border:1px solid var(--line);border-radius:14px;
- padding:20px 22px;margin:26px 0 14px;font-size:15.5px}
-.why p{margin:.6em 0}
-.why b{color:var(--accent2)}
-.why h4{margin:1.2em 0 .3em;font-size:15px;color:var(--accent2)}
+.lede{text-align:center;color:var(--ink2);font-size:14.5px;margin:14px 0 4px}
+.lede b{color:var(--accent2)}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px;margin:26px 0 0}
+a.tile{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;
+ border:1px solid var(--line);border-radius:16px;padding:20px 22px 18px;
+ transition:border-color .15s,transform .15s,box-shadow .15s}
+a.tile:hover{border-color:var(--accent);transform:translateY(-3px);
+ box-shadow:0 7px 20px rgba(31,111,92,.10)}
+.ic{font-size:26px;line-height:1;margin-bottom:10px}
+.t-ch{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.t-t{font-size:20px;font-weight:700;margin:5px 0 7px;line-height:1.45}
+.t-d{font-size:14.5px;color:var(--ink2);line-height:1.75;flex:1}
+.t-m{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+.tag{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--ink2)}
+.tag.hot{border-color:#e8d5b0;background:#fdf6ea;color:#8a5717}
+.who{display:block;font-size:12.5px;color:var(--warm);margin-top:9px}
+
 h2{font-size:15px;letter-spacing:.14em;color:var(--ink2);font-weight:700;
- margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:7px}
-h2 .who{font-size:13px;letter-spacing:normal;font-weight:400;color:var(--warm)}
-.jump{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 16px;margin:0 0 13px}
+ margin:38px 0 12px;border-bottom:1px solid var(--line);padding-bottom:7px}
+.jump{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 17px}
 .jump .jt{font-size:13.5px;color:var(--ink2);margin-bottom:9px}
 .jump .jc{font-size:12.5px;font-weight:700;color:var(--warm);margin:9px 0 5px}
 .jump .jc:first-of-type{margin-top:0}
-.jump a{display:inline-block;font-size:13.5px;text-decoration:none;color:var(--ink);background:#fbfaf7;border:1px solid var(--line);border-radius:8px;padding:3px 10px;margin:0 5px 5px 0}
+.jump a{display:inline-block;font-size:13.5px;text-decoration:none;color:var(--ink);
+ background:#fbfaf7;border:1px solid var(--line);border-radius:8px;padding:3px 10px;margin:0 5px 5px 0}
 .jump a:hover{border-color:var(--accent);color:var(--accent2)}
 .jump a b{color:var(--accent);font-weight:700;margin-left:5px}
-.unit{display:block;text-decoration:none;color:inherit;background:#fff;
- border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:13px;
- transition:border-color .15s,transform .15s}
-.unit:hover{border-color:var(--ink);transform:translateY(-2px)}
-.u-ch{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin-bottom:7px}
-.u-t{font-size:19px;font-weight:700;margin-bottom:6px}
-.u-d{font-size:14.5px;color:var(--ink2);line-height:1.75}
-.u-m{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
-.tag{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--ink2)}
-.tag.hot{border-color:#e8d5b0;background:#fdf6ea;color:#8a5717}
-.soon{background:#fbfaf7;border:1px dashed var(--line);border-radius:14px;
- padding:18px 22px;margin-bottom:13px;color:var(--ink2)}
-.soon .u-t{color:var(--ink2)}
+
+details.about{background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 20px;margin-top:14px;font-size:15px}
+details.about summary{cursor:pointer;font-size:14.5px;color:var(--accent2);font-weight:700}
+details.about p{margin:.6em 0;color:var(--ink2)}
+details.about b{color:var(--accent2)}
+details.about h4{margin:1.1em 0 .3em;font-size:14.5px;color:var(--accent2)}
 footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:46px;line-height:1.9}
-@media(max-width:520px){.wrap{padding:18px 13px 60px}h1{font-size:24px}}
+@media(max-width:520px){.wrap{padding:18px 13px 60px}h1{font-size:24px}
+ .tiles{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -54,46 +62,74 @@ footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:46px;line-h
   <div class="sub">翰林版　社會（地理）·　第一篇　臺灣的環境（上）·　課本 p.8–75</div>
 </header>
 
-<div class="why">
-  <p><b>這個站不是把課本再抄一遍。</b>它做兩件課本不做的事：</p>
-  <p>① <b>先問，再說。</b>每個重點都先丟一句問題，答完才展開說明——
-  讓你先發現「這個我其實沒把握」，再去看課本，比從頭讀一遍有用得多。</p>
-  <p>② <b>告訴你哪些是真的會考。</b>站上的會考資料來自
-  <b>111～115 五年的國中教育會考社會科</b>，其中屬於七上地理範圍的共 <b>38 題</b>，
-  是逐題核對原卷挑出來的。</p>
+<p class="lede">四個入口，看你今天要做哪一件事。<br>
+<b>正在上這一冊</b>就走前三個；<b>回頭複習</b>走最後一個。</p>
 
-  <h4>一件在整理時發現、你先知道比較好的事</h4>
-  <p>那 38 題裡，<b>將近一半用的是國外的情境</b>——唐詩寫湖北、玻里尼西亞的毛利文化、
-  南非開普敦的老地圖、極地投影圖。但它們考的<b>全是這本課本教的判讀工具</b>：
-  座標、方向、比例尺、等高線、氣候帶。</p>
-  <p>所以看到題目講外國就慌，是最沒必要的。<b>換的是場景，不是考點。</b></p>
+<div class="tiles">
 
-  <h4>還有一件</h4>
-  <p>五年 38 題裡，<b>超過一半的題目同時用到兩個章節</b>。
-  第 1 章的地圖與座標，其實是後面每一章的工具——它不是「第一個要學的章」，
-  是<b>整本書的工具箱</b>。</p>
+  <a class="tile" href="chapter.html">
+    <div class="ic">📝</div>
+    <div class="t-ch">段考練習　·　照課本章節</div>
+    <div class="t-t">一節一節，照課本的順序練</div>
+    <div class="t-d">
+      112、113、114 三個學年的段考地理題，共 <b>153 題</b>，全部拆回課本的每一節。
+      <b>今天老師教到哪，就練哪一節</b>；每節都標課本頁碼，答完立刻對答案。
+    </div>
+    <div class="t-m">
+      <span class="tag">18 節</span><span class="tag hot">102 題可直接練</span>
+      <span class="tag">附原卷附圖</span><span class="tag">第 1 章附解析</span>
+    </div>
+    <span class="who">段考前，先走這裡</span>
+  </a>
+
+  <a class="tile" href="book.html">
+    <div class="ic">📖</div>
+    <div class="t-ch">課本地圖　·　第 1 章 ～ 第 5 章</div>
+    <div class="t-t">不知道該翻哪一頁的時候</div>
+    <div class="t-d">
+      照課本自己的章、節、頁碼排的 <b>29 個重點</b>，每個先問一句話、答完才展開說明，
+      並且都標<b>該翻回課本第幾頁</b>。這一頁<b>不計分</b>。
+    </div>
+    <div class="t-m">
+      <span class="tag">29 個重點</span><span class="tag">五章＋問題探究</span>
+      <span class="tag hot">附「會考怎麼考這一章」</span>
+    </div>
+    <span class="who">產出不是分數，是「哪幾頁今天該翻」</span>
+  </a>
+
+  <a class="tile" href="globe.html">
+    <div class="ic">🌏</div>
+    <div class="t-ch">互動教具　·　對應課本 1-2、1-3</div>
+    <div class="t-t">經緯與時區地球儀</div>
+    <div class="t-d">
+      可以拖曳旋轉的地球。經線是放射的、緯線是同心圓——<b>在這裡看，比在紙上看清楚得多</b>。
+      切換 <b>15°＝1 小時</b> 的格線就看得到時區怎麼來。
+    </div>
+    <div class="t-m">
+      <span class="tag">可旋轉縮放</span><span class="tag hot">氣候帶界線</span>
+      <span class="tag">晝夜線</span><span class="tag">15 個城市地標</span>
+    </div>
+    <span class="who">經緯度、時區想不通的時候轉一轉</span>
+  </a>
+
+  <a class="tile" href="exam-units.html">
+    <div class="ic">🎯</div>
+    <div class="t-ch">照會考能力走　·　五個單元</div>
+    <div class="t-t">從一道很多人答錯的會考題往下挖</div>
+    <div class="t-d">
+      五年 38 題裡超過一半跨兩章，照章節切會把同一題拆散，所以這一區照<b>能力</b>切。
+      每個單元走<b>五個步驟</b>，還會告訴你<b>全國有多少人跟你選了同一個錯的</b>。
+    </div>
+    <div class="t-m">
+      <span class="tag">5 個單元</span><span class="tag hot">附全國選答分布</span>
+      <span class="tag">111～115 會考</span>
+    </div>
+    <span class="who">回頭複習這一冊的話，走這一區</span>
+  </a>
+
 </div>
 
-<h2>照課本章節走　<span class="who">正在上這一冊的話，從這裡開始</span></h2>
-
-<p style="font-size:14.5px;color:var(--ink2);margin:-2px 0 14px">
-  段考考的是<b>這一節教了什麼</b>，跟會考的跨章節素養題不一樣。
-  所以這一區照<b>課本自己的章、節、頁碼</b>排。</p>
-
-<a class="unit" href="chapter.html">
-  <div class="u-ch">段考練習　·　1-1 ～ 5-4 逐節　·　課本 p.8–75</div>
-  <div class="u-t">一節一節，照課本的順序練</div>
-  <div class="u-d">
-    112、113、114 三個學年的段考地理題，共 <b>153 題</b>，
-    全部拆回課本的每一節——<b>今天老師教到哪，就練哪一節</b>。<br>
-    每一節都標了課本頁碼，答完立刻知道對不對，進度會自己記住。
-  </div>
-  <div class="u-m">
-    <span class="tag">17 節</span><span class="tag hot">102 題可直接練</span>
-    <span class="tag">三個學年段考題</span><span class="tag">附原卷附圖</span>
-    <span class="tag">第 1 章附解析</span><span class="tag">進度自動存</span>
-  </div>
-</a>
+<h2>段考練習　·　直接跳到某一節</h2>
 
 <!-- SECLINKS:start 由 _build_exam_page.py 產生，勿手改 -->
 <div class="jump">
@@ -125,125 +161,31 @@ footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:46px;line-h
 </div>
 <!-- SECLINKS:end -->
 
-<a class="unit" href="book.html">
-  <div class="u-ch">課本地圖　·　第 1 章 ～ 第 5 章　·　課本 p.8–75</div>
-  <div class="u-t">不知道該翻哪一頁的時候，從這裡開始</div>
-  <div class="u-d">
-    照課本自己的章、節、頁碼排，29 個重點各先問一句話，答完才展開說明，
-    並且每張卡片都標<b>該翻回課本第幾頁</b>。<br>
-    這一頁<b>不計分</b>——它的產出不是分數，是一句話：哪幾頁你今天該翻。
-  </div>
-  <div class="u-m">
-    <span class="tag">29 個重點</span>
-    <span class="tag">五章＋問題探究</span>
-    <span class="tag hot">附「會考怎麼考這一章」</span>
-    <span class="tag">進度自動存</span>
-  </div>
-</a>
+<details class="about">
+  <summary>關於這個站——它跟課本有什麼不一樣？</summary>
+  <p><b>這個站不是把課本再抄一遍。</b>它做兩件課本不做的事：</p>
+  <p>① <b>先問，再說。</b>每個重點都先丟一句問題，答完才展開說明——
+  讓你先發現「這個我其實沒把握」，再去看課本，比從頭讀一遍有用得多。</p>
+  <p>② <b>告訴你哪些是真的會考。</b>站上的會考資料來自
+  <b>111～115 五年的國中教育會考社會科</b>，其中屬於七上地理範圍的共 <b>38 題</b>，
+  是逐題核對原卷挑出來的。</p>
 
-<a class="unit" href="globe.html">
-  <div class="u-ch">互動教具　·　對應課本 1-2、1-3　·　課本 p.12–15</div>
-  <div class="u-t">經緯與時區地球儀</div>
-  <div class="u-d">
-    可以拖曳旋轉的地球。經線是放射的、緯線是同心圓——<b>在這裡看，比在紙上看清楚得多。</b><br>
-    切換 <b>15°＝1 小時</b> 的格線就看得到時區怎麼來；晝夜線會跟著真實時間走；
-    赤道、南北回歸線、南北極圈都標了名字，<b>嘉義就坐在北回歸線上</b>。
-  </div>
-  <div class="u-m">
-    <span class="tag">可旋轉縮放</span><span class="tag">93 國中文名稱</span><span class="tag">15 個城市地標</span>
-    <span class="tag hot">氣候帶界線</span><span class="tag">實際時區 vs 理想 15° 帶</span>
-    <span class="tag">晝夜線</span>
-  </div>
-</a>
+  <h4>一件在整理時發現、你先知道比較好的事</h4>
+  <p>那 38 題裡，<b>將近一半用的是國外的情境</b>——唐詩寫湖北、玻里尼西亞的毛利文化、
+  南非開普敦的老地圖、極地投影圖。但它們考的<b>全是這本課本教的判讀工具</b>：
+  座標、方向、比例尺、等高線、氣候帶。</p>
+  <p>所以看到題目講外國就慌，是最沒必要的。<b>換的是場景，不是考點。</b></p>
 
-<h2>照會考能力走　<span class="who">回頭複習這一冊的話，走這一區</span></h2>
-
-<p style="font-size:14.5px;color:var(--ink2);margin:-2px 0 14px">
-  因為五年 38 題裡超過一半跨兩章，照章節切會把同一題拆散。所以這一區的單元改照<b>能力</b>切，
-  每個單元從一道<b>全國很多人答錯的會考題</b>開始往下挖。</p>
-
-<a class="unit" href="map.html">
-  <div class="u-ch">單元 ①　·　讀圖工具箱　·　課本第 1 章</div>
-  <div class="u-t">「上面」不一定是北</div>
-  <div class="u-d">
-    一座冰山在南極附近漂了三年。問它往哪走——<b>29% 的人答案剛好反了 180 度。</b><br>
-    他們不是不會判方向，是<b>「上北下南」這個習慣在極地投影圖上失效了</b>。
-  </div>
-  <div class="u-m">
-    <span class="tag">五步驟</span><span class="tag">作答才解鎖</span>
-    <span class="tag hot">附全國選答分布</span><span class="tag">方向・比例尺・圖例</span>
-  </div>
-</a>
-
-<a class="unit" href="contour.html">
-  <div class="u-ch">單元 ②　·　等高線看地形　·　課本第 3 章 3-2</div>
-  <div class="u-t">等高線會告訴你水往哪裡走</div>
-  <div class="u-d">
-    <b>五年會考，每一年都考等高線</b>——114 年問「哪裡不會被洪水淹」、113 年問「哪裡地勢較高」、
-    115 年問「哪一端是上游」。<br>
-    三種問法，其實只有<b>同兩個動作</b>：看線的疏密、看線的彎向。
-  </div>
-  <div class="u-m">
-    <span class="tag">五步驟</span><span class="tag">作答才解鎖</span>
-    <span class="tag hot">附全國選答分布</span><span class="tag">山谷 vs 山脊圖解</span>
-  </div>
-</a>
-
-<a class="unit" href="coord.html">
-  <div class="u-ch">單元 ③　·　座標定位與氣候　·　課本第 1、2、5 章</div>
-  <div class="u-t">四個字母，砍掉四分之三個地球</div>
-  <div class="u-d">
-    四個岬角的座標，問哪個在歐亞大陸西岸——<b>全國只有 42% 答對，五年來第二難。</b><br>
-    但它難的方式不一樣：<b>三個錯的選項各有人選，沒有哪個特別多</b>——
-    代表大家不是被騙，是<b>根本沒有一套方法可以用</b>。
-  </div>
-  <div class="u-m">
-    <span class="tag">五步驟</span><span class="tag">作答才解鎖</span>
-    <span class="tag hot">附全國選答分布</span><span class="tag">四題會考</span>
-    <span class="tag">可接地球儀</span>
-  </div>
-</a>
-
-<a class="unit" href="rain.html">
-  <div class="u-ch">單元 ④　·　臺灣的氣溫與雨　·　課本第 5 章</div>
-  <div class="u-t">臺灣的水，是哪一場雨給的</div>
-  <div class="u-d">
-    2021 年百年大旱，水庫幾乎見底。問你為什麼——<b>全國有 39% 的人選了同一個錯的，比選對的還多。</b><br>
-    他們錯的不是地理知識，是<b>時間方向</b>：拿 2021 年夏末的事，去解釋 2021 年 5 月的水庫。
-  </div>
-  <div class="u-m">
-    <span class="tag">五步驟</span><span class="tag">作答才解鎖</span>
-    <span class="tag hot">附全國選答分布</span><span class="tag">會考 114-41／112-28／111-29</span>
-  </div>
-</a>
-
-<a class="unit" href="landform.html">
-  <div class="u-ch">單元 ⑤　·　地形怎麼來的　·　課本第 3 章 3-1</div>
-  <div class="u-t">一座島冒出來，然後不見了</div>
-  <div class="u-d">
-    恆河口出現一座島，高 2 公尺，還沒吵完歸誰就消失了。問它<b>怎麼形成</b>的——
-    <b>29% 的人回答了「它為什麼消失」。</b><br>
-    錯的不是地理，是<b>沒把問句讀完</b>。順便把內營力與外營力一次分清楚。
-  </div>
-  <div class="u-m">
-    <span class="tag">五步驟</span><span class="tag">作答才解鎖</span>
-    <span class="tag hot">附全國選答分布</span><span class="tag">內外營力對照圖</span>
-    <span class="tag">會考 113-42／111-2／111-4</span>
-  </div>
-</a>
-
-<div class="soon">
-  <div class="u-ch">會考實戰　·　111～115 學年度</div>
-  <div class="u-t">五年來考過的七上地理，一次做完</div>
-  <div class="u-d">
-    38 題按考點編排，附官方選答分布——看得到<b>全國有多少人跟你選了同一個錯的</b>。
-  </div>
-  <div class="u-m"><span class="tag">38 題</span><span class="tag">規劃中</span></div>
-</div>
+  <h4>還有一件</h4>
+  <p>五年 38 題裡，<b>超過一半的題目同時用到兩個章節</b>。
+  第 1 章的地圖與座標，其實是後面每一章的工具——它不是「第一個要學的章」，
+  是<b>整本書的工具箱</b>。</p>
+</details>
 
 <footer>
   依翰林版七上社會（地理）第一篇之章節與頁碼編排　·　說明文字為自行撰寫<br>
   會考試題與統計取自國中教育會考官方試題分析（111–114）與試題本（115）<br>
+  段考試題取自新北市立丹鳳高級中學 112–114 學年度七年級上學期社會科段考試卷<br>
   課本與試題著作權屬原權利人所有，本站僅供個人學習、非商業使用
 </footer>
 
