@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 300" width="430" role="img"
+     aria-label="澎湖到高雄的方向示意圖：船從澎湖往東南方開往高雄">
+<style>
+  .lbl{font:600 15px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:#22201f}
+  .sm{font:500 12.5px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:#5b5651}
+  .hot{font:700 14px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:#b3402f}
+  .cmp{font:700 12px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:#5b5651}
+  .cmpN{font:700 12px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:#0e4c3f}
+</style>
+<defs>
+  <marker id="ah" markerWidth="11" markerHeight="11" refX="8" refY="3.5" orient="auto">
+    <path d="M0,0 L9,3.5 L0,7 z" fill="#b3402f"/>
+  </marker>
+</defs>
+
+<rect x="1" y="1" width="428" height="298" fill="#fffdf8" stroke="#ddd7cc"/>
+
+<!-- 海 -->
+<rect x="2" y="2" width="426" height="296" fill="#eaf2f6"/>
+
+<!-- 臺灣本島西南部（簡化輪廓，只為了讓高雄有所依附） -->
+<path d="M300,12 L332,40 L352,86 L362,140 L352,196 L326,240 L296,268 L268,286 L428,286 L428,12 Z"
+      fill="#e6efdf" stroke="#9bb48a" stroke-width="1.6"/>
+<text x="384" y="60" class="sm">臺灣本島</text>
+
+<!-- 澎湖群島 -->
+<g fill="#cfd9c4" stroke="#7f8f72" stroke-width="1.2">
+  <ellipse cx="98" cy="118" rx="17" ry="11"/>
+  <ellipse cx="79" cy="139" rx="9" ry="6"/>
+  <ellipse cx="112" cy="141" rx="7" ry="5"/>
+  <ellipse cx="92" cy="98" rx="6" ry="4"/>
+</g>
+<text x="52" y="88" class="lbl">澎湖群島</text>
+<text x="52" y="163" class="sm">（起點）</text>
+
+<!-- 高雄 -->
+<circle cx="300" cy="212" r="6" fill="#b3402f"/>
+<text x="312" y="209" class="lbl">高雄</text>
+<text x="312" y="228" class="sm">（終點）</text>
+
+<!-- 航向箭頭：澎湖 → 高雄 -->
+<path d="M118,131 L286,204" fill="none" stroke="#b3402f" stroke-width="3.4"
+      marker-end="url(#ah)"/>
+<text x="150" y="185" class="hot">船的方向：東南</text>
+
+<!-- 方位盤 -->
+<g transform="translate(374,236)">
+  <circle cx="0" cy="0" r="30" fill="#fff" stroke="#ddd7cc"/>
+  <line x1="0" y1="-24" x2="0" y2="24" stroke="#c9c3b8" stroke-width="1.2"/>
+  <line x1="-24" y1="0" x2="24" y2="0" stroke="#c9c3b8" stroke-width="1.2"/>
+  <path d="M0,-26 L4,-16 L0,-19 L-4,-16 z" fill="#0e4c3f"/>
+  <text x="-4" y="-29" class="cmpN">北</text>
+  <text x="-4" y="39" class="cmp">南</text>
+  <text x="-38" y="4" class="cmp">西</text>
+  <text x="28" y="4" class="cmp">東</text>
+  <line x1="0" y1="0" x2="16" y2="16" stroke="#b3402f" stroke-width="2.6"/>
+  <circle cx="16" cy="16" r="2.6" fill="#b3402f"/>
+</g>
+
+<!-- 說明 -->
+<text x="14" y="286" class="sm">高雄在澎湖的東邊、又偏南一點 → 從澎湖開往高雄要走東南方</text>
+</svg>
