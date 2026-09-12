@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>課本地圖｜七上地理（列印版）</title>
+<style>
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#f7f6f2;color:#22201f;
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.phead{max-width:780px;margin:0 auto;padding:26px 20px 6px}
+.phead h1{font-size:26px;margin:.2em 0 .3em;line-height:1.5}
+.phead .lead{color:#5b5651;font-size:14.5px;line-height:1.9;margin:.4em 0}
+.phead .tip{background:#fff;border:1px solid #ddd7cc;border-radius:12px;
+ padding:13px 16px;margin:16px 0 4px;font-size:14.5px;line-height:1.9}
+.phead .tip b{color:#0e4c3f}
+/* 互動版要點開才看得到的解析，列印版一律攤開 */
+.pg .why,.pg .say,.pg .rev{display:block!important}
+.pg .lock{opacity:1!important;filter:none!important;pointer-events:auto!important}
+.pg .opt{cursor:default!important}
+.pg .opt.right{border-color:#1f7a4d!important;background:#f0f8f3!important}
+.pg .pmark{color:#1f7a4d;font-weight:700;font-size:13px;margin-left:9px;white-space:nowrap}
+.pg img{max-width:100%;height:auto}
+.pg .fl{transition:none!important}
+@media print{
+ @page{size:A4;margin:14mm 12mm}
+ body{background:#fff}
+ .noprint{display:none!important}
+ .pg{break-before:page}
+ .pg:first-of-type{break-before:auto}
+ .pg .q,.pg .card,.pg .box,.pg .name,.pg .bar{break-inside:avoid}
+ .pg h2,.pg .ch-h,.pg .c-h,.pg header{break-after:avoid}
+ a{color:inherit;text-decoration:none}
+}
+:root{--paper:#f7f6f2;--ink:#22201f;--ink2:#5b5651;--line:#ddd7cc;
+ --accent:#1f6f5c;--accent2:#0e4c3f;--warm:#b5762a;--ok:#1f7a4d;--no:#b3402f}*{box-sizing:border-box}.pg.s1{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.85 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}.pg.s1 .wrap{max-width:760px;margin:0 auto;padding:30px 20px 90px}.pg.s1 header{text-align:center;padding:24px 0 10px}.pg.s1 h1{font-size:27px;margin:.2em 0 .3em;letter-spacing:.02em}.pg.s1 .sub{color:var(--ink2);font-size:15px}.pg.s1 .intro{background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:20px 22px;margin:24px 0 30px;font-size:15.5px}.pg.s1 .intro p{margin:.6em 0}.pg.s1 .intro b{color:var(--accent2)}.pg.s1 .bar{position:sticky;top:0;z-index:9;background:rgba(247,246,242,.94);
+ backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+ padding:9px 0;margin-bottom:6px;font-size:13.5px;color:var(--ink2);text-align:center}.pg.s1 .bar b{color:var(--accent2)}.pg.s1 .ch{margin:38px 0 0}.pg.s1 .ch-h{border-left:5px solid var(--accent);padding:2px 0 2px 14px;margin-bottom:6px}.pg.s1 .ch-n{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700}.pg.s1 .ch-t{font-size:21px;font-weight:700;margin:2px 0}.pg.s1 .ch-p{font-size:13px;color:var(--ink2)}.pg.s1 .ch-lead{font-size:15px;margin:12px 0 6px}.pg.s1 .ch-exam{background:#fdf6ea;border:1px solid #e8d5b0;border-left:4px solid var(--warm);
+ border-radius:10px;padding:11px 14px;font-size:14px;margin:12px 0 18px}.pg.s1 .ch-exam b{color:#8a5717}.pg.s1 .card{background:#fff;border:1px solid var(--line);border-radius:13px;
+ padding:17px 19px;margin:13px 0}.pg.s1 .c-h{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;margin-bottom:9px}.pg.s1 .c-no{font-weight:700;color:var(--accent)}.pg.s1 .c-t{font-weight:700;font-size:16.5px}.pg.s1 .c-p{margin-left:auto;font-size:12.5px;color:#fff;background:var(--accent);
+ border-radius:99px;padding:2px 11px;white-space:nowrap}.pg.s1 .q{font-size:16px;margin:4px 0 13px}.pg.s1 .opts{display:flex;flex-direction:column;gap:8px}.pg.s1 .opt{text-align:left;font:inherit;font-size:15px;cursor:pointer;
+ background:#fbfaf7;border:1.5px solid var(--line);border-radius:10px;
+ padding:11px 14px;transition:.13s}.pg.s1 .opt:hover:not(.done){border-color:var(--accent);background:#fff}.pg.s1 .opt .k{font-weight:700;color:var(--ink2);margin-right:8px}.pg.s1 .opt.done{cursor:default}.pg.s1 .opt.right{border-color:var(--ok);background:#f0f8f3}.pg.s1 .opt.right .k{color:var(--ok)}.pg.s1 .opt.wrong{border-color:var(--no);background:#fdf2f0;opacity:.75}.pg.s1 .opt.wrong .k{color:var(--no)}.pg.s1 .say{display:none;margin-top:13px;padding-top:13px;border-top:1px dashed var(--line);
+ font-size:15px;animation:up .35s ease}.pg.s1 .say.on{display:block}.pg.s1 .say p{margin:.55em 0}.pg.s1 .say b{color:var(--accent2)}.pg.s1 .turn{margin-top:12px;padding:11px 14px;background:#f2f7f5;border-radius:10px;
+ font-size:14.5px;color:var(--accent2)}.pg.s1 .done-all{background:#fff;border:2px solid var(--accent);border-radius:14px;
+ padding:22px;margin:34px 0;display:none}.pg.s1 .done-all.on{display:block}.pg.s1 .btns{text-align:center;margin:34px 0 0}.pg.s1 .btn{font:inherit;font-size:14px;cursor:pointer;background:#fff;
+ border:1px solid var(--line);border-radius:9px;padding:9px 18px;color:var(--ink2)}.pg.s1 .btn:hover{border-color:var(--ink2)}.pg.s1 footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:44px;line-height:1.9}@media(max-width:520px){.pg.s1 .wrap{padding:18px 13px 70px}.pg.s1 h1{font-size:23px}.pg.s1 .c-p{margin-left:0}}</style>
+</head>
+<body>
+<div class="phead">
+  <h1>課本地圖｜七上地理　<span style="font-size:15px;color:#5b5651">列印版</span></h1>
+  <p class="lead">課本五章 29 個重點，每個先問一句話，再說明該翻課本哪一頁。</p>
+  <div class="tip noprint">
+    <b>要存成 PDF：</b>按 <b>Ctrl+P</b>（手機用瀏覽器選單的「列印」），
+    印表機那一欄選 <b>「另存為 PDF」</b>。<br>
+    這一頁已經把所有解析攤開、正解標了 <b>✔</b>，不必先作答。<br>
+    <span style="color:#5b5651">回互動版：<a href="book.html">課本地圖</a></span>
+  </div>
+</div>
+<section class="pg s1">
+<div class="wrap">
+
+<header>
+  <h1>課本地圖</h1>
+  <div class="sub">七年級上學期　社會（地理）·　翰林版　第一篇　臺灣的環境（上）</div>
+</header>
+
+<div class="intro">
+  <p><b>這一頁不計分。</b>它的產出不是分數，是一句話：<b>「哪幾頁你今天該翻。」</b></p>
+  <p>每個重點<b>先問一句話</b>，答完才展開說明——先讓你發現「這個我其實沒把握」，再去看課本，
+  比從頭讀一遍有用得多。</p>
+  <p>說明都是<b>用我們自己的話重寫</b>的，只借課本的標題與頁碼。所以看完說明，
+  <b>還是要翻回課本那一頁</b>對照——那才是段考會考的東西。</p>
+</div>
+
+
+
+<section class="ch" id="ch1">
+<div class="ch-h"><div class="ch-n">第 1 章</div><div class="ch-t">認識位置與地圖</div><div class="ch-p">課本 p.8–21</div></div>
+<p class="ch-lead">這一章看起來是「開學第一章」，其實是<strong>整本書的工具箱</strong>。後面三章的會考題，有一半要先用這章的東西才讀得懂圖。</p>
+<div class="ch-exam">📊 <b>會考怎麼考這一章</b>：五年會考考了 15 題——<b>全冊最多</b>。而且大多不是單考經緯度，是拿地圖與座標當工具去解別章的題。</div>
+<div class="card" data-id="ch1-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">相對位置與絕對位置</span><span class="c-p">課本 p.10</span></div><div class="q">「我家在便利商店對面」——這句話描述的是哪一種位置？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>相對位置<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>絕對位置</div></div><div class="say"><p><strong>相對位置</strong>是拿別的東西當參考點：對面、隔壁、北方三公里。換一個參考點，講法就變了。</p><p><strong>絕對位置</strong>不需要參考點，用經緯度座標直接把地球上那一點釘住。</p><p>兩種都對，差別在<em>「需不需要別人才說得清楚」</em>。</p><div class="turn">📖 翻開課本 <b>p.10</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-1" data-ans="A"><div class="c-h"><span class="c-no">②</span><span class="c-t">經線與緯線</span><span class="c-p">課本 p.12</span></div><div class="q">地球上長度全部一樣的，是經線還是緯線？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>經線<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>緯線</div></div><div class="say"><p><strong>經線</strong>都是從北極連到南極的半圓，每一條都一樣長。</p><p><strong>緯線</strong>是一圈一圈的圓，赤道最長，越往兩極越短，到極點縮成一個點。</p><p>課本 p.12 那張比較表把四件事排在一起：定義、方向、度數、長度。<em>會混的通常是「長度」那一列。</em></p><div class="turn">📖 翻開課本 <b>p.12</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-2" data-ans="A"><div class="c-h"><span class="c-no">③</span><span class="c-t">經緯度座標怎麼寫</span><span class="c-p">課本 p.13</span></div><div class="q">座標 (25°N, 121°E) 裡的 N 和 E，是在說什麼？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>北緯、東經<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>北方、東方</div></div><div class="say"><p>N＝北緯、S＝南緯、E＝東經、W＝西經。<strong>它們標的是「從哪裡算起、往哪邊算」</strong>，不是方向詞。</p><p>緯度從赤道往南北各算到 90°，經度從本初經線往東西各算到 180°。</p><p>📌 這一格是會考最愛的：111-18、112-16、113-33、114-52、115-28 都在考「把一段文字描述換成座標」或「從座標判斷在哪個半球」。</p><div class="turn">📖 翻開課本 <b>p.13</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-3" data-ans="A"><div class="c-h"><span class="c-no">④</span><span class="c-t">經度與時區</span><span class="c-p">課本 p.14</span></div><div class="q">兩地經度差 15 度，時間大約差多少？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>1 小時<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>15 分鐘</div></div><div class="say"><p>地球一天自轉 360 度、共 24 小時，所以 <strong>360 ÷ 24 ＝ 15 度換 1 小時</strong>。</p><p>往東時間早、往西時間晚——這也是為什麼跨太平洋飛行會「回到昨天」。</p><div class="turn">📖 翻開課本 <b>p.14</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-4" data-ans="A"><div class="c-h"><span class="c-no">⑤</span><span class="c-t">緯度與氣候</span><span class="c-p">課本 p.15</span></div><div class="q">為什麼緯度越高越冷？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>太陽光照射角度變斜，同樣的光攤在更大的地面上<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>緯度高的地方離太陽比較遠</div></div><div class="say"><p>地球那麼小、太陽那麼遠，<strong>「離太陽遠近」的差別可以忽略</strong>。真正的原因是<em>角度</em>：低緯度太陽接近直射，能量集中；高緯度斜射，同樣一束光攤開在更大的地面上。</p><p>課本用 23.5° 的地軸傾斜解釋回歸線與極圈的位置，並把世界分成熱帶、溫帶、寒帶三個氣候帶。</p><div class="turn">📖 翻開課本 <b>p.15</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-5" data-ans="A"><div class="c-h"><span class="c-no">⑥</span><span class="c-t">地圖的四要素</span><span class="c-p">課本 p.16</span></div><div class="q">一張地圖上如果沒有比例尺，最直接的後果是什麼？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>沒辦法知道圖上的距離代表實際多遠<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>沒辦法知道哪邊是北方</div></div><div class="say"><p>四要素各管一件事：<strong>圖名</strong>（這是什麼圖）、<strong>圖例</strong>（符號代表什麼）、<strong>方向標</strong>（哪邊是北）、<strong>比例尺</strong>（圖上距離換算實際距離）。</p><p>少了方向標才是不知道北方——但一般地圖預設<em>上北下南</em>，所以少比例尺的殺傷力更大。</p><p>📌 112-49 那題南非開普敦的老市街圖，四要素齊備，考的正是「會不會用」。</p><div class="turn">📖 翻開課本 <b>p.16</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-6" data-ans="A"><div class="c-h"><span class="c-no">⑦</span><span class="c-t">比例尺的三種表示法</span><span class="c-p">課本 p.17</span></div><div class="q">比例尺 1／10,000 代表圖上 1 公分等於實際多遠？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>100 公尺<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>10 公尺</div></div><div class="say"><p>1 : 10,000 是說圖上 1 公分＝實際 10,000 公分。<strong>10,000 公分 ÷ 100 ＝ 100 公尺</strong>。</p><p>三種寫法講的是同一件事：<em>數字式</em> 1/10,000、<em>文字式</em>「一萬分之一」、<em>圖示式</em>（一根有刻度的線段）。</p><p>圖示式有個好處：地圖被放大縮小印出來時，<strong>只有它還是對的</strong>。</p><div class="turn">📖 翻開課本 <b>p.17</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch1-7" data-ans="A"><div class="c-h"><span class="c-no">⑧</span><span class="c-t">大比例尺與小比例尺</span><span class="c-p">課本 p.17</span></div><div class="q">屏東縣地圖和臺灣行政區圖，哪一張是「大比例尺」？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>屏東縣地圖<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>臺灣行政區圖</div></div><div class="say"><p>分母越小，比例尺越大。<strong>大比例尺＝範圍小、內容詳細</strong>；<strong>小比例尺＝範圍大、內容簡略</strong>。</p><p>直覺容易反過來——因為「臺灣」聽起來比較大。記住比的是<em>分數大小</em>，不是地方大小：1/10,000 比 1/1,000,000 大得多。</p><div class="turn">📖 翻開課本 <b>p.17</b> 對照一次。</div></div></div>
+</section>
+<section class="ch" id="ch2">
+<div class="ch-h"><div class="ch-n">第 2 章</div><div class="ch-t">世界中的臺灣</div><div class="ch-p">課本 p.22–31</div></div>
+<p class="ch-lead">這一章在回答一個問題：<strong>臺灣在世界的哪裡，這個位置給了臺灣什麼。</strong></p>
+<div class="ch-exam">📊 <b>會考怎麼考這一章</b>：五年只考 4 題，但 112-10「領海 12 浬／經濟海域 200 浬」那題是直球，值得記牢。</div>
+<div class="card" data-id="ch2-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">海陸分布不均</span><span class="c-p">課本 p.24</span></div><div class="q">北半球和南半球，哪一邊陸地比較多？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>北半球<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>南半球</div></div><div class="say"><p>北半球陸地 <strong>39%</strong>、海洋 61%；南半球陸地只有 <strong>19%</strong>、海洋 81%。</p><p>所以全球人口絕大多數住在北半球——<em>不是因為北邊比較好住，是因為南邊根本沒什麼陸地。</em></p><div class="turn">📖 翻開課本 <b>p.24</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch2-1" data-ans="A"><div class="c-h"><span class="c-no">②</span><span class="c-t">三大洋與七大洲</span><span class="c-p">課本 p.25</span></div><div class="q">面積最大的大洋和最大的洲，分別是？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>太平洋、亞洲<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>大西洋、非洲</div></div><div class="say"><p>大洋：太平洋 <strong>49%</strong>、大西洋 26%、印度洋 21%。</p><p>大洲：亞洲 <strong>29%</strong>、非洲 20%、北美洲 15%、中南美洲 13%、南極洲 10%、歐洲 7%、大洋洲 6%。</p><p>歐亞相連卻分成兩洲，是<em>歷史文化上的分法</em>，不是地理上斷開。</p><div class="turn">📖 翻開課本 <b>p.25</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch2-2" data-ans="A"><div class="c-h"><span class="c-no">③</span><span class="c-t">臺灣的三種位置</span><span class="c-p">課本 p.26</span></div><div class="q">「臺灣位於東經 120～122 度、北緯 22～25 度」——這是哪一種位置？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>絕對位置<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>相對位置</div></div><div class="say"><p>三種講法各有用途：</p><p><strong>絕對位置</strong>＝東經 120～122 度、北緯 22～25 度。<br/><strong>相對位置</strong>＝太平洋的西側、亞洲大陸的東側。<br/><strong>海陸位置</strong>＝世界上<em>最大海洋與最大陸地的交會帶</em>上。</p><p>第三種最常被忽略，但它才是後面「交通樞紐、生物中繼站、生態多元」三個影響的根。</p><div class="turn">📖 翻開課本 <b>p.26</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch2-3" data-ans="A"><div class="c-h"><span class="c-no">④</span><span class="c-t">位置帶來的三個影響</span><span class="c-p">課本 p.26–27</span></div><div class="q">臺灣成為候鳥遷徙中繼站，主要跟哪一種位置有關？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>海陸位置——大陸與海洋交會帶上<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>絕對位置——北緯 22～25 度</div></div><div class="say"><p>課本列了三個影響：<strong>重要的交通樞紐</strong>（東亞島弧、過境航路）、<strong>生物遷徙的中繼站</strong>、<strong>多元的生態環境</strong>。</p><p>三個都是從「<em>剛好卡在最大陸地與最大海洋之間</em>」推出來的。</p><div class="turn">📖 翻開課本 <b>p.26–27</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch2-4" data-ans="A"><div class="c-h"><span class="c-no">⑤</span><span class="c-t">領海與經濟海域</span><span class="c-p">課本 p.28–29</span></div><div class="q">經濟海域（200 浬）算不算一個國家的領土？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>不算，只有 12 浬領海才屬於領域<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>算，200 浬內都是領土</div></div><div class="say"><p><strong>領海 12 浬</strong>屬於國家領域，主權完整；<strong>專屬經濟海域 200 浬</strong>只有<em>資源探勘與開發的權利</em>，不是領土。</p><p>📌 112-10 就在考這條界線：題目畫了同心圓，問「完整的領土範圍」該包含哪幾塊。<strong>把 200 浬當領土是最常見的錯。</strong></p><div class="turn">📖 翻開課本 <b>p.28–29</b> 對照一次。</div></div></div>
+</section>
+<section class="ch" id="inq">
+<div class="ch-h"><div class="ch-n">問題探究</div><div class="ch-t">立足臺灣，連結世界</div><div class="ch-p">課本 p.32–33</div></div>
+<p class="ch-lead">這是課本裡<strong>獨立於各章之外</strong>的單元（頁尾書眉跟各章平行），用資料表讓你自己得結論。</p>
+<div class="card" data-id="inq-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">用數據看臺灣</span><span class="c-p">課本 p.32–33</span></div><div class="q">這個單元要你做的事，比較接近下列哪一個？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>從排名與統計表自己讀出臺灣的處境<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>背下臺灣的世界排名數字</div></div><div class="say"><p>主題一給世界競爭力與面積人口排名，主題二給進出國門旅客人數。</p><p>它問的不是「第幾名」，是<strong>「面積人口都不大，為什麼某些指標排得前面」</strong>。<em>數字是拿來推論的，不是拿來背的。</em></p><div class="turn">📖 翻開課本 <b>p.32–33</b> 對照一次。</div></div></div>
+</section>
+<section class="ch" id="ch3">
+<div class="ch-h"><div class="ch-n">第 3 章</div><div class="ch-t">地形</div><div class="ch-p">課本 p.34–47</div></div>
+<p class="ch-lead">這一章的重點不是背地形名稱，是<strong>看得懂地形怎麼被畫在平面的紙上</strong>。</p>
+<div class="ch-exam">📊 <b>會考怎麼考這一章</b>：五年會考 12 題，僅次於第 1 章。<b>等高線判讀幾乎年年出現</b>（112-47、113-3、114-17、115-29）。</div>
+<div class="card" data-id="ch3-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">五大基本類型</span><span class="c-p">課本 p.36–37</span></div><div class="q">臺灣沒有下列哪一種基本地形？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>高原<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>盆地</div></div><div class="say"><p>全世界的地形依<strong>高度與起伏</strong>分成五大類：山地、高原、丘陵、平原、盆地。</p><p><strong>臺灣沒有高原</strong>，但有規模與高度都比較小的<em>台地</em>——所以講臺灣地形時，是「平原、盆地、台地、丘陵、山地」五種。</p><div class="turn">📖 翻開課本 <b>p.36–37</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch3-1" data-ans="A"><div class="c-h"><span class="c-no">②</span><span class="c-t">內營力與外營力</span><span class="c-p">課本 p.37</span></div><div class="q">河流在出山口堆出的沖積扇，是哪一種力量做的？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>外營力<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>內營力</div></div><div class="say"><p><strong>內營力</strong>來自地球內部：板塊運動、火山活動——它<em>把地表推高、弄皺</em>。</p><p><strong>外營力</strong>作用在地表：風和水的侵蝕、搬運、堆積——它<em>把地表磨平、填滿</em>。</p><p>兩股力量一直在互相抵銷，我們看到的地形是<strong>當下的平手結果</strong>。</p><div class="turn">📖 翻開課本 <b>p.37</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch3-2" data-ans="A"><div class="c-h"><span class="c-no">③</span><span class="c-t">地形的三種表示方法</span><span class="c-p">課本 p.38–40</span></div><div class="q">想知道某座山「有多陡」，看哪一種圖最直接？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>等高線地形圖<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>分層設色圖</div></div><div class="say"><p><strong>等高線圖</strong>把同高度的點連成封閉曲線——<em>線密＝坡陡，線疏＝坡緩</em>，還能看出山谷與山脊。</p><p><strong>分層設色圖</strong>用顏色表示高度範圍，適合一眼看整體高低，但看不出細部坡度。</p><p><strong>地形剖面圖</strong>把某一條線切開來看側面起伏。</p><p>📌 111-26 用瑞士鐵路考剖面圖判讀——官方把它歸在「交通」，<strong>但真正要你會的是這一節的東西。</strong></p><div class="turn">📖 翻開課本 <b>p.38–40</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch3-3" data-ans="A"><div class="c-h"><span class="c-no">④</span><span class="c-t">臺灣五大地形的分布</span><span class="c-p">課本 p.42–45</span></div><div class="q">臺灣的平原為什麼主要集中在西部？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>因為山脈位置偏東<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>因為西部降雨比較多</div></div><div class="say"><p>山脈偏東，河川從山上帶下來的泥沙就往西邊堆——平原多為<strong>河川沖積</strong>而成，面積最大的是<strong>嘉南平原</strong>。</p><p>其餘：盆地散布在山地丘陵之間（臺北、臺中都會區）、台地高約 <strong>1～200 公尺</strong>、丘陵多在山地外緣（茶園果園）、山地在中央偏東，<strong>玉山主峰 3,952 公尺</strong>是最高峰。</p><div class="turn">📖 翻開課本 <b>p.42–45</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch3-4" data-ans="A"><div class="c-h"><span class="c-no">⑤</span><span class="c-t">盆地的兩面性</span><span class="c-p">課本 p.44</span></div><div class="q">住在盆地裡，夏天悶熱是因為什麼？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>四周山脈丘陵擋住，通風不易<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>盆地地勢低，離太陽比較近</div></div><div class="say"><p>環繞四周的高地讓空氣不易流通，熱散不掉，所以<strong>臺北盆地夏天特別悶</strong>。</p><p>但同一圈高地也是<em>地形屏障</em>，能減少風災危害——<strong>同一個地形特徵，同時帶來壞處和好處。</strong></p><div class="turn">📖 翻開課本 <b>p.44</b> 對照一次。</div></div></div>
+</section>
+<section class="ch" id="ch4">
+<div class="ch-h"><div class="ch-n">第 4 章</div><div class="ch-t">海岸與島嶼</div><div class="ch-p">課本 p.48–59</div></div>
+<p class="ch-lead">海岸怎麼分類？答案很單純：<strong>看它是什麼東西做的。</strong></p>
+<div class="ch-exam">📊 <b>會考怎麼考這一章</b>：五年只考 3 題，是全冊最少的一章——但概念很好記，投報率高。</div>
+<div class="card" data-id="ch4-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">海岸的分類依據</span><span class="c-p">課本 p.50</span></div><div class="q">課本把海岸分成沙岸、岩岸、珊瑚礁海岸，依據的是什麼？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>海岸的構成物質<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>海岸線的長短</div></div><div class="say"><p>依<strong>構成物質</strong>分：沙、岩石、珊瑚礁。</p><p><strong>沙岸</strong>＝堆積作用形成，海岸平原廣、海水淺、海岸線平直，多沙洲潟湖，可發展鹽業與養殖漁業。<br/><strong>岩岸</strong>＝山地丘陵逼近海洋，岬灣相間、海水深、多良港，適合捕撈漁業與海運。<br/><strong>珊瑚礁海岸</strong>＝熱帶淺海、水質乾淨，由死亡珊瑚蟲骨骼堆積而成。</p><div class="turn">📖 翻開課本 <b>p.50</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch4-1" data-ans="A"><div class="c-h"><span class="c-no">②</span><span class="c-t">臺灣的四段海岸</span><span class="c-p">課本 p.52–53</span></div><div class="q">臺灣哪一段海岸「天然港灣最少、不利海運」？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>東部斷層海岸<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>西部沙岸</div></div><div class="say"><p>臺灣海岸線長 <strong>1,341 公里</strong>，分四段：</p><p><strong>北部岬灣</strong>——曲折、良港多（基隆港、八斗子），風化侵蝕造出野柳奇岩。<br/><strong>西部沙岸</strong>——平直、坡緩、缺深港，魚塭蚵架廣布。<br/><strong>南部珊瑚礁</strong>——地表崎嶇，墾丁。<br/><strong>東部斷層</strong>——面太平洋、在板塊交界，除宜蘭平原外多是懸崖峭壁，<em>海岸線陡直、港灣少</em>。</p><p>西部是「淺到沒辦法停大船」，東部是「陡到沒有地方停」——<strong>兩種缺港的理由完全相反。</strong></p><div class="turn">📖 翻開課本 <b>p.52–53</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch4-2" data-ans="A"><div class="c-h"><span class="c-no">③</span><span class="c-t">離島的三種成因</span><span class="c-p">課本 p.54–55</span></div><div class="q">澎湖群島屬於哪一種島？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>火山島<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>大陸島</div></div><div class="say"><p><strong>大陸島</strong>＝海水面上升，沿海丘陵的高處露出海面，地質與大陸相連——金門、馬祖。<br/><strong>火山島</strong>＝火山活動造成，臺灣在板塊交界帶所以多數離島屬此——<em>澎湖（柱狀玄武岩）、龜山島、綠島、蘭嶼、釣魚臺列嶼</em>。<br/><strong>珊瑚礁島</strong>＝海底珊瑚礁露出海面——東沙島、太平島、琉球嶼。</p><p>最後這類面積雖小，但延伸出去的<strong>經濟海域</strong>讓它們在經濟上很重要（接回第 2 章的 200 浬）。</p><div class="turn">📖 翻開課本 <b>p.54–55</b> 對照一次。</div></div></div>
+</section>
+<section class="ch" id="ch5">
+<div class="ch-h"><div class="ch-n">第 5 章</div><div class="ch-t">天氣與氣候</div><div class="ch-p">課本 p.60–75</div></div>
+<p class="ch-lead">這一章有一個很容易混的起點：<strong>天氣和氣候不是同一件事。</strong></p>
+<div class="ch-exam">📊 <b>會考怎麼考這一章</b>：五年會考 9 題。<b>降水類型與氣象災害最常出現</b>（114-41 一題就把四種降水放進選項）。</div>
+<div class="card" data-id="ch5-0" data-ans="A"><div class="c-h"><span class="c-no">①</span><span class="c-t">天氣與氣候的差別</span><span class="c-p">課本 p.62、p.66</span></div><div class="q">「臺灣夏天悶熱多雨」這句話，講的是天氣還是氣候？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>氣候<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>天氣</div></div><div class="say"><p><strong>天氣</strong>＝一個地區<em>短時間</em>內的大氣狀態（今天下午雷陣雨）。</p><p><strong>氣候</strong>＝<em>長時間統計</em>後的平均狀態（臺灣夏天悶熱多雨）。</p><p>一句話分辨：<strong>講「今天」是天氣，講「通常」是氣候。</strong></p><div class="turn">📖 翻開課本 <b>p.62、p.66</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-1" data-ans="A"><div class="c-h"><span class="c-no">②</span><span class="c-t">三種降水類型</span><span class="c-p">課本 p.63</span></div><div class="q">夏天午後那種「雨很大但下不久」的雷陣雨，是哪一種？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>對流雨<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>地形雨</div></div><div class="say"><p><strong>對流雨</strong>——高溫日照使空氣上下對流旺盛，特徵是<em>雨勢強、雨時短、雨區小</em>。</p><p><strong>地形雨</strong>——潮溼空氣被山擋住往上爬，造成<em>迎風坡多雨、背風坡少雨</em>。</p><p><strong>鋒面雨</strong>——冷暖氣團相遇，暖空氣沿鋒面爬升，特徵是<em>雨時長、雨區大</em>；每年 5、6 月的梅雨就是。</p><p>📌 114-41 給水庫蓄水量表，四個選項正是這三種＋颱風雨。</p><div class="turn">📖 翻開課本 <b>p.63</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-2" data-ans="A"><div class="c-h"><span class="c-no">③</span><span class="c-t">氣候統計怎麼算</span><span class="c-p">課本 p.66</span></div><div class="q">年溫差是怎麼算出來的？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>最暖月均溫 − 最冷月均溫<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>全年最高溫 − 全年最低溫</div></div><div class="say"><p>五個定義環環相扣：<br/><strong>月均溫</strong>＝該月日均溫總和 ÷ 該月天數<br/><strong>年均溫</strong>＝12 個月月均溫總和 ÷ 12<br/><strong>年降水量</strong>＝12 個月降水量總和<br/><strong>年溫差</strong>＝最暖月均溫 − 最冷月均溫</p><p>用的是<em>月均溫</em>不是單日極端值——所以年溫差比你想的小。臺灣七月最暖、一月最冷。</p><div class="turn">📖 翻開課本 <b>p.66</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-3" data-ans="A"><div class="c-h"><span class="c-no">④</span><span class="c-t">影響臺灣氣候的因素</span><span class="c-p">課本 p.68</span></div><div class="q">課本列出影響臺灣氣候的因素，有幾項？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>三項：緯度、地形、季風<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>四項：緯度、地形、季風、洋流</div></div><div class="say"><p>課本原文：「臺灣的氣候主要受到<strong>緯度、地形、季風</strong>等因素影響」——<em>只有三項</em>。</p><p>🔴 很多參考書會加上「洋流」，但<strong>這一冊沒有教</strong>。段考考的是課本，多寫不會加分，答錯反而扣分。</p><p>三項各自對應後面三節：緯度→氣溫南北差異、地形→氣溫垂直變化、季風→降水分布不均。</p><div class="turn">📖 翻開課本 <b>p.68</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-4" data-ans="A"><div class="c-h"><span class="c-no">⑤</span><span class="c-t">氣溫的垂直變化</span><span class="c-p">課本 p.69</span></div><div class="q">嘉義市與玉山緯度差不多，年均溫卻差超過 10℃，主因是什麼？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>高度差異<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>緯度差異</div></div><div class="say"><p>同緯度但高度差很多——<strong>地勢愈高，氣溫愈低</strong>。所以玉山冬天會飄雪，嘉義幾乎不會到 0℃ 以下。</p><p>玉山氣象站在海拔 3,858 公尺（玉山北峰），七月約 7.9℃、一月降到 −1.1℃。</p><p>⚠️ 別跟<strong>玉山主峰 3,952 公尺</strong>搞混——氣象站不在最高點上。</p><div class="turn">📖 翻開課本 <b>p.69</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-5" data-ans="A"><div class="c-h"><span class="c-no">⑥</span><span class="c-t">降水分布不均</span><span class="c-p">課本 p.70</span></div><div class="q">臺灣哪一區的降水「最集中在 5～10 月」？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>南部，89%<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>北部，65%</div></div><div class="say"><p>五區的年降水量與 5～10 月占比：<br/>北部 2932mm／65%　中部 2158mm／77%　<strong>南部 2536mm／89%</strong>　東部 2557mm／78%　澎湖 1013mm／75%</p><p>北部總雨量最多，卻分得最平均；<strong>南部總量不是最高，但幾乎全擠在半年內</strong>——所以缺水問題最嚴重的是南部，不是雨最少的地方。</p><div class="turn">📖 翻開課本 <b>p.70</b> 對照一次。</div></div></div>
+<div class="card" data-id="ch5-6" data-ans="A"><div class="c-h"><span class="c-no">⑦</span><span class="c-t">臺灣的氣象災害</span><span class="c-p">課本 p.72–73</span></div><div class="q">「寒害」造成的損失，主要落在哪一邊？</div><div class="opts"><div class="opt right" data-k="A"><span class="k">A</span>農業（約 96%）<span class="pmark">✔ 正解</span></div><div class="opt" data-k="B"><span class="k">B</span>漁業（約 96%）</div></div><div class="say"><p>課本列三種：<strong>寒害</strong>（蒙古／西伯利亞冷氣團南下，俗稱寒流）、<strong>旱災</strong>（降水季節不均，乾季靠水庫）、<strong>水災</strong>（梅雨、對流雨、颱風）。</p><p>民國 112 年寒害損失 1.54 億元，<em>農業 96%、漁業 4%</em>。</p><p>🔴 課本特別點出一件事：<strong>梅雨和颱風會造成災害，但也是臺灣水資源的主要來源。</strong>曾文水庫可以從 3.8%（110 年百年大旱）變成 99.5%（112 年）——同一件事，兩種面孔。</p><div class="turn">📖 翻開課本 <b>p.72–73</b> 對照一次。</div></div></div>
+</section>
+
+<div class="done-all" id="fin">
+  <h2 style="margin:.2em 0;font-size:19px">29 個重點都過了一遍</h2>
+  <p>但這一頁只做了一半的事——<b>它告訴你該翻哪幾頁，翻回去是你的事。</b></p>
+  <p>如果剛剛有哪幾格你是<b>猜對</b>的，那幾頁才是今天真正該花時間的地方。</p>
+</div>
+
+<div class="btns"></div>
+
+<footer>
+  依據翰林版七上社會（地理）第一篇之章節與頁碼編排　·　說明文字為自行撰寫<br/>
+  課本內容著作權屬原出版者所有，本頁僅供個人學習使用
+</footer>
+
+</div>
+
+</section>
+</body>
+</html>

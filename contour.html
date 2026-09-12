@@ -32,6 +32,12 @@ p{margin:.7em 0}
 .opt.right{border-color:var(--ok);background:#f0f8f3}
 .opt.pick{box-shadow:0 0 0 2px rgba(179,64,47,.25)}
 .opt.wrong{border-color:var(--no);background:#fdf2f0}
+/* 四個選項本身就是圖的題型：兩欄排，手機轉成一欄 */
+.opts.pics{flex-direction:row;flex-wrap:wrap;gap:11px}
+.opts.pics .opt{flex:1 1 calc(50% - 6px);min-width:232px;padding:8px;text-align:center}
+.opts.pics img{display:block;width:100%;height:auto}
+@media(max-width:520px){.opts.pics .opt{flex:1 1 100%}}
+.src{font-size:12.5px;color:var(--ink2);margin-top:9px}
 .lock{opacity:.28;pointer-events:none;filter:blur(4px) saturate(.3);user-select:none;
  transition:filter .5s,opacity .5s}
 .lock.open{opacity:1;pointer-events:auto;filter:none}
@@ -292,25 +298,33 @@ footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-h
 
   <div class="box">
     <p><b>115 年第 29 題</b>　（115 年無官方試題分析，無選答百分比）</p>
-    <p style="font-size:15px">臺灣地名中的「坑」指<b>溪谷</b>。<br>
-    <b>閩南</b>族群的「<b>坑頭</b>」，指聚落位在溪流的<b>上游</b>；<br>
-    <b>客家</b>族群依開墾順序命名，拓墾<b>由下游往上游</b>進行，<b>最後</b>開墾的聚落稱「<b>坑尾</b>」。<br>
-    四張等高線示意圖中，哪一張符合兩族群的命名原則？</p>
-    <div class="opts" id="q3" data-ans="A">
-      <button class="opt" data-k="A"><span class="k">A</span>兩個聚落都在河谷的<b>上游端</b></button>
-      <button class="opt" data-k="B"><span class="k">B</span>坑頭在上游、坑尾在下游</button>
-      <button class="opt" data-k="C"><span class="k">C</span>坑頭在下游、坑尾在上游</button>
-      <button class="opt" data-k="D"><span class="k">D</span>兩個聚落都在河谷的<b>下游端</b></button>
+    <p style="font-size:15px">根據學者研究，臺灣地名中的「坑」為閩南族群與客家族群通用來指稱<b>溪谷</b>的用字，
+    常與「頭」、「尾」連用來辨別聚落在溪谷內的位置。例如閩南族群的地名「<b>坑頭</b>」，
+    是指聚落位在溪流的<b>上游</b>；客家族群則是依開墾順序命名，拓墾通常<b>由河谷下游往上游</b>進行，
+    <b>最後</b>開墾的聚落則以「<b>坑尾</b>」命名。<br>
+    下列哪一示意圖最符合上述兩族群坑頭及坑尾聚落位置的命名原則？</p>
+    <p style="font-size:14px;color:var(--ink2)">
+    👉 四張圖的<b>等高線一模一樣</b>，只有兩個聚落的位置不同。先讀懂數字，再決定選哪一張。</p>
+    <div class="opts pics" id="q3" data-ans="B">
+      <button class="opt" data-k="A"><img src="fig/exam_115-29_kengs_A.png" alt="選項 A 的等高線示意圖" loading="lazy"></button>
+      <button class="opt" data-k="B"><img src="fig/exam_115-29_kengs_B.png" alt="選項 B 的等高線示意圖" loading="lazy"></button>
+      <button class="opt" data-k="C"><img src="fig/exam_115-29_kengs_C.png" alt="選項 C 的等高線示意圖" loading="lazy"></button>
+      <button class="opt" data-k="D"><img src="fig/exam_115-29_kengs_D.png" alt="選項 D 的等高線示意圖" loading="lazy"></button>
     </div>
+    <p class="src">原卷附圖：115 年國中教育會考社會科第 29 題的四個選項。</p>
     <div class="rev" id="r5">
-      <p><b>答案是 (A)——兩個都在上游。</b>這題的設計很妙：</p>
+      <p><b>答案是 (B)——兩個聚落都在上游那一端。</b>這題的設計很妙：</p>
       <p><b>閩南「坑頭」</b>：直接定義為上游。<br>
       <b>客家「坑尾」</b>：拓墾<b>由下游往上游</b>，<b>最後</b>開墾的叫坑尾——
       最後開到的地方，就是<b>最上游</b>。</p>
       <p>🔴 <b>「頭」和「尾」聽起來相反，兩個聚落卻落在同一端。</b>
       因為兩個族群命名的依據根本不同：一個看<b>水流</b>，一個看<b>開墾順序</b>。</p>
       <p>而要在圖上找出「哪一端是上游」，靠的就是<b>等高線數值</b>——
-      數字大的那一端地勢高，那就是上游。<span class="pg">課本 p.38</span></p>
+      圖上標了 <b>0m、100、200、300</b>：<b>0m 那一端是下游，300 那一端是上游</b>。
+      只有 (B) 把兩個聚落都放在 300 那一側。<span class="pg">課本 p.38</span></p>
+      <p style="font-size:14.5px;color:var(--ink2)">
+      另外三張錯在哪：(A) 坑尾掉到 0m 旁邊＝下游；(C) 坑頭在下游、坑尾在半山腰；
+      (D) 兩個分居兩端。<b>只要漏掉「最後開墾＝最上游」這一步，就會挑到 (A) 或 (D)。</b></p>
     </div>
   </div>
 
@@ -349,7 +363,8 @@ footer{text-align:center;color:var(--ink2);font-size:13px;margin-top:48px;line-h
   <button class="tiny" id="rst">清除作答，重新來過</button></div>
 
 <footer>
-  會考試題文字與統計取自國中教育會考官方試題分析（112～114 年）與試題本（115 年）<br>
+  會考試題文字與統計取自國中教育會考官方試題分析（112～114 年）與試題本（115 年）；<br>
+  115 年第 29 題的正解依官方「選擇題參考答案一覽表」<br>
   題目為重新排版、等高線圖為自行重繪，解說文字為自行撰寫　·　僅供個人學習、非商業使用
 </footer>
 
